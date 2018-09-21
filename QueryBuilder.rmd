@@ -14,14 +14,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-QueryBuilder <- function(poverty_line,
-                         year_selected,
-                         countries,
-                         year_list,
-                         poverty_line_list,
-                         country_list) {
+build_query <- function(poverty_line,
+                        year_selected,
+                        countries,
+                        year_list,
+                        poverty_line_list,
+                        country_list,
+                        url = "http://iResearch.worldbank.org/PovcalNet/PovcalNetAPI.ashx?") {
   
-  url <- "http://iResearch.worldbank.org/PovcalNet/PovcalNetAPI.ashx?"
+  
   query_string <- ""
   err_flag <- FALSE
   
@@ -92,7 +93,7 @@ QueryBuilder <- function(poverty_line,
 ```
 
 ```{r}
-QueryBuilder(poverty_line = '',
+build_query(poverty_line = '',
             year_selected = '',
             countries = '',
             year_list = '2008',
