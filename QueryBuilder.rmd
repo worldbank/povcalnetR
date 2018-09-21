@@ -14,11 +14,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-QueryBuilder <- function(PovertyLine,
-                         YearSelected,
-                         Countries,
+QueryBuilder <- function(poverty_line,
+                         year_selected,
+                         countries,
                          year_list,
-                         povertyline_list,
+                         poverty_line_list,
                          country_list) {
   
   url <- "http://iResearch.worldbank.org/PovcalNet/PovcalNetAPI.ashx?"
@@ -30,10 +30,10 @@ QueryBuilder <- function(PovertyLine,
     # check if all required parameters are supplied
     # not sure if I need to do this
     # will need to check the error handling that is already implemented in the C# code
-    if (is.na(PovertyLine) || PovertyLine == ''){
-      if (is.na(YearSelected) || YearSelected == ''){
-        if (is.na(Countries) || Countries == ''){
-          if (is.na(povertyline_list) || povertyline_list == ''){
+    if (is.na(poverty_line) || poverty_line == ''){
+      if (is.na(year_selected) || year_selected == ''){
+        if (is.na(countries) || countries == ''){
+          if (is.na(poverty_line_list) || poverty_line_list == ''){
             print("Poverty Line is required")
             err_flag = TRUE
           }
@@ -52,17 +52,17 @@ QueryBuilder <- function(PovertyLine,
     # split comma-separated strings into vectors
     else if (err_flag == FALSE) {
       
-      if (!is.na(PovertyLine) || !PovertyLine == ''){
-        query_string <- query_string + "PovertyLine=" + PovertyLine + "&"
+      if (!is.na(poverty_line) || !poverty_line == ''){
+        query_string <- query_string + "poverty_line=" + poverty_line + "&"
       }
       else {
-        if (!is.na(povertyline_list) || !povertyline_list == '') {
-          PL <- unlist(strsplit(povertyline_list, split = ","))
+        if (!is.na(poverty_line_list) || !poverty_line_list == '') {
+          PL <- unlist(strsplit(poverty_line_list, split = ","))
         }
       }
       
-      if (!is.na(Countries) || !Countries == ''){
-        query_string <- query_string + "Countries=" + Countries + "&"
+      if (!is.na(countries) || !countries == ''){
+        query_string <- query_string + "countries=" + countries + "&"
       }
       else {
         if (!is.na(country_list) || !country_list == '') {
@@ -70,8 +70,8 @@ QueryBuilder <- function(PovertyLine,
         }
       }
       
-      if (!is.na(YearSelected) || !YearSelected == ''){
-        query_string <- query_string + "YearSelected=" + YearSelected + "&"
+      if (!is.na(year_selected) || !year_selected == ''){
+        query_string <- query_string + "year_selected=" + year_selected + "&"
       }
       else {
         if (!is.na(year_list) || !year_list == '') {
@@ -92,11 +92,11 @@ QueryBuilder <- function(PovertyLine,
 ```
 
 ```{r}
-QueryBuilder(PovertyLine = '',
-            YearSelected = '',
-            Countries = '',
+QueryBuilder(poverty_line = '',
+            year_selected = '',
+            countries = '',
             year_list = '2008',
-            povertyline_list = '1.9',
+            poverty_line_list = '1.9',
             country_list = 'IND')
 ```
 
