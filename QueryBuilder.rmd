@@ -1,0 +1,102 @@
+---
+title: "PovcalNet API Query Builder"
+author: "Ratnadeep Mitra"
+date: "September 11, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# required packages
+```
+
+```{r}
+QueryBuilder <- function(PovertyLine,
+                         YearSelected,
+                         Countries,
+                         year_list,
+                         povertyline_list,
+                         country_list) {
+  
+  url <- "http://iResearch.worldbank.org/PovcalNet/PovcalNetAPI.ashx?"
+  query_string <- ""
+  err_flag <- FALSE
+  
+  tryCatch({
+    
+    # check if all required parameters are supplied
+    # not sure if I need to do this
+    # will need to check the error handling that is already implemented in the C# code
+    if (is.na(PovertyLine) || PovertyLine == ''){
+      if (is.na(YearSelected) || YearSelected == ''){
+        if (is.na(Countries) || Countries == ''){
+          if (is.na(povertyline_list) || povertyline_list == ''){
+            print("Poverty Line is required")
+            err_flag = TRUE
+          }
+          if (is.na(country_list) || country_list == ''){
+            print("Country is required")
+            err_flag = TRUE
+          }
+        }
+      }
+    }
+    
+    if (err_flag == TRUE) {
+      stop("Execution stopped")
+    }
+    
+    # split comma-separated strings into vectors
+    else if (err_flag == FALSE) {
+      
+      if (!is.na(PovertyLine) || !PovertyLine == ''){
+        query_string <- query_string + "PovertyLine=" + PovertyLine + "&"
+      }
+      else {
+        if (!is.na(povertyline_list) || !povertyline_list == '') {
+          PL <- unlist(strsplit(povertyline_list, split = ","))
+        }
+      }
+      
+      if (!is.na(Countries) || !Countries == ''){
+        query_string <- query_string + "Countries=" + Countries + "&"
+      }
+      else {
+        if (!is.na(country_list) || !country_list == '') {
+          C <- unlist(strsplit(country_list, split = ","))
+        }
+      }
+      
+      if (!is.na(YearSelected) || !YearSelected == ''){
+        query_string <- query_string + "YearSelected=" + YearSelected + "&"
+      }
+      else {
+        if (!is.na(year_list) || !year_list == '') {
+          Y <- unlist(strsplit(year_list, split = "&"))
+        }
+      }
+      
+    }
+    
+    # loop through vectors, get each element and build query string
+    # to be implemented
+    
+  }, error = function(err){
+    stop("Execution stopped")
+  })
+  
+}
+```
+
+```{r}
+QueryBuilder(PovertyLine = '',
+            YearSelected = '',
+            Countries = '',
+            year_list = '2008',
+            povertyline_list = '1.9',
+            country_list = 'IND')
+```
+
