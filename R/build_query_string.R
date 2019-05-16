@@ -45,8 +45,13 @@ build_query_string <- function(country,
   }
 
   if ((!is.null(coverage)) & (all(country != "all"))) {
+    if (coverage == "national") {
+      coverage_codes <- national_coverage_lkup[country]
+      country <- paste(country, coverage_codes, sep = "_")
+    } else {
     coverage <- unname(coverage_lkup[coverage])
     country <- paste(country, coverage, sep = "_")
+    }
   }
 
   if (interpolate == TRUE) {
