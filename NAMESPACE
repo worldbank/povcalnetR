@@ -2,4 +2,3 @@
 
 export(build_country_level_string)
 export(build_query_string)
-export(build_ref_year_string)
