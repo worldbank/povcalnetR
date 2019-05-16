@@ -1,3 +1,5 @@
+library(tidyverse)
+
 coverage_lkup <- c(1, 2, 3, 4, 5, 6)
 names(coverage_lkup) <- c("rural", "urban", "national", "special_cpi", "aggregated_distribution", "invalid_ppp")
 
@@ -9,6 +11,14 @@ names(coverage_level_lkup) <- c("R", "U", "N", "A")
 
 datatype_lkup <- c("consumption", "income", "mixed")
 names(datatype_lkup) <- c("X", "Y", "Z")
+
+df <- povcalnet_info()
+df <- df %>%
+  filter(coverage_level == "national") %>%
+  select(country_code, coverage_code) %>%
+  distinct
+national_coverage_lkup <- df$coverage_code
+names(national_coverage_lkup) <- df$country_code
 
 # povcal_col_names <- c("interpolated", "useMicroData", "CountryCode", "RegionCID",
 #                       "CoverageType", "RequestYear",  "DataType", "PPP",
@@ -31,6 +41,7 @@ usethis::use_data(
   datatype_lkup,
   coverage_type_lkup,
   coverage_level_lkup,
+  national_coverage_lkup,
   internal = TRUE,
   overwrite = TRUE
 )

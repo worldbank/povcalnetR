@@ -30,20 +30,20 @@ test_that("Country level queries are built correctly", {
   query <- build_query_string(country = country,
                               poverty_line = poverty_line,
                               year = year)
-  expect_equal(query, "SurveyYears=2002,2012&Countries=ALB_3,CHN_3&PovertyLine=1.9&display=C&format=json")
+  expect_equal(query, "SurveyYears=2002,2012&Countries=ALB_3,CHN_5&PovertyLine=1.9&display=C&format=json")
 
   query <- build_query_string(country = country,
                                  poverty_line = poverty_line,
                                  year = year,
                                  ppp = ppp)
-  expect_equal(query, "SurveyYears=2002,2012&Countries=ALB_3,CHN_3&PovertyLine=1.9&PPP0=100&PPP1=50&display=C&format=json")
+  expect_equal(query, "SurveyYears=2002,2012&Countries=ALB_3,CHN_5&PovertyLine=1.9&PPP0=100&PPP1=50&display=C&format=json")
 
   query <- build_query_string(country = country,
                                  poverty_line = poverty_line,
                                  year = year,
                                  ppp = ppp,
                                  aggregate = TRUE)
-  expect_equal(query, "YearSelected=2002,2012&Countries=ALB_3,CHN_3&PovertyLine=1.9&PPP0=100&PPP1=50&display=Regional&format=json")
+  expect_equal(query, "YearSelected=2002,2012&Countries=ALB_3,CHN_5&PovertyLine=1.9&PPP0=100&PPP1=50&display=Regional&format=json")
 
   query <- build_query_string(country = "all",
                               poverty_line = poverty_line,
