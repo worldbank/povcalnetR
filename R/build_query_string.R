@@ -4,10 +4,14 @@
 #' @param country character: list of country iso3 code (accepts multiple) or `all`. Use \href{https://www.iban.com/country-codes}{iso3 codes }
 #' @param poverty_line numeric: poverty line (in 2011 PPP-adjusted USD) to calculate poverty measures
 #' @param year numeric:  list of years, or `all`, or `last`.
+#' @param aggregate logical: `TRUE` will return aggregate results,
+#' `FALSE` country-level results.
+#' @param fill_gaps logical: `TRUE` will interpolate / extrapolate values when
+#' surveys are not available for a specific year.
+#' @param coverage character: Can take one of three values: `national`, `urban`, `rural`
 #' @param ppp numeric: Optional - Allows the selection of custom PPP (Purchasing Power Parity) exchange rates
-#' @param display character: Specify whether the results should be displayed at
-#' the country level, or as regional aggregates. Choose one of two options: "country_level",
-#' "regional_aggregate"
+#' @param format character: Response format to be requested from the API:
+#' `csv` or `json`
 #'
 #' @return character
 #' @export

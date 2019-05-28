@@ -3,3 +3,5 @@
 export(build_country_level_string)
 export(build_query_string)
 export(get_countries)
+export(povcalnet)
+export(povcalnet_info)

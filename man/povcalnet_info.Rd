@@ -15,3 +15,8 @@ data frame
 \description{
 Download updated information on available countries, regions, and surveys from the PovcalNet API
 }
+\examples{
+\dontrun{
+povcalnet_info()
+}
+}

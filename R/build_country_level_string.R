@@ -7,6 +7,8 @@
 #' @param ppp numeric: Optional - Custom PPP exchange rates (Purchasing Power parity)
 #' @param coverage_type character: Optional - Type of data coverage. Take one to the following values
 #' rural; urban; national; special_cpi; aggregated_distribution, invalid_ppp
+#' @param format character: Response format to be requested from the API:
+#' `csv` or `json`
 #'
 #' @return character
 #' @export

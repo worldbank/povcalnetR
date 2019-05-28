@@ -1,17 +1,17 @@
 povcalnet_cl <- function(country,
-                      poverty_line,
-                      year,
-                      coverage = NULL,
-                      ppp = NULL,
-                      url = "http://iresearch.worldbank.org",
-                      format = "csv") {
+                         poverty_line,
+                         year,
+                         coverage = NULL,
+                         ppp = NULL,
+                         url = "http://iresearch.worldbank.org",
+                         format = "csv") {
 
   # STEP 1: build query string
   query <- build_country_level_string(
     country = country,
     poverty_line = poverty_line,
     year = year,
-    coverage = coverage,
+    coverage_type = coverage,
     ppp = ppp,
     format = format
   )
@@ -25,8 +25,8 @@ povcalnet_cl <- function(country,
 
   # STEP 4: parse data
   if (format == "json") {
-  out <- tibble::as_tibble(jsonlite::fromJSON(res, simplifyDataFrame = TRUE))
-  out <- out$PovResult
+    out <- tibble::as_tibble(jsonlite::fromJSON(res, simplifyDataFrame = TRUE))
+    out <- out$PovResult
   } else {
     out <- readr::read_csv(res)
   }

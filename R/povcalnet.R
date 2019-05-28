@@ -1,3 +1,31 @@
+#' povcalnet
+#' Facilitate interaction with the PovcalNet API
+#'
+#' @param country character: list of country iso3 code (accepts multiple) or
+#' `all`. Use \code{\link{povcalnet_info}} for full list of countries.
+#' @param poverty_line numeric: poverty line (in 2011 PPP-adjusted USD) to
+#' calculate poverty measures
+#' @param year numeric:  list of years, or `all`, or `last`.
+#' @param aggregate logical: `TRUE` will return aggregate results,
+#' `FALSE` country-level results.
+#' @param fill_gaps logical: `TRUE` will interpolate / extrapolate values when
+#' surveys are not available for a specific year.
+#' @param coverage character: Can take one of three values: `national`, `urban`, `rural`
+#' @param ppp numeric: Optional - Allows the selection of custom PPP (Purchasing Power Parity) exchange rates
+#' @param url character: API root URL. For testing purposes only, should not be
+#' changed for 99 percent of users.
+#' @param format character: Response format to be requested from the API:
+#' `csv` or `json`
+#'
+#' @return data.frame
+#' @export
+#'
+#'
+#' @examples
+#' \dontrun{
+#' povcalnet(country = "ALB")
+#' }
+#'
 povcalnet <- function(country,
                       poverty_line = 1.9,
                       year = "all",

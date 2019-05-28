@@ -16,11 +16,18 @@ build_query_string(country, poverty_line, year, aggregate = FALSE,
 
 \item{year}{numeric:  list of years, or `all`, or `last`.}
 
+\item{aggregate}{logical: `TRUE` will return aggregate results,
+`FALSE` country-level results.}
+
+\item{fill_gaps}{logical: `TRUE` will interpolate / extrapolate values when
+surveys are not available for a specific year.}
+
+\item{coverage}{character: Can take one of three values: `national`, `urban`, `rural`}
+
 \item{ppp}{numeric: Optional - Allows the selection of custom PPP (Purchasing Power Parity) exchange rates}
 
-\item{display}{character: Specify whether the results should be displayed at
-the country level, or as regional aggregates. Choose one of two options: "country_level",
-"regional_aggregate"}
+\item{format}{character: Response format to be requested from the API:
+`csv` or `json`}
 }
 \value{
 character

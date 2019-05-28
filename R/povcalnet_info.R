@@ -7,8 +7,9 @@
 #' @return data frame
 #' @export
 #'
-#' \dontrun{
+#'
 #' @examples
+#' \dontrun{
 #' povcalnet_info()
 #' }
 povcalnet_info <- function(url = "http://iresearch.worldbank.org") {
