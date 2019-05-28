@@ -42,37 +42,51 @@ build_query_string <- function(country,
 
   i <- seq_along(country) - 1
 
-
+  # Aggregation only possible for national coverage and common reference years
+  # setting function arguments accordingly
   if (aggregate == TRUE) {
     fill_gaps <- TRUE
     coverage = "national"
   }
 
+  # Add correct coverage suffix to country code
   if ((!is.null(coverage)) & (all(country != "all"))) {
     if (coverage == "national") {
       coverage_codes <- national_coverage_lkup[country]
       country <- paste(country, coverage_codes, sep = "_")
     } else {
-    coverage <- unname(coverage_lkup[coverage])
-    country <- paste(country, coverage, sep = "_")
+      coverage <- unname(coverage_lkup[coverage])
+      country <- paste(country, coverage, sep = "_")
     }
   }
 
+  # Build year section
+  # Year parameter is different when using "survey year" or "reference year"
   if (fill_gaps == TRUE) {
     year_str <- "YearSelected="
   } else {
     year_str <- "SurveyYears="
   }
   year <- paste0(year_str, paste(year, collapse = ","))
+
+  # Build poverty line section
   poverty_line <- paste0("PovertyLine=", poverty_line)
+
+  # Build country section
   country <- paste0("Countries=", paste(country, collapse = ","))
+
+  # Add requested format
   format <- paste0("format=", format)
+
+  # Add display mode: "aggregate" or "country level"
   display <- if (aggregate == TRUE) {
     display <- paste0("display=Regional")
   } else {
     display <- paste0("display=C")
   }
 
+  # Paste all query elements together
+  # Query string will be built differently whether ppp argument is empty or not
   if (!is.null(ppp)) {
     ppp <- purrr::map2_chr(i, ppp, function(x, y) {paste0("PPP", x, "=", y)})
     ppp <- paste(ppp, collapse = "&")
@@ -101,7 +115,7 @@ check_build_query_string_inputs <- function(country,
   assertthat::assert_that(length(year) > 0,
                           msg = "Please submit at least ONE year")
   assertthat::assert_that(length(poverty_line) > 0,
-                          msg = "Please submit ONE poverty liner")
+                          msg = "Please submit ONE poverty line")
   assertthat::assert_that(length(poverty_line) == 1,
                           msg = "Please submit only one poverty_line,
                           for instance: poverty_line = 1.9")

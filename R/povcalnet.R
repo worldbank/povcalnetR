@@ -53,7 +53,7 @@ povcalnet <- function(country,
 
   # STEP 3: retrieve data
   res <- httr::GET(url = url)
-  res <- httr::content(res,as = "text", encoding = "UTF-8" )
+  res <- httr::content(res, as = "text", encoding = "UTF-8" )
 
   # STEP 4: parse data
   if (format == "json") {
@@ -64,7 +64,10 @@ povcalnet <- function(country,
   }
 
   # STEP 5: format output
-  out <- format_data(out, coverage = coverage, aggregate = aggregate)
+  out <- format_data(out,
+                     country = country,
+                     coverage = coverage,
+                     aggregate = aggregate)
 
   return(out)
 

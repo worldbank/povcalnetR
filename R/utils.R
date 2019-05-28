@@ -1,19 +1,21 @@
 # Helpers
 api_handle <- function() "povcalnet/povcalnetapi.ashx"
 
-format_data <- function(x, coverage, aggregate) {
+format_data <- function(x, country, coverage, aggregate) {
 
   if (aggregate == FALSE){
-    x <- format_data_cl(x, coverage)
+    x <- format_data_cl(x = x,
+                        country = country,
+                        coverage = coverage)
   } else {
-    x <- format_data_aggregate(x)
+    x <- format_data_aggregate(x = x)
   }
   return(x)
 }
 
 
 
-format_data_cl <- function(x, coverage) {
+format_data_cl <- function(x, country, coverage) {
   # CHECK
   assertthat::assert_that(
     all.equal(names(x), povcal_col_names)
@@ -53,9 +55,12 @@ format_data_cl <- function(x, coverage) {
                      "decile10" = "Decile10"
   )
 
+  # rename data_type to be more explicit
   x$data_type <- datatype_lkup[x$data_type]
 
-  if (!is.null(coverage) & length(coverage) == 1) {
+  # Filter out coverage level that were not requested
+  # Needed when country = "all" is specified (returns all coverage level by default)
+  if (!is.null(coverage) & length(coverage) == 1 & country == "all") {
     x <- x[x$coverage_type %in% names(coverage_level_lkup[coverage_level_lkup == coverage]), ]
   }
 
