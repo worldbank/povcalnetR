@@ -60,7 +60,7 @@ format_data_cl <- function(x, country, coverage) {
 
   # Filter out coverage level that were not requested
   # Needed when country = "all" is specified (returns all coverage level by default)
-  if (!is.null(coverage) & length(coverage) == 1 & country == "all") {
+  if (all(!is.null(coverage) & length(coverage) == 1 & country == "all")) {
     x <- x[x$coverage_type %in% names(coverage_level_lkup[coverage_level_lkup == coverage]), ]
   }
 
