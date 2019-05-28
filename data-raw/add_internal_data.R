@@ -1,5 +1,8 @@
 library(tidyverse)
 
+
+# Internal data -----------------------------------------------------------
+
 coverage_lkup <- c(1, 2, 3, 4, 5, 6)
 names(coverage_lkup) <- c("rural", "urban", "national", "special_cpi", "aggregated_distribution", "invalid_ppp")
 
@@ -46,6 +49,11 @@ povcal_col_names <- c("isInterpolated", "useMicroData", "CountryCode", "CountryN
 povcal_col_names_agg <- c("requestYear", "regionTitle", "regionCID", "povertyLine",
                           "mean", "hc", "pg", "p2", "population")
 
+
+# Raw data ----------------------------------------------------------------
+
+sample_input <- readr::read_csv('./data-raw/input.csv')
+
 # Save data ---------------------------------------------------------------
 
 usethis::use_data(
@@ -62,5 +70,11 @@ usethis::use_data(
   income_region,
 
   internal = TRUE,
+  overwrite = TRUE
+)
+
+usethis::use_data(
+  sample_input,
+
   overwrite = TRUE
 )
