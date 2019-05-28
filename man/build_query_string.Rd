@@ -6,7 +6,7 @@
 Create simplified povcalnet query string}
 \usage{
 build_query_string(country, poverty_line, year, aggregate = FALSE,
-  interpolate = FALSE, coverage = "national", ppp = NULL,
+  fill_gaps = FALSE, coverage = "national", ppp = NULL,
   format = "json")
 }
 \arguments{

@@ -22,7 +22,7 @@ build_query_string <- function(country,
                                poverty_line,
                                year,
                                aggregate = FALSE,
-                               interpolate = FALSE,
+                               fill_gaps = FALSE,
                                coverage = "national",
                                ppp = NULL,
                                format = "json") {
@@ -31,7 +31,7 @@ build_query_string <- function(country,
                                   poverty_line,
                                   year,
                                   aggregate,
-                                  interpolate,
+                                  fill_gaps,
                                   coverage,
                                   ppp )
 
@@ -40,7 +40,7 @@ build_query_string <- function(country,
 
 
   if (aggregate == TRUE) {
-    interpolate <- TRUE
+    fill_gaps <- TRUE
     coverage = "national"
   }
 
@@ -54,7 +54,7 @@ build_query_string <- function(country,
     }
   }
 
-  if (interpolate == TRUE) {
+  if (fill_gaps == TRUE) {
     year_str <- "YearSelected="
   } else {
     year_str <- "SurveyYears="
@@ -87,7 +87,7 @@ check_build_query_string_inputs <- function(country,
                                             poverty_line,
                                             year,
                                             aggregate,
-                                            interpolate,
+                                            fill_gaps,
                                             coverage,
                                             ppp)
 {
@@ -107,9 +107,9 @@ check_build_query_string_inputs <- function(country,
   assertthat::assert_that(is.null(ppp) | length(ppp) == length(country),
                           msg = "When using custom ppp, please ensure you submit
                           one ppp per country")
-  if (aggregate == TRUE & interpolate == FALSE) {
+  if (aggregate == TRUE & fill_gaps == FALSE) {
     message("You specified `aggregate = TRUE`. Aggregation is only possible
-            over a common reference year: The `interpolate` paramater will be
+            over a common reference year: The `fill_gaps` paramater will be
             forced to `TRUE`")}
 
   if (aggregate == TRUE & coverage != "national") {

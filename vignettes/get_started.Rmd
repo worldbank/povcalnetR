@@ -82,11 +82,11 @@ povcalnet(country = c("ALB", "CHN"),
 ```
 
 
-# Interpolate
+# Fill gaps when surveys are missing for specific year
 
 ```{r}
 povcalnet(country = c("ALB", "CHN"),
-                interpolate = TRUE)
+                fill_gaps = TRUE)
 ```
 
 # PPP
