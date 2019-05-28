@@ -7,7 +7,7 @@
 povcalnet_info(url = "http://iresearch.worldbank.org")
 }
 \arguments{
-\item{url}{character: This parameter should not be modified.}
+\item{url}{character: Path to file: This parameter should not be modified.}
 }
 \value{
 data frame

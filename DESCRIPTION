@@ -22,7 +22,8 @@ Imports:
     tibble,
     dplyr,
     js,
-    tidyr
+    tidyr,
+    memoise
 Suggests: 
     testthat (>= 2.1.0),
     assertthat,

@@ -1,18 +1,13 @@
-#' povcalnet_info()
+#' povcal_info
 #'
-#' Download updated information on available countries, regions, and surveys from the PovcalNet API
+#' Non-memoised version of povcalnet_info()
 #'
-#' @param url character: This parameter should not be modified.
+#' @param url character: Path to file: This parameter should not be modified.
 #'
-#' @return data frame
-#' @export
+#' @return data.frame
 #'
-#'
-#' @examples
-#' \dontrun{
-#' povcalnet_info()
-#' }
-povcalnet_info <- function(url = "http://iresearch.worldbank.org") {
+
+povcal_info <- function(url = "http://iresearch.worldbank.org") {
 
   url <- paste0(url, "/PovcalNet/js/initCItem2014.js")
 
@@ -58,3 +53,23 @@ povcalnet_info <- function(url = "http://iresearch.worldbank.org") {
   return(x)
 
 }
+
+
+
+#' povcalnet_info()
+#'
+#' Download updated information on available countries, regions, and surveys from the PovcalNet API
+#'
+#' @param url character: Path to file: This parameter should not be modified.
+#'
+#' @return data frame
+#' @export
+#'
+#'
+#' @examples
+#' \dontrun{
+#' povcalnet_info()
+#' }
+povcalnet_info <- memoise::memoise(povcal_info)
+
+
