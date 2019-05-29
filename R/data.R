@@ -9,5 +9,4 @@
 #'   \item{ppp}{PPP exchange rate}
 #'   \item{coverage_type}{Survey coverage}
 #' }
-#' @export
 "sample_input"
