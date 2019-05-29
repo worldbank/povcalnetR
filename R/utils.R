@@ -88,3 +88,14 @@ format_data_aggregate <- function(x) {
 
   return(x)
 }
+
+
+# format_data_dist <- function(x) {
+#   # CHECK
+#   assertthat::assert_that(
+#     all.equal(names(x), c("i", "P", "L", "X4"))
+#   )
+#
+#   x <- x[, c("i", "P", "L")]
+#
+# }
