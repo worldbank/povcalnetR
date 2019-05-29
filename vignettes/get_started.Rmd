@@ -39,6 +39,16 @@ povcalnet(country = "all")
 povcalnet(country = c("ALB", "CHN"))
 ```
 
+# Retrieve countries from a specific region or income group
+```{r}
+# Get countries from ECA region
+eca <- get_countries("ECA")
+povcalnet(country = eca)
+
+# Get countries from Lower Income group
+lic <- get_countries("LIC")
+povcalnet(country = lic)
+```
 
 # Change poverty line
 
