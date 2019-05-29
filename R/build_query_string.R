@@ -122,6 +122,8 @@ check_build_query_string_inputs <- function(country,
   assertthat::assert_that(coverage %in% names(coverage_lkup),
                           msg = paste0("The 'coverage' argument only accepts one of the following values:\n",
                                        names(coverage_lkup)))
+  assertthat::assert_that(length(coverage) == 1,
+                          msg = "Please submit only ONE coverage")
   assertthat::assert_that(is.null(ppp) | length(ppp) == length(country),
                           msg = "When using custom ppp, please ensure you submit
                           one ppp per country")
