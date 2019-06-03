@@ -23,7 +23,8 @@ Imports:
     dplyr,
     js,
     tidyr,
-    memoise
+    memoise,
+    naniar
 Suggests: 
     testthat (>= 2.1.0),
     assertthat,
