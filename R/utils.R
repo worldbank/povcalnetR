@@ -64,6 +64,15 @@ format_data_cl <- function(x, country, coverage) {
     x <- x[x$coverage_type %in% names(coverage_level_lkup[coverage_level_lkup == coverage]), ]
   }
 
+  # replace invalid values to missing
+  rvars <-
+    c("median", "polarization", "gini", "mld",
+      stringr::str_subset(names(x), "^decile"))
+
+  x <- x %>%
+    naniar::replace_with_na_at(.vars = rvars,
+                               condition = ~.x  %in% c(-1, 0))
+
   return(x)
 }
 
