@@ -1,5 +1,5 @@
 Package: povcalconnect
-Title: What the Package Does (One Line, Title Case)
+Title: R client to the PovcalNet API
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "First",
@@ -7,6 +7,27 @@ Authors@R:
            role = c("aut", "cre"),
            email = "first.last@example.com")
 Description: What the package does (one paragraph).
-License: What license it uses
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1
+Depends: 
+    R (>= 3.2.0)
+Imports: 
+    purrr,
+    stringr,
+    httr,
+    jsonlite,
+    readr,
+    tibble,
+    dplyr,
+    js,
+    tidyr,
+    memoise,
+    naniar
+Suggests: 
+    testthat (>= 2.1.0),
+    assertthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

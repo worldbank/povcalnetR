@@ -1,0 +1,37 @@
+---
+title: "Advanced usage"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{advanced_usage}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(povcalconnect)
+library(readr)
+```
+
+# Specify parameters at the country level
+```{r}
+# Read values from a table
+data("sample_input")
+sample_input
+```
+```{r}
+# Use these values to send a request to the API
+povcalnet_cl(country = sample_input$country,
+             poverty_line = sample_input$poverty_line,
+             year = sample_input$year,
+             ppp = sample_input$ppp)
+```
+
+
+

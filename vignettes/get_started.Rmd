@@ -1,0 +1,115 @@
+---
+title: "Get started"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Get started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(povcalconnect)
+```
+The `povcalconnect` package allows to easily query the [PovcalNet API](http://iresearch.worldbank.org/PovcalNet/docs/PovcalNet%20API.pdf) from R.
+
+Here are a few examples to get you started:
+
+# Retrieve ONE country with default parameters
+
+```{r}
+povcalnet(country = "ALB")
+```
+
+# Retrieve MULTIPLE countries with default parameters
+```{r}
+povcalnet(country = "all")
+```
+
+```{r}
+povcalnet(country = c("ALB", "CHN"))
+```
+
+# Retrieve countries from a specific region or income group
+```{r}
+# Get countries from ECA region
+eca <- get_countries("ECA")
+povcalnet(country = eca)
+
+# Get countries from Lower Income group
+lic <- get_countries("LIC")
+povcalnet(country = lic)
+```
+
+# Change poverty line
+
+```{r}
+povcalnet(country = c("ALB", "CHN"),
+          poverty_line = 10)
+```
+
+# Select specific years
+
+```{r}
+povcalnet(country = c("ALB"),
+          year = c(2002, 2012))
+```
+
+
+```{r}
+povcalnet(country = c("ALB"),
+          year = 2002)
+```
+
+
+# Change coverage
+
+```{r}
+povcalnet(country = "all",
+          coverage = "urban")
+```
+
+```{r}
+povcalnet(country = "all",
+          coverage = "rural")
+```
+
+
+# Aggregation
+
+```{r}
+povcalnet(country = c("ALB", "CHN"),
+          aggregate = TRUE)
+```
+
+
+# Fill gaps when surveys are missing for specific year
+
+```{r}
+povcalnet(country = c("ALB", "CHN"),
+                fill_gaps = TRUE)
+```
+
+# PPP
+```{r}
+povcalnet(country = c("ALB", "CHN"),
+                ppp = c(50, 100))
+```
+
+```{r}
+povcalnet(country = c("ALB", "CHN"),
+                ppp = c(10, 20),
+                poverty_line = 4,
+                aggregate = TRUE)
+```
+
+
