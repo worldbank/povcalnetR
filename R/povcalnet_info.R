@@ -7,9 +7,9 @@
 #' @return data.frame
 #'
 
-povcal_info <- function(url = "http://iresearch.worldbank.org") {
+povcal_info <- function(url = "http://iresearch.worldbank.org/povcalnet") {
 
-  url <- paste0(url, "/PovcalNet/js/initCItem2014.js")
+  url <- paste0(url, "/js/initCItem2014.js")
 
   x <- readLines(con = url)
   x <- js::esprima_parse(x)
