@@ -49,6 +49,9 @@ build_query_string <- function(country,
     coverage = "national"
   }
 
+  # Assign list of country codes
+  country <- assign_country(country)
+
   # Add correct coverage suffix to country code
   if ((!is.null(coverage)) & (all(country != "all"))) {
     if (coverage == "national") {

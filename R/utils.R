@@ -108,3 +108,12 @@ format_data_aggregate <- function(x) {
 #   x <- x[, c("i", "P", "L")]
 #
 # }
+
+assign_countries <- function(country) {
+
+  if (country == "all") {
+    country <- all_countries
+  } else {
+    country
+  }
+}

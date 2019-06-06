@@ -16,6 +16,8 @@ datatype_lkup <- c("consumption", "income", "mixed")
 names(datatype_lkup) <- c("X", "Y", "Z")
 
 povcal_info <- povcalnet_info()
+all_countries <- unique(povcal_info$country_code)
+
 df <- povcal_info %>%
   filter(coverage_level == "national") %>%
   select(country_code, coverage_code) %>%
@@ -68,6 +70,7 @@ usethis::use_data(
   wbregion,
   income_lkup,
   income_region,
+  all_countries,
 
   internal = TRUE,
   overwrite = TRUE
