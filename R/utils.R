@@ -58,17 +58,12 @@ format_data_cl <- function(x, country, coverage) {
   # rename data_type to be more explicit
   x$data_type <- datatype_lkup[x$data_type]
 
-  # Filter out coverage level that were not requested
-  # Needed when country = "all" is specified (returns all coverage level by default)
-  if (all(!is.null(coverage) & length(coverage) == 1 & country == "all")) {
-    x <- x[x$coverage_type %in% names(coverage_level_lkup[coverage_level_lkup == coverage]), ]
-  }
 
   # replace invalid values to missing
   rvars <- c("median", "polarization", "gini", "mld",
              stringr::str_subset(names(x), "^decile"))
 
-  x <- naniar::replace_with_na_at(x,
+  x <- naniar::replace_with_na_at(data = x,
                                   .vars = rvars,
                                   condition = ~.x  %in% c(-1, 0))
 

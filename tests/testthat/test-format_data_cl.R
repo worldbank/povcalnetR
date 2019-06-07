@@ -16,14 +16,5 @@ test_that("Basic data formatting works as expected", {
 }
 )
 
-test_that("Coverage filtering is working as expected", {
-  df <- read.csv("../testdata/country_level_rural_all.csv",
-                 stringsAsFactors = FALSE)
-
-  out <- format_data_cl(df, country = "all", coverage = "rural")
-
-  expect_true(all(unique(out$coverage_type) %in% c("R")))
-}
-)
 
 
