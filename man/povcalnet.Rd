@@ -6,7 +6,7 @@
 Facilitate interaction with the PovcalNet API}
 \usage{
 povcalnet(country, poverty_line = 1.9, year = "all",
-  aggregate = FALSE, fill_gaps = FALSE, coverage = "national",
+  aggregate = FALSE, fill_gaps = FALSE, coverage = "all",
   ppp = NULL, url = "http://iresearch.worldbank.org", format = "csv")
 }
 \arguments{

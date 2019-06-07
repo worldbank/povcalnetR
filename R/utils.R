@@ -65,13 +65,12 @@ format_data_cl <- function(x, country, coverage) {
   }
 
   # replace invalid values to missing
-  rvars <-
-    c("median", "polarization", "gini", "mld",
-      stringr::str_subset(names(x), "^decile"))
+  rvars <- c("median", "polarization", "gini", "mld",
+             stringr::str_subset(names(x), "^decile"))
 
-  x <- x %>%
-    naniar::replace_with_na_at(.vars = rvars,
-                               condition = ~.x  %in% c(-1, 0))
+  x <- naniar::replace_with_na_at(x,
+                                  .vars = rvars,
+                                  condition = ~.x  %in% c(-1, 0))
 
   return(x)
 }
@@ -108,3 +107,30 @@ format_data_aggregate <- function(x) {
 #   x <- x[, c("i", "P", "L")]
 #
 # }
+
+assign_country <- function(country) {
+
+  if (length(country) == 1 & all("all" %in% country)) {
+    country <- all_countries
+  } else {
+    country
+  }
+}
+
+
+assign_coverage <- function(coverage, country) {
+
+  if (coverage == "all") {
+    country <- unname(all_coverage[names(all_coverage) %in% country])
+    return(country)
+  } else if (coverage == "national") {
+    coverage_codes <- national_coverage_lkup[country]
+    coverage_codes <- coverage_codes[!is.na(coverage_codes)]
+    country <- paste(names(coverage_codes), coverage_codes, sep = "_")
+    return(country)
+  } else {
+    coverage <- unname(coverage_lkup[coverage])
+    country <- paste(country, coverage, sep = "_")
+    return(country)
+  }
+}

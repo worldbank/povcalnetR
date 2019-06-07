@@ -96,20 +96,22 @@ povcalnet(country = c("ALB", "CHN"),
 
 ```{r}
 povcalnet(country = c("ALB", "CHN"),
-                fill_gaps = TRUE)
+          fill_gaps = TRUE)
 ```
 
 # PPP
 ```{r}
 povcalnet(country = c("ALB", "CHN"),
-                ppp = c(50, 100))
+          ppp = c(50, 100),
+          coverage = "national")
 ```
 
 ```{r}
 povcalnet(country = c("ALB", "CHN"),
-                ppp = c(10, 20),
-                poverty_line = 4,
-                aggregate = TRUE)
+          ppp = c(10, 20),
+          poverty_line = 4,
+          aggregate = TRUE,
+          coverage = "national")
 ```
 
 

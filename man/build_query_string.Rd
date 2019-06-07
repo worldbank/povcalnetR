@@ -6,8 +6,7 @@
 Create simplified povcalnet query string}
 \usage{
 build_query_string(country, poverty_line, year, aggregate = FALSE,
-  fill_gaps = FALSE, coverage = "national", ppp = NULL,
-  format = "json")
+  fill_gaps = FALSE, coverage = "all", ppp = NULL, format = "json")
 }
 \arguments{
 \item{country}{character: list of country iso3 code (accepts multiple) or `all`. Use \href{https://www.iban.com/country-codes}{iso3 codes }}
@@ -22,7 +21,7 @@ build_query_string(country, poverty_line, year, aggregate = FALSE,
 \item{fill_gaps}{logical: `TRUE` will interpolate / extrapolate values when
 surveys are not available for a specific year.}
 
-\item{coverage}{character: Can take one of three values: `national`, `urban`, `rural`}
+\item{coverage}{character: Can take one of four values: `all` (default), `national`, `urban`, `rural`.}
 
 \item{ppp}{numeric: Optional - Allows the selection of custom PPP (Purchasing Power Parity) exchange rates}
 
