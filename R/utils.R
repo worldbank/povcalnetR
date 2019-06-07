@@ -65,13 +65,12 @@ format_data_cl <- function(x, country, coverage) {
   }
 
   # replace invalid values to missing
-  rvars <-
-    c("median", "polarization", "gini", "mld",
-      stringr::str_subset(names(x), "^decile"))
+  rvars <- c("median", "polarization", "gini", "mld",
+             stringr::str_subset(names(x), "^decile"))
 
-  x <- x %>%
-    naniar::replace_with_na_at(.vars = rvars,
-                               condition = ~.x  %in% c(-1, 0))
+  x <- naniar::replace_with_na_at(x,
+                                  .vars = rvars,
+                                  condition = ~.x  %in% c(-1, 0))
 
   return(x)
 }
