@@ -33,7 +33,7 @@ povcalnet <- function(country,
                       fill_gaps = FALSE,
                       coverage = "all",
                       ppp = NULL,
-                      url = "http://iresearch.worldbank.org/povcalnet",
+                      url = "http://iresearch.worldbank.org",
                       format = "csv") {
 
   # STEP 1: build query string

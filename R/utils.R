@@ -1,5 +1,5 @@
 # Helpers
-api_handle <- function() "povcalnetapi.ashx"
+api_handle <- function() "povcalnet/povcalnetapi.ashx"
 
 format_data <- function(x, country, coverage, aggregate) {
 
