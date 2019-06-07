@@ -6,8 +6,9 @@
 Facilitate interaction with the PovcalNet API}
 \usage{
 povcalnet(country, poverty_line = 1.9, year = "all",
-  aggregate = FALSE, fill_gaps = FALSE, coverage = "national",
-  ppp = NULL, url = "http://iresearch.worldbank.org", format = "csv")
+  aggregate = FALSE, fill_gaps = FALSE, coverage = "all",
+  ppp = NULL, url = "http://iresearch.worldbank.org/povcalnet",
+  format = "csv")
 }
 \arguments{
 \item{country}{character: list of country iso3 code (accepts multiple) or

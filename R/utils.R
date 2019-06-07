@@ -109,11 +109,29 @@ format_data_aggregate <- function(x) {
 #
 # }
 
-assign_countries <- function(country) {
+assign_country <- function(country) {
 
-  if (country == "all") {
+  if (length(country) == 1 & all("all" %in% country)) {
     country <- all_countries
   } else {
     country
+  }
+}
+
+
+assign_coverage <- function(coverage, country) {
+
+  if (coverage == "all") {
+    country <- unname(all_coverage[names(all_coverage) %in% country])
+    return(country)
+  } else if (coverage == "national") {
+    coverage_codes <- national_coverage_lkup[country]
+    coverage_codes <- coverage_codes[!is.na(coverage_codes)]
+    country <- paste(names(coverage_codes), coverage_codes, sep = "_")
+    return(country)
+  } else {
+    coverage <- unname(coverage_lkup[coverage])
+    country <- paste(country, coverage, sep = "_")
+    return(country)
   }
 }

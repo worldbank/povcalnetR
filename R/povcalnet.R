@@ -31,7 +31,7 @@ povcalnet <- function(country,
                       year = "all",
                       aggregate = FALSE,
                       fill_gaps = FALSE,
-                      coverage = "national",
+                      coverage = "all",
                       ppp = NULL,
                       url = "http://iresearch.worldbank.org/povcalnet",
                       format = "csv") {
