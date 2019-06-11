@@ -55,21 +55,24 @@ povcalnet <- function(country,
   res <- httr::GET(url = url)
   res <- httr::content(res, as = "text", encoding = "UTF-8" )
 
-  # STEP 4: parse data
-  if (format == "json") {
-  out <- tibble::as_tibble(jsonlite::fromJSON(res, simplifyDataFrame = TRUE))
-  out <- out$PovResult
+  # STEP 4: parse response
+  if (res == "") {
+    out <- handle_empty_response(res, aggregate = aggregate)
   } else {
-    out <- readr::read_csv(res)
+
+    if (format == "json") {
+      out <- tibble::as_tibble(jsonlite::fromJSON(res, simplifyDataFrame = TRUE))
+      out <- out$PovResult
+    } else {
+      out <- readr::read_csv(res)
+    }
   }
 
   # STEP 5: format output
   out <- format_data(out,
-                     country = country,
                      coverage = coverage,
                      aggregate = aggregate)
 
   return(out)
-
 }
 
