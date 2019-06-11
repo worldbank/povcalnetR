@@ -1,11 +1,10 @@
 # Helpers
 api_handle <- function() "povcalnet/povcalnetapi.ashx"
 
-format_data <- function(x, country, coverage, aggregate) {
+format_data <- function(x,coverage, aggregate) {
 
   if (aggregate == FALSE){
     x <- format_data_cl(x = x,
-                        country = country,
                         coverage = coverage)
   } else {
     x <- format_data_aggregate(x = x)
@@ -15,7 +14,7 @@ format_data <- function(x, country, coverage, aggregate) {
 
 
 
-format_data_cl <- function(x, country, coverage) {
+format_data_cl <- function(x, coverage) {
   # CHECK
   assertthat::assert_that(
     all.equal(names(x), povcal_col_names)
@@ -58,16 +57,17 @@ format_data_cl <- function(x, country, coverage) {
   # rename data_type to be more explicit
   x$data_type <- datatype_lkup[x$data_type]
 
+  if (nrow(x) > 0) {
+    # replace invalid values to missing
+    rvars <- c("median", "polarization", "gini", "mld",
+               stringr::str_subset(names(x), "^decile"))
 
-  # replace invalid values to missing
-  rvars <- c("median", "polarization", "gini", "mld",
-             stringr::str_subset(names(x), "^decile"))
+    x <- naniar::replace_with_na_at(data = x,
+                                    .vars = rvars,
+                                    condition = ~.x  %in% c(-1, 0))
+  }
 
-  x <- naniar::replace_with_na_at(data = x,
-                                  .vars = rvars,
-                                  condition = ~.x  %in% c(-1, 0))
-
-  return(x)
+  return(tibble::as_tibble(x))
 }
 
 
@@ -89,7 +89,7 @@ format_data_aggregate <- function(x) {
                      "population" = "population"
   )
 
-  return(x)
+  return(tibble::as_tibble(x))
 }
 
 
@@ -127,5 +127,18 @@ assign_coverage <- function(coverage, country) {
     coverage <- unname(coverage_lkup[coverage])
     country <- paste(country, coverage, sep = "_")
     return(country)
+  }
+}
+
+
+handle_empty_response <- function(x, aggregate) {
+  if (aggregate == FALSE) {
+    x <- data.frame(matrix(ncol = length(povcal_col_names), nrow = 0))
+    colnames(x) <- povcal_col_names
+    return(x)
+  } else if (aggregate == TRUE) {
+    x <- data.frame(matrix(ncol = length(povcal_col_names_agg), nrow = 0))
+    colnames(x) <- povcal_col_names_agg
+    return(x)
   }
 }
