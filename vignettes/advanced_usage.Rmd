@@ -28,7 +28,7 @@ sample_input
 ```{r}
 # Use these values to send a request to the API
 povcalnet_cl(country = sample_input$country,
-             poverty_line = sample_input$poverty_line,
+             povline = sample_input$poverty_line,
              year = sample_input$year,
              ppp = sample_input$ppp)
 ```

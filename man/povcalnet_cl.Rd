@@ -6,16 +6,16 @@
 Facilitate interaction with the PovcalNet API. All parameters are specified
 at the country level (hence the _cl suffix), so if you send a request for two
 countries, you must also pass two values to the `year` argument, two values
-to the `poverty_line` argument, etc.}
+to the `povline` argument, etc.}
 \usage{
-povcalnet_cl(country, poverty_line, year, coverage = NULL, ppp = NULL,
+povcalnet_cl(country, povline, year, coverage = NULL, ppp = NULL,
   url = "http://iresearch.worldbank.org", format = "csv")
 }
 \arguments{
 \item{country}{character: list of country iso3 code (accepts multiple).
 Use \code{\link{povcalnet_info}} for full list of countries.}
 
-\item{poverty_line}{numeric: poverty line (in 2011 PPP-adjusted USD) to
+\item{povline}{numeric: poverty line (in 2011 PPP-adjusted USD) to
 calculate poverty measures}
 
 \item{year}{numeric:  list of years, or `all`, or `last`.}
@@ -38,5 +38,5 @@ povcalnet_cl
 Facilitate interaction with the PovcalNet API. All parameters are specified
 at the country level (hence the _cl suffix), so if you send a request for two
 countries, you must also pass two values to the `year` argument, two values
-to the `poverty_line` argument, etc.
+to the `povline` argument, etc.
 }

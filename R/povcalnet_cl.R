@@ -2,11 +2,11 @@
 #' Facilitate interaction with the PovcalNet API. All parameters are specified
 #' at the country level (hence the _cl suffix), so if you send a request for two
 #' countries, you must also pass two values to the `year` argument, two values
-#' to the `poverty_line` argument, etc.
+#' to the `povline` argument, etc.
 #'
 #' @param country character: list of country iso3 code (accepts multiple).
 #' Use \code{\link{povcalnet_info}} for full list of countries.
-#' @param poverty_line numeric: poverty line (in 2011 PPP-adjusted USD) to
+#' @param povline numeric: poverty line (in 2011 PPP-adjusted USD) to
 #' calculate poverty measures
 #' @param year numeric:  list of years, or `all`, or `last`.
 #' @param coverage character: Can take one of three values: `national`, `urban`, `rural`
@@ -20,7 +20,7 @@
 #' @export
 
 povcalnet_cl <- function(country,
-                         poverty_line,
+                         povline,
                          year,
                          coverage = NULL,
                          ppp = NULL,
@@ -30,7 +30,7 @@ povcalnet_cl <- function(country,
   # STEP 1: build query string
   query <- build_country_level_string(
     country = country,
-    poverty_line = poverty_line,
+    povline = povline,
     year = year,
     coverage_type = coverage,
     ppp = ppp,

@@ -5,13 +5,13 @@
 \title{build_country_level_string
 Create povcalnet query string for country level, survey year specification}
 \usage{
-build_country_level_string(country, poverty_line, year, ppp = NULL,
+build_country_level_string(country, povline, year, ppp = NULL,
   coverage_type = NULL, format = "json")
 }
 \arguments{
 \item{country}{character: Requested country. Use \href{https://www.iban.com/country-codes}{iso3 codes }}
 
-\item{poverty_line}{numeric: Requested poverty lines in international dollars}
+\item{povline}{numeric: Requested poverty lines in international dollars}
 
 \item{year}{numeric: Requested survey years}
 
@@ -33,6 +33,6 @@ Create povcalnet query string for country level, survey year specification
 \examples{
 
 build_country_level_string(country = c("ALB", "CHN"),
-poverty_line = c(1.9, 2.0),
+povline = c(1.9, 2.0),
 year = c(2002, 2002))
 }

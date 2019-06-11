@@ -5,13 +5,13 @@
 \title{build_query_string
 Create simplified povcalnet query string}
 \usage{
-build_query_string(country, poverty_line, year, aggregate = FALSE,
+build_query_string(country, povline, year, aggregate = FALSE,
   fill_gaps = FALSE, coverage = "all", ppp = NULL, format = "json")
 }
 \arguments{
 \item{country}{character: list of country iso3 code (accepts multiple) or `all`. Use \href{https://www.iban.com/country-codes}{iso3 codes }}
 
-\item{poverty_line}{numeric: poverty line (in 2011 PPP-adjusted USD) to calculate poverty measures}
+\item{povline}{numeric: poverty line (in 2011 PPP-adjusted USD) to calculate poverty measures}
 
 \item{year}{numeric:  list of years, or `all`, or `last`.}
 
@@ -38,6 +38,6 @@ Create simplified povcalnet query string
 \examples{
 
 build_query_string(country = c("ALB", "CHN"),
-poverty_line = 1.9,
+povline = 1.9,
 year = c(2002, 2012))
 }

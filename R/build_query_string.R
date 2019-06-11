@@ -2,7 +2,7 @@
 #' Create simplified povcalnet query string
 #'
 #' @param country character: list of country iso3 code (accepts multiple) or `all`. Use \href{https://www.iban.com/country-codes}{iso3 codes }
-#' @param poverty_line numeric: poverty line (in 2011 PPP-adjusted USD) to calculate poverty measures
+#' @param povline numeric: poverty line (in 2011 PPP-adjusted USD) to calculate poverty measures
 #' @param year numeric:  list of years, or `all`, or `last`.
 #' @param aggregate logical: `TRUE` will return aggregate results,
 #' `FALSE` country-level results.
@@ -19,11 +19,11 @@
 #' @examples
 #'
 #' build_query_string(country = c("ALB", "CHN"),
-#' poverty_line = 1.9,
+#' povline = 1.9,
 #' year = c(2002, 2012))
 
 build_query_string <- function(country,
-                               poverty_line,
+                               povline,
                                year,
                                aggregate = FALSE,
                                fill_gaps = FALSE,
@@ -32,7 +32,7 @@ build_query_string <- function(country,
                                format = "json") {
   # CHECK inputs
   check_build_query_string_inputs(country,
-                                  poverty_line,
+                                  povline,
                                   year,
                                   aggregate,
                                   fill_gaps,
@@ -65,7 +65,7 @@ build_query_string <- function(country,
   year <- paste0(year_str, paste(year, collapse = ","))
 
   # Build poverty line section
-  poverty_line <- paste0("PovertyLine=", poverty_line)
+  povline <- paste0("PovertyLine=", povline)
 
   # Build country section
   country <- paste0("Countries=", paste(country, collapse = ","))
@@ -85,10 +85,10 @@ build_query_string <- function(country,
   if (!is.null(ppp)) {
     ppp <- purrr::map2_chr(i, ppp, function(x, y) {paste0("PPP", x, "=", y)})
     ppp <- paste(ppp, collapse = "&")
-    out <- paste(year, country, poverty_line, ppp, display, format, collapse = "&")
+    out <- paste(year, country, povline, ppp, display, format, collapse = "&")
     out <- stringr::str_replace_all(out, pattern = " ", replacement = "&")
   } else {
-    out <- paste(year, country, poverty_line, display, format, collapse = "&")
+    out <- paste(year, country, povline, display, format, collapse = "&")
     out <- stringr::str_replace_all(out, pattern = " ", replacement = "&")
   }
 
@@ -97,7 +97,7 @@ build_query_string <- function(country,
 
 
 check_build_query_string_inputs <- function(country,
-                                            poverty_line,
+                                            povline,
                                             year,
                                             aggregate,
                                             fill_gaps,
@@ -109,11 +109,11 @@ check_build_query_string_inputs <- function(country,
                           msg = "Please submit at least ONE country")
   assertthat::assert_that(length(year) > 0,
                           msg = "Please submit at least ONE year")
-  assertthat::assert_that(length(poverty_line) > 0,
+  assertthat::assert_that(length(povline) > 0,
                           msg = "Please submit ONE poverty line")
-  assertthat::assert_that(length(poverty_line) == 1,
-                          msg = "Please submit only one poverty_line,
-                          for instance: poverty_line = 1.9")
+  assertthat::assert_that(length(povline) == 1,
+                          msg = "Please submit only one povline,
+                          for instance: povline = 1.9")
   assertthat::assert_that(coverage %in% c(names(coverage_lkup), "all"),
                           msg = paste0("The 'coverage' argument only accepts one of the following values:\n",
                                        names(coverage_lkup)))

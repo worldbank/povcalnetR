@@ -3,7 +3,7 @@
 #'
 #' @param country character: list of country iso3 code (accepts multiple) or
 #' `all`. Use \code{\link{povcalnet_info}} for full list of countries.
-#' @param poverty_line numeric: poverty line (in 2011 PPP-adjusted USD) to
+#' @param povline numeric: poverty line (in 2011 PPP-adjusted USD) to
 #' calculate poverty measures
 #' @param year numeric:  list of years, or `all`, or `last`.
 #' @param aggregate logical: `TRUE` will return aggregate results,
@@ -27,7 +27,7 @@
 #' }
 #'
 povcalnet <- function(country,
-                      poverty_line = 1.9,
+                      povline = 1.9,
                       year = "all",
                       aggregate = FALSE,
                       fill_gaps = FALSE,
@@ -39,7 +39,7 @@ povcalnet <- function(country,
   # STEP 1: build query string
   query <- build_query_string(
     country = country,
-    poverty_line = poverty_line,
+    povline = povline,
     year = year,
     aggregate = aggregate,
     fill_gaps = fill_gaps,

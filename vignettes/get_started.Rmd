@@ -54,7 +54,7 @@ povcalnet(country = lic)
 
 ```{r}
 povcalnet(country = c("ALB", "CHN"),
-          poverty_line = 10)
+          povline = 10)
 ```
 
 # Select specific years
@@ -109,7 +109,7 @@ povcalnet(country = c("ALB", "CHN"),
 ```{r}
 povcalnet(country = c("ALB", "CHN"),
           ppp = c(10, 20),
-          poverty_line = 4,
+          povline = 4,
           aggregate = TRUE,
           coverage = "national")
 ```
