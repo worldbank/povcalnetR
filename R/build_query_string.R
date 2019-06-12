@@ -46,7 +46,7 @@ build_query_string <- function(country,
   # setting function arguments accordingly
   if (aggregate == TRUE) {
     fill_gaps <- TRUE
-    coverage = "national"
+    coverage = "all"
   }
 
   # Assign list of country codes
@@ -126,11 +126,11 @@ check_build_query_string_inputs <- function(country,
                           msg = "Custom ppp are not allowed with `coverage` = `all`")
   if (aggregate == TRUE & fill_gaps == FALSE) {
     message("You specified `aggregate = TRUE`. Aggregation is only possible
-            over a common reference year: The `fill_gaps` paramater will be
+            over a common reference year: The `fill_gaps` parameter will be
             forced to `TRUE`")}
-
-  if (aggregate == TRUE & coverage != "national") {
-    message("You specified `aggregate = TRUE`. Aggregation is only possible
-  for national coverage The `coverage` paramater will be
-  forced to `national`")}
+#
+#   if (aggregate == TRUE & coverage != "national") {
+#     message("You specified `aggregate = TRUE`. Aggregation is only possible
+#   for national coverage The `coverage` parameter will be
+#   forced to `national`")}
 }
