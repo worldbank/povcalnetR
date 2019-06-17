@@ -54,7 +54,6 @@ povcalnet_cl <- function(country,
 
   # STEP 5: format output
   out <- format_data(out,
-                     country = country,
                      coverage = coverage,
                      aggregate = FALSE)
 
