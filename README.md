@@ -5,6 +5,10 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/tonyfujs/povcalnetR.svg?branch=master)](https://travis-ci.org/tonyfujs/povcalnetR)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/povcalnetR)](https://cran.r-project.org/package=povcalnetR)
 <!-- badges: end -->
 
 The goal of povcalnetR is to …
