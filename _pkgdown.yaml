@@ -1,0 +1,22 @@
+title: povcalnetR
+url: http://worldbank.github.io/povcalnetR
+template:
+  params:
+    bootswatch: flatly
+reference:
+  - title: Main Functions
+    desc: ~
+    contents:
+      - '`povcalnet`'
+      - '`povcalnet_wb`'
+      - '`povcalnet_cl`'
+      - '`povcalnet_info`'
+      - '`get_countries`'
+  - title: Helper functions and internals
+    desc: ~
+    contents:
+      - '`build_query_string`'
+      - '`build_query_string_cl`'
+      - '`povcalnetR_download`'
+navbar:
+  type: inverse
