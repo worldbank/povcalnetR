@@ -30,7 +30,7 @@ povcalnet_wb <- function(povline = 1.9,
 
   # STEP 4: parse response
   if (res == "") {
-    out <- handle_empty_response(res, aggregate = aggregate)
+    out <- handle_empty_response(res, aggregate = TRUE)
   } else {
 
     if (format == "json") {
