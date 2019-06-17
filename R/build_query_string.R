@@ -46,7 +46,6 @@ build_query_string <- function(country,
   # setting function arguments accordingly
   if (aggregate == TRUE) {
     fill_gaps <- TRUE
-    coverage = "all"
   }
 
   # Assign list of country codes
@@ -105,6 +104,8 @@ check_build_query_string_inputs <- function(country,
                                             ppp)
 {
 
+  accepted_coverage <- c(names(coverage_lkup), "all")
+
   assertthat::assert_that(length(country) > 0,
                           msg = "Please submit at least ONE country")
   assertthat::assert_that(length(year) > 0,
@@ -114,9 +115,9 @@ check_build_query_string_inputs <- function(country,
   assertthat::assert_that(length(povline) == 1,
                           msg = "Please submit only one povline,
                           for instance: povline = 1.9")
-  assertthat::assert_that(coverage %in% c(names(coverage_lkup), "all"),
+  assertthat::assert_that(coverage %in% accepted_coverage,
                           msg = paste0("The 'coverage' argument only accepts one of the following values:\n",
-                                       names(coverage_lkup)))
+                                       accepted_coverage))
   assertthat::assert_that(length(coverage) == 1,
                           msg = "Please submit only ONE coverage")
   assertthat::assert_that(is.null(ppp) | length(ppp) == length(country),
