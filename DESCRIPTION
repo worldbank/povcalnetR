@@ -33,3 +33,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/tonyfujs/povcalnetR
+BugReports: https://github.com/tonyfujs/povcalnetR/issues
