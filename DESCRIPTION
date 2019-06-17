@@ -31,7 +31,8 @@ Suggests:
     testthat (>= 2.1.0),
     assertthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    forcats
 VignetteBuilder: knitr
-URL: https://github.com/tonyfujs/povcalnetR
-BugReports: https://github.com/tonyfujs/povcalnetR/issues
+URL: https://github.com/worldbank/povcalnetR
+BugReports: https://github.com/worldbank/povcalnetR/issues

@@ -20,6 +20,7 @@ library(ggplot2)
 library(tidyr)
 library(dplyr)
 library(ggthemes)
+library(forcats)
 ```
 
 ## Global poverty trends 1990-2015

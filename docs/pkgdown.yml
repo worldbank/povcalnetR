@@ -5,4 +5,7 @@ articles:
   advanced_usage: advanced_usage.html
   examples: examples.html
   povcalnetR: povcalnetR.html
+urls:
+  reference: http://worldbank.github.io/povcalnetR/reference
+  article: http://worldbank.github.io/povcalnetR/articles
 
