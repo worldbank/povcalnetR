@@ -18,9 +18,9 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(povcalconnect)
+library(povcalnetR)
 ```
-The `povcalconnect` package allows to easily query the [PovcalNet API](http://iresearch.worldbank.org/PovcalNet/docs/PovcalNet%20API.pdf) from R.
+The `povcalnetR` package allows to easily query the [PovcalNet API](http://iresearch.worldbank.org/PovcalNet/docs/PovcalNet%20API.pdf) from R.
 
 Here are a few examples to get you started:
 

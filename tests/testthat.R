@@ -1,4 +1,4 @@
 library(testthat)
-library(povcalconnect)
+library(povcalnetR)
 
-test_check("povcalconnect")
+test_check("povcalnetR")
