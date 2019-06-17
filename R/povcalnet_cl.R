@@ -28,7 +28,7 @@ povcalnet_cl <- function(country,
                          format = "csv") {
 
   # STEP 1: build query string
-  query <- build_country_level_string(
+  query <- build_query_string_cl(
     country = country,
     povline = povline,
     year = year,

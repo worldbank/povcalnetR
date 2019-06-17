@@ -1,4 +1,4 @@
-#' build_country_level_string
+#' build_query_string_cl
 #' Create povcalnet query string for country level, survey year specification
 #'
 #' @param country character: Requested country. Use \href{https://www.iban.com/country-codes}{iso3 codes }
@@ -15,11 +15,11 @@
 #'
 #' @examples
 #'
-#' build_country_level_string(country = c("ALB", "CHN"),
+#' build_query_string_cl(country = c("ALB", "CHN"),
 #' povline = c(1.9, 2.0),
 #' year = c(2002, 2002))
 
-build_country_level_string <- function(country,
+build_query_string_cl <- function(country,
                                        povline,
                                        year,
                                        ppp = NULL,
