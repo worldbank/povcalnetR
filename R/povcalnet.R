@@ -5,7 +5,7 @@
 #' `all`. Use \code{\link{povcalnet_info}} for full list of countries.
 #' @param povline numeric: poverty line (in 2011 PPP-adjusted USD) to
 #' calculate poverty measures
-#' @param year numeric:  list of years, or `all`, or `last`.
+#' @param year numeric:  list of years, or `all`.
 #' @param aggregate logical: `TRUE` will return aggregate results,
 #' `FALSE` country-level results.
 #' @param fill_gaps logical: `TRUE` will interpolate / extrapolate values when

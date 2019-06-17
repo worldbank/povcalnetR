@@ -16,7 +16,7 @@ povcalnet(country, povline = 1.9, year = "all", aggregate = FALSE,
 \item{povline}{numeric: poverty line (in 2011 PPP-adjusted USD) to
 calculate poverty measures}
 
-\item{year}{numeric:  list of years, or `all`, or `last`.}
+\item{year}{numeric:  list of years, or `all`.}
 
 \item{aggregate}{logical: `TRUE` will return aggregate results,
 `FALSE` country-level results.}
