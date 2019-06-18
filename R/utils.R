@@ -21,21 +21,21 @@ format_data_cl <- function(x, coverage) {
   )
 
   x <- dplyr::select(x,
-                     "country_code" = "CountryCode",
-                     "country_name" = "CountryName",
-                     "region_code" = "RegionCode",
-                     "coverage_type" = "CoverageType",
+                     "countrycode" = "CountryCode",
+                     "countryname" = "CountryName",
+                     "regioncode" = "RegionCode",
+                     "coveragetype" = "CoverageType",
                      "year" = "RequestYear",
-                     "data_year" = "DataYear",
-                     "data_type" = "DataType",
-                     "is_interpolated" = "isInterpolated",
-                     "use_microdata" = "useMicroData",
+                     "datayear" = "DataYear",
+                     "datatype" = "DataType",
+                     "isinterpolated" = "isInterpolated",
+                     "usemicrodata" = "useMicroData",
                      "ppp" = "PPP",
-                     "poverty_line" = "PovertyLine",
+                     "povertyline" = "PovertyLine",
                      "mean" = "Mean",
                      "headcount" = "HeadCount",
-                     "poverty_gap" = "PovGap",
-                     "poverty_gap_sq" = "PovGapSqr",
+                     "povertygap" = "PovGap",
+                     "povertygapsq" = "PovGapSqr",
                      "watts" = "Watts",
                      "gini" = "Gini",
                      "median" = "Median",
@@ -55,7 +55,7 @@ format_data_cl <- function(x, coverage) {
   )
 
   # rename data_type to be more explicit
-  x$data_type <- datatype_lkup[x$data_type]
+  x$datatype <- datatype_lkup[x$datatype]
 
   if (nrow(x) > 0) {
     # replace invalid values to missing
@@ -78,14 +78,14 @@ format_data_aggregate <- function(x) {
   )
 
   x <- dplyr::select(x,
-                     "region_title" = "regionTitle",
-                     "region_code" = "regionCID",
+                     "regiontitle" = "regionTitle",
+                     "regioncode" = "regionCID",
                      "year" = "requestYear",
-                     "poverty_line" = "povertyLine",
+                     "povertyline" = "povertyLine",
                      "mean" = "mean",
                      "headcount" = "hc",
-                     "poverty_gap" = "pg",
-                     "poverty_gap_sq" = "p2",
+                     "povertygap" = "pg",
+                     "povertygapsq" = "p2",
                      "population" = "population"
   )
 

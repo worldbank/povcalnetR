@@ -2,9 +2,9 @@ test_that("Basic data formatting works as expected", {
   df <- read.csv("../testdata/country_level_national.csv",
                  stringsAsFactors = FALSE)
   out <- format_data_cl(df, coverage = "national")
-  expected_names <- c("country_code", "country_name", "region_code", "coverage_type", "year",
-                      "data_year", "data_type", "is_interpolated", "use_microdata", "ppp",
-                      "poverty_line", "mean", "headcount", "poverty_gap", "poverty_gap_sq",
+  expected_names <- c("countrycode", "countryname", "regioncode", "coveragetype", "year",
+                      "datayear", "datatype", "isinterpolated", "usemicrodata", "ppp",
+                      "povertyline", "mean", "headcount", "povertygap", "povertygapsq",
                       "watts", "gini", "median", "mld", "polarization",
                       "population", "decile1", "decile2", "decile3", "decile4",
                       "decile5", "decile6", "decile7", "decile8", "decile9", "decile10")
