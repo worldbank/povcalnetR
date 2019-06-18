@@ -5,12 +5,18 @@
 
 <!-- badges: start -->
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/povcalnetR)](https://cran.r-project.org/package=povcalnetR)
-[![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis build
 status](https://travis-ci.org/worldbank/povcalnetR.svg?branch=master)](https://travis-ci.org/worldbank/povcalnetR)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/worldbank/povcalnetR?branch=master&svg=true)](https://ci.appveyor.com/project/worldbank/povcalnetR)
+[![Coverage
+status](https://codecov.io/gh/worldbank/dkanr/branch/master/graph/badge.svg)](https://codecov.io/github/worldbank/dkanr?branch=master)
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/povcalnetR)](https://cran.r-project.org/package=povcalnetR)
+![CRAN](http://cranlogs.r-pkg.org/badges/povcalnetR?color=brightgreen)
+
 <!-- badges: end -->
 
 The `povcalnetR` package allows R users to compute poverty and

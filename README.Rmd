@@ -15,9 +15,13 @@ knitr::opts_chunk$set(
 # povcalnetR
 
 <!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/povcalnetR)](https://cran.r-project.org/package=povcalnetR)
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis build status](https://travis-ci.org/worldbank/povcalnetR.svg?branch=master)](https://travis-ci.org/worldbank/povcalnetR)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/worldbank/povcalnetR?branch=master&svg=true)](https://ci.appveyor.com/project/worldbank/povcalnetR)
+[![Coverage status](https://codecov.io/gh/worldbank/dkanr/branch/master/graph/badge.svg)](https://codecov.io/github/worldbank/dkanr?branch=master)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![CRAN status](https://www.r-pkg.org/badges/version/povcalnetR)](https://cran.r-project.org/package=povcalnetR)
+![CRAN](http://cranlogs.r-pkg.org/badges/povcalnetR?color=brightgreen)
+
 <!-- badges: end -->
 
 The `povcalnetR` package allows R users to compute poverty and inequality indicators for more than 160 countries and regions from the World Bank's database of household surveys. It has the same functionality as the [PovcalNet website](http://iresearch.worldbank.org/PovcalNet/home.aspx). PovcalNet is a computational tool that allows users to estimate poverty rates for regions, sets of countries or individual countries, over time and at any poverty line.
