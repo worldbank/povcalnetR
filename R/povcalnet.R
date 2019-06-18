@@ -26,7 +26,7 @@
 #' povcalnet(country = "ALB")
 #' }
 #'
-povcalnet <- function(country,
+povcalnet <- function(country = "all",
                       povline = 1.9,
                       year = "all",
                       aggregate = FALSE,
@@ -47,6 +47,17 @@ povcalnet <- function(country,
     ppp = ppp,
     format = format
   )
+
+  # Special case handling WORLD level aggregate
+  # This is necessary because of the behavior of the PovcalNet API
+  # Should ideally be removed. Breaks the logic of the package
+  if (country == "all" & aggregate == TRUE) {
+    out <- povcalnet_wb(povline = povline,
+                        year = year,
+                        url = url,
+                        format = format)
+    return(out)
+  }
 
   # STEP 2: build URL
   url <- httr::modify_url(url, path = api_handle(), query = query)
