@@ -16,7 +16,10 @@ get_countries <- function(region_code) {
   assertthat::assert_that(length(region_code) == 1,
                           msg = "Please only use one region code at a time")
 
-  if (region_code %in% wbregion) {
+  if (region_code == "WLD") {
+    out <- unique(wbregion_lkup$country_code)
+    return(out)
+  } else if (region_code %in% wbregion) {
     out <- wbregion_lkup$country_code[wbregion_lkup$wb_region == region_code]
   } else if (region_code %in% income_region) {
     out <- income_lkup$country_code[income_lkup$income_region == region_code]
