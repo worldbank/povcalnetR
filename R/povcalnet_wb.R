@@ -13,6 +13,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' povcalnet_wb(year = 2015)
+#' }
 povcalnet_wb <- function(povline = 1.9,
                          year = "all",
                          url = "http://iresearch.worldbank.org",

@@ -6,7 +6,10 @@
 #'
 #' @return data.frame
 #'
-
+#' @examples
+#' \dontrun{
+#' povcalnet_info()
+#' }
 povcal_info <- function(url = "http://iresearch.worldbank.org/povcalnet") {
 
   url <- paste0(url, "/js/initCItem2014.js")

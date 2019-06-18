@@ -32,7 +32,8 @@ Suggests:
     assertthat,
     knitr,
     rmarkdown,
-    forcats
+    forcats,
+    scales
 VignetteBuilder: knitr
 URL: https://github.com/worldbank/povcalnetR
 BugReports: https://github.com/worldbank/povcalnetR/issues

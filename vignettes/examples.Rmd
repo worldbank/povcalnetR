@@ -21,12 +21,13 @@ library(tidyr)
 library(dplyr)
 library(ggthemes)
 library(forcats)
+library(scales)
 ```
 
 ## Global poverty trends 1990-2015
 ```{r, message=FALSE, warning=FALSE}
 df <- povcalnet_wb() %>%
-  filter(request_year > 1989, region_code == "WLD") %>%
+  filter(year > 1989, region_code == "WLD") %>%
   mutate(
     poor_pop = round(headcount * population, 0),
     headcount = round(headcount, 3)
@@ -34,7 +35,7 @@ df <- povcalnet_wb() %>%
 
 headcount_col <- "#E69F00"
 
-ggplot(df, aes(x = request_year)) +
+ggplot(df, aes(x = year)) +
   geom_text(aes(label = headcount * 100, y = headcount), vjust = 1, nudge_y = -0.02, color = headcount_col) +
   geom_text(aes(label = poor_pop, y = poor_pop / 5000), vjust = 0, nudge_y = 0.02) +
   geom_line(aes(y = headcount), color = headcount_col) +
@@ -57,7 +58,7 @@ ggplot(df, aes(x = request_year)) +
 ## Number of poor by region
 ```{r, message=FALSE}
 df <- povcalnet_wb() %>%
-  filter(request_year > 1989) %>%
+  filter(year > 1989) %>%
   mutate(
     poor_pop = round(headcount * population, 0),
     headcount = round(headcount, 3)
@@ -79,7 +80,7 @@ regions <- df %>%
 world <- df %>%
   filter(region_code == "WLD")
 
-ggplot(regions, aes(y = poor_pop, x = request_year, fill = region_title)) +
+ggplot(regions, aes(y = poor_pop, x = year, fill = region_title)) +
   geom_area() +
   scale_y_continuous(
     limits = c(0, 2000),
@@ -104,10 +105,10 @@ ggplot(regions, aes(y = poor_pop, x = request_year, fill = region_title)) +
 ```{r, message=FALSE, warning=FALSE}
 df <- povcalnet(country = c("ARG", "GHA", "THA"),
                 coverage = "all") %>%
-  filter(request_year > 1989) %>%
+  filter(year > 1989) %>%
   select(country_code:is_interpolated, gini)
 
-ggplot(df, aes(x = request_year, y = gini, color = country_name)) +
+ggplot(df, aes(x = year, y = gini, color = country_name)) +
   geom_line() +
   geom_point(data = df[df$is_interpolated == 0, ]) +
   scale_y_continuous(
@@ -135,7 +136,7 @@ Group
 # 
 # df <- povcalnet(country = c("ARG", "GHA", "THA"),
 #                 coverage = "all") %>%
-#   filter(request_year > 1989) %>%
+#   filter(year > 1989) %>%
 #   select(country_code:is_interpolated, decile1:decile10) %>%
 #   gather(key = "decile", value = "decile_value", decile1:decile10)
 # df$decile <- lkup_vector[df$decile]

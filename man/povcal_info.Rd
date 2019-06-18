@@ -15,3 +15,8 @@ data.frame
 \description{
 Non-memoised version of povcalnet_info()
 }
+\examples{
+\dontrun{
+povcalnet_info()
+}
+}

@@ -11,6 +11,7 @@
 #'
 #' @examples
 #' get_countries("ECA")
+#'
 get_countries <- function(region_code) {
 
   assertthat::assert_that(length(region_code) == 1,

@@ -19,4 +19,5 @@ specific World Bank region or income group
 }
 \examples{
 get_countries("ECA")
+
 }

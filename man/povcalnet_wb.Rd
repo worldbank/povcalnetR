@@ -24,3 +24,8 @@ changed for 99 percent of users.}
 povcalnet_wb
 Returns the official WB regional estimates
 }
+\examples{
+\dontrun{
+povcalnet_wb(year = 2015)
+}
+}

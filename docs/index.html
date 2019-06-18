@@ -96,22 +96,44 @@
 <a href="#povcalnetr" class="anchor"></a>povcalnetR</h1></div>
 <!-- badges: start -->
 
-<p>The goal of povcalnetR is to …</p>
+<p>The <code>povcalnetR</code> package allows R users to compute poverty and inequality indicators for more than 160 countries and regions from the World Bank’s database of household surveys. It has the same functionality as the <a href="http://iresearch.worldbank.org/PovcalNet/home.aspx">PovcalNet website</a>. PovcalNet is a computational tool that allows users to estimate poverty rates for regions, sets of countries or individual countries, over time and at any poverty line.</p>
+<p>PovcalNet is managed jointly by the Data and Research Group in the World Bank’s Development Economics Division. It draws heavily upon a strong collaboration with the Poverty and Equity Global Practice, which is responsible for the gathering and harmonization of the underlying survey data.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of povcalnetR from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"povcalnetR"</span>)</a></code></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb2-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"tonyfujs/povcalnetR"</span>)</a></code></pre></div>
+<p>The development version can be installed from <a href="https://github.com/">GitHub</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"devtools"</span>, <span class="st">"httr"</span>))</a>
+<a class="sourceLine" id="cb1-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"tonyfujs/povcalnetR"</span>)</a></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(povcalnetR)</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co">## basic example code</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(povcalnetR)</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">## basic example code</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="kw"><a href="reference/povcalnet.html">povcalnet</a></span>(<span class="dt">country =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"ALB"</span>, <span class="st">"CHN"</span>))</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; # A tibble: 53 x 31</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt;    country_code country_name region_code coverage_type request_year</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;                &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;  1 ALB          Albania      ECA         N                     1996</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt;  2 ALB          Albania      ECA         N                     2002</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;  3 ALB          Albania      ECA         N                     2005</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt;  4 ALB          Albania      ECA         N                     2008</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt;  5 ALB          Albania      ECA         N                     2012</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt;  6 CHN          China        EAP         A                     1981</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt;  7 CHN          China        EAP         A                     1984</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt;  8 CHN          China        EAP         A                     1987</span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt;  9 CHN          China        EAP         A                     1990</span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt; 10 CHN          China        EAP         A                     1993</span></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; # ... with 43 more rows, and 26 more variables: data_year &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt; #   data_type &lt;chr&gt;, is_interpolated &lt;dbl&gt;, use_microdata &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="co">#&gt; #   ppp &lt;dbl&gt;, poverty_line &lt;dbl&gt;, mean &lt;dbl&gt;, headcount &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="co">#&gt; #   poverty_gap &lt;dbl&gt;, poverty_gap_sq &lt;dbl&gt;, watts &lt;dbl&gt;, gini &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-22" title="22"><span class="co">#&gt; #   median &lt;dbl&gt;, mld &lt;dbl&gt;, polarization &lt;dbl&gt;, population &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-23" title="23"><span class="co">#&gt; #   decile1 &lt;dbl&gt;, decile2 &lt;dbl&gt;, decile3 &lt;dbl&gt;, decile4 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-24" title="24"><span class="co">#&gt; #   decile5 &lt;dbl&gt;, decile6 &lt;dbl&gt;, decile7 &lt;dbl&gt;, decile8 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-25" title="25"><span class="co">#&gt; #   decile9 &lt;dbl&gt;, decile10 &lt;dbl&gt;</span></a></code></pre></div>
 </div>
 </div>
   </div>
@@ -143,8 +165,9 @@
       <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/tonyfujs/povcalnetR"><img src="https://travis-ci.org/tonyfujs/povcalnetR.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://cran.r-project.org/package=povcalnetR"><img src="https://www.r-pkg.org/badges/version/povcalnetR" alt="CRAN status"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://travis-ci.org/tonyfujs/povcalnetR"><img src="https://travis-ci.org/tonyfujs/povcalnetR.svg?branch=master" alt="Travis build status"></a></li>
 </ul>
 </div>
 </div>

@@ -4,6 +4,10 @@
 ^data-raw$
 ^TEMP$
 ^doc$
+^docs$
+^pkgdown$
 ^Meta$
 ^README\.Rmd$
 ^\.travis\.yml$
+^\_pkgdown\.yml$
+
