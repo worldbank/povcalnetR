@@ -29,7 +29,7 @@ df <- data.frame(stringsAsFactors=FALSE,
 
 test_that("Aggregate data are correctly formatted", {
   out <- format_data_aggregate(df)
-  expected_names <- c("region_title", "region_code", "request_year",
+  expected_names <- c("region_title", "region_code", "year",
                       "poverty_line", "mean", "headcount", "poverty_gap",
                       "poverty_gap_sq", "population")
   expect_equal(names(out), expected_names)
