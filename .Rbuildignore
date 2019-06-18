@@ -9,5 +9,5 @@
 ^Meta$
 ^README\.Rmd$
 ^\.travis\.yml$
-^\_pkgdown\.yml$
+^_pkgdown\.yaml$
 
