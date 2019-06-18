@@ -113,27 +113,29 @@
 <a class="sourceLine" id="cb2-2" title="2"></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="co">## basic example code</span></a>
 <a class="sourceLine" id="cb2-4" title="4"><span class="kw"><a href="reference/povcalnet.html">povcalnet</a></span>(<span class="dt">country =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"ALB"</span>, <span class="st">"CHN"</span>))</a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; # A tibble: 53 x 31</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt;    country_code country_name region_code coverage_type request_year</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;                &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;  1 ALB          Albania      ECA         N                     1996</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt;  2 ALB          Albania      ECA         N                     2002</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;  3 ALB          Albania      ECA         N                     2005</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt;  4 ALB          Albania      ECA         N                     2008</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt;  5 ALB          Albania      ECA         N                     2012</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt;  6 CHN          China        EAP         A                     1981</span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt;  7 CHN          China        EAP         A                     1984</span></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt;  8 CHN          China        EAP         A                     1987</span></a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt;  9 CHN          China        EAP         A                     1990</span></a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt; 10 CHN          China        EAP         A                     1993</span></a>
-<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; # ... with 43 more rows, and 26 more variables: data_year &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt; #   data_type &lt;chr&gt;, is_interpolated &lt;dbl&gt;, use_microdata &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb2-20" title="20"><span class="co">#&gt; #   ppp &lt;dbl&gt;, poverty_line &lt;dbl&gt;, mean &lt;dbl&gt;, headcount &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb2-21" title="21"><span class="co">#&gt; #   poverty_gap &lt;dbl&gt;, poverty_gap_sq &lt;dbl&gt;, watts &lt;dbl&gt;, gini &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb2-22" title="22"><span class="co">#&gt; #   median &lt;dbl&gt;, mld &lt;dbl&gt;, polarization &lt;dbl&gt;, population &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb2-23" title="23"><span class="co">#&gt; #   decile1 &lt;dbl&gt;, decile2 &lt;dbl&gt;, decile3 &lt;dbl&gt;, decile4 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb2-24" title="24"><span class="co">#&gt; #   decile5 &lt;dbl&gt;, decile6 &lt;dbl&gt;, decile7 &lt;dbl&gt;, decile8 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb2-25" title="25"><span class="co">#&gt; #   decile9 &lt;dbl&gt;, decile10 &lt;dbl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; Warning in if (country == "all" &amp; aggregate == TRUE) {: the condition has</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt; length &gt; 1 and only the first element will be used</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt; # A tibble: 53 x 31</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;    country_code country_name region_code coverage_type  year data_year</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;  1 ALB          Albania      ECA         N              1996      1996</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt;  2 ALB          Albania      ECA         N              2002      2002</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt;  3 ALB          Albania      ECA         N              2005      2005</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt;  4 ALB          Albania      ECA         N              2008      2008</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt;  5 ALB          Albania      ECA         N              2012      2012</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt;  6 CHN          China        EAP         A              1981      1981</span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt;  7 CHN          China        EAP         A              1984      1984</span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt;  8 CHN          China        EAP         A              1987      1987</span></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt;  9 CHN          China        EAP         A              1990      1990</span></a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt; 10 CHN          China        EAP         A              1993      1993</span></a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="co">#&gt; # ... with 43 more rows, and 25 more variables: data_type &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="co">#&gt; #   is_interpolated &lt;dbl&gt;, use_microdata &lt;dbl&gt;, ppp &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-22" title="22"><span class="co">#&gt; #   poverty_line &lt;dbl&gt;, mean &lt;dbl&gt;, headcount &lt;dbl&gt;, poverty_gap &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-23" title="23"><span class="co">#&gt; #   poverty_gap_sq &lt;dbl&gt;, watts &lt;dbl&gt;, gini &lt;dbl&gt;, median &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-24" title="24"><span class="co">#&gt; #   mld &lt;dbl&gt;, polarization &lt;dbl&gt;, population &lt;dbl&gt;, decile1 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-25" title="25"><span class="co">#&gt; #   decile2 &lt;dbl&gt;, decile3 &lt;dbl&gt;, decile4 &lt;dbl&gt;, decile5 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-26" title="26"><span class="co">#&gt; #   decile6 &lt;dbl&gt;, decile7 &lt;dbl&gt;, decile8 &lt;dbl&gt;, decile9 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-27" title="27"><span class="co">#&gt; #   decile10 &lt;dbl&gt;</span></a></code></pre></div>
 </div>
 </div>
   </div>

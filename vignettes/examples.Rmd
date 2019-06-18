@@ -18,10 +18,10 @@ knitr::opts_chunk$set(
 library(povcalnetR)
 library(ggplot2)
 library(tidyr)
-library(dplyr)
 library(ggthemes)
 library(forcats)
 library(scales)
+library(dplyr)
 ```
 
 ## Global poverty trends 1990-2015
