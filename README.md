@@ -10,7 +10,7 @@ status](https://www.r-pkg.org/badges/version/povcalnetR)](https://cran.r-project
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis build
-status](https://travis-ci.org/tonyfujs/povcalnetR.svg?branch=master)](https://travis-ci.org/tonyfujs/povcalnetR)
+status](https://travis-ci.org/worldbank/povcalnetR.svg?branch=master)](https://travis-ci.org/worldbank/povcalnetR)
 <!-- badges: end -->
 
 The `povcalnetR` package allows R users to compute poverty and
@@ -40,32 +40,54 @@ devtools::install_github("tonyfujs/povcalnetR")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example that shows how to retrieve some key poverty
+statistics from PovcalNet using this package
 
 ``` r
 library(povcalnetR)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 
-## basic example code
-povcalnet(country = c("ALB", "CHN"))
-#> # A tibble: 53 x 31
-#>    country_code country_name region_code coverage_type request_year
-#>    <chr>        <chr>        <chr>       <chr>                <dbl>
-#>  1 ALB          Albania      ECA         N                     1996
-#>  2 ALB          Albania      ECA         N                     2002
-#>  3 ALB          Albania      ECA         N                     2005
-#>  4 ALB          Albania      ECA         N                     2008
-#>  5 ALB          Albania      ECA         N                     2012
-#>  6 CHN          China        EAP         A                     1981
-#>  7 CHN          China        EAP         A                     1984
-#>  8 CHN          China        EAP         A                     1987
-#>  9 CHN          China        EAP         A                     1990
-#> 10 CHN          China        EAP         A                     1993
-#> # ... with 43 more rows, and 26 more variables: data_year <dbl>,
-#> #   data_type <chr>, is_interpolated <dbl>, use_microdata <dbl>,
-#> #   ppp <dbl>, poverty_line <dbl>, mean <dbl>, headcount <dbl>,
-#> #   poverty_gap <dbl>, poverty_gap_sq <dbl>, watts <dbl>, gini <dbl>,
-#> #   median <dbl>, mld <dbl>, polarization <dbl>, population <dbl>,
-#> #   decile1 <dbl>, decile2 <dbl>, decile3 <dbl>, decile4 <dbl>,
-#> #   decile5 <dbl>, decile6 <dbl>, decile7 <dbl>, decile8 <dbl>,
-#> #   decile9 <dbl>, decile10 <dbl>
+df <- povcalnet(country = "ALB")
+glimpse(df)
+#> Observations: 5
+#> Variables: 31
+#> $ country_code    <chr> "ALB", "ALB", "ALB", "ALB", "ALB"
+#> $ country_name    <chr> "Albania", "Albania", "Albania", "Albania", "A...
+#> $ region_code     <chr> "ECA", "ECA", "ECA", "ECA", "ECA"
+#> $ coverage_type   <chr> "N", "N", "N", "N", "N"
+#> $ year            <dbl> 1996, 2002, 2005, 2008, 2012
+#> $ data_year       <dbl> 1996, 2002, 2005, 2008, 2012
+#> $ data_type       <chr> "consumption", "consumption", "consumption", "...
+#> $ is_interpolated <dbl> 0, 0, 0, 0, 0
+#> $ use_microdata   <dbl> 1, 1, 1, 1, 1
+#> $ ppp             <dbl> 58.16801, 58.16801, 58.16801, 58.16801, 58.16801
+#> $ poverty_line    <dbl> 1.9, 1.9, 1.9, 1.9, 1.9
+#> $ mean            <dbl> 187.8427, 191.9880, 217.0335, 237.5353, 225.2692
+#> $ headcount       <dbl> 0.011291240, 0.020473200, 0.011237280, 0.00370...
+#> $ poverty_gap     <dbl> 0.0019115400, 0.0035450460, 0.0018274740, 0.00...
+#> $ poverty_gap_sq  <dbl> 0.0005560317, 0.0010593800, 0.0004780857, 0.00...
+#> $ watts           <dbl> 0.0023108880, 0.0043677770, 0.0021404260, 0.00...
+#> $ gini            <dbl> 0.2701034, 0.3173898, 0.3059566, 0.2998467, 0....
+#> $ median          <dbl> 165.0867, 158.3630, 184.6848, 198.7757, 195.0467
+#> $ mld             <dbl> 0.1191043, 0.1648116, 0.1544128, 0.1488934, 0....
+#> $ polarization    <dbl> NA, NA, NA, NA, NA
+#> $ population      <dbl> 3.168033, 3.051010, 3.011487, 2.947314, 2.900401
+#> $ decile1         <dbl> 0.03863, 0.03494, 0.03483, 0.03734, 0.03660
+#> $ decile2         <dbl> 0.05289, 0.04859, 0.04920, 0.05137, 0.05193
+#> $ decile3         <dbl> 0.06379, 0.05842, 0.05977, 0.06088, 0.06144
+#> $ decile4         <dbl> 0.07322, 0.06738, 0.06921, 0.06984, 0.07031
+#> $ decile5         <dbl> 0.08380, 0.07653, 0.07988, 0.07912, 0.08084
+#> $ decile6         <dbl> 0.09355, 0.08839, 0.09037, 0.08924, 0.09257
+#> $ decile7         <dbl> 0.1082, 0.1023, 0.1037, 0.1030, 0.1052
+#> $ decile8         <dbl> 0.1247, 0.1198, 0.1213, 0.1193, 0.1229
+#> $ decile9         <dbl> 0.1490, 0.1493, 0.1483, 0.1454, 0.1489
+#> $ decile10        <dbl> 0.2122, 0.2544, 0.2434, 0.2446, 0.2293
 ```

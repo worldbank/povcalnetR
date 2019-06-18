@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/povcalnetR)](https://cran.r-project.org/package=povcalnetR)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![Travis build status](https://travis-ci.org/tonyfujs/povcalnetR.svg?branch=master)](https://travis-ci.org/tonyfujs/povcalnetR)
+[![Travis build status](https://travis-ci.org/worldbank/povcalnetR.svg?branch=master)](https://travis-ci.org/worldbank/povcalnetR)
 <!-- badges: end -->
 
 The `povcalnetR` package allows R users to compute poverty and inequality indicators for more than 160 countries and regions from the World Bank's database of household surveys. It has the same functionality as the [PovcalNet website](http://iresearch.worldbank.org/PovcalNet/home.aspx). PovcalNet is a computational tool that allows users to estimate poverty rates for regions, sets of countries or individual countries, over time and at any poverty line.
@@ -34,12 +34,14 @@ devtools::install_github("tonyfujs/povcalnetR")
 ```
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example that shows how to retrieve some key poverty statistics
+from PovcalNet using this package
 
 ```{r example}
 library(povcalnetR)
+library(dplyr)
 
-## basic example code
-povcalnet(country = c("ALB", "CHN"))
+df <- povcalnet(country = "ALB")
+glimpse(df)
 ```
 

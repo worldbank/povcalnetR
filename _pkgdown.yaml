@@ -18,5 +18,9 @@ reference:
       - '`build_query_string`'
       - '`build_query_string_cl`'
       - '`povcalnetR_download`'
+  - title: Data
+    desc: ~
+    contents:
+      - '`sample_input`'
 navbar:
   type: inverse
