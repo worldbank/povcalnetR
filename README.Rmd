@@ -15,24 +15,21 @@ knitr::opts_chunk$set(
 # povcalnetR
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/tonyfujs/povcalnetR.svg?branch=master)](https://travis-ci.org/tonyfujs/povcalnetR)
 [![CRAN status](https://www.r-pkg.org/badges/version/povcalnetR)](https://cran.r-project.org/package=povcalnetR)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Travis build status](https://travis-ci.org/tonyfujs/povcalnetR.svg?branch=master)](https://travis-ci.org/tonyfujs/povcalnetR)
 <!-- badges: end -->
 
-The goal of povcalnetR is to ...
+The `povcalnetR` package allows R users to compute poverty and inequality indicators for more than 160 countries and regions from the World Bank's database of household surveys. It has the same functionality as the [PovcalNet website](http://iresearch.worldbank.org/PovcalNet/home.aspx). PovcalNet is a computational tool that allows users to estimate poverty rates for regions, sets of countries or individual countries, over time and at any poverty line.
+
+PovcalNet is managed jointly by the Data and Research Group in the World Bank's Development Economics Division. It draws heavily upon a strong collaboration with the Poverty and Equity Global Practice, which is responsible for the gathering and harmonization of the underlying survey data.
 
 ## Installation
 
-You can install the released version of povcalnetR from [CRAN](https://CRAN.R-project.org) with:
+The development version can be installed from [GitHub](https://github.com/) with:
 
 ``` r
-install.packages("povcalnetR")
-```
-
-And the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
+install.packages(c("devtools", "httr"))
 devtools::install_github("tonyfujs/povcalnetR")
 ```
 ## Example
@@ -41,6 +38,8 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(povcalnetR)
+
 ## basic example code
+povcalnet(country = c("ALB", "CHN"))
 ```
 
