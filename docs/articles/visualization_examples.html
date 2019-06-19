@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Examples • povcalnetR</title>
+<title>Visualization examples • povcalnetR</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Examples">
+<meta property="og:title" content="Visualization examples">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -60,7 +60,7 @@
       <a href="../articles/advanced_examples.html">Helper functions and advanced examples</a>
     </li>
     <li>
-      <a href="../articles/visualization_examples.html">Examples</a>
+      <a href="../articles/visualization_examples.html">Visualization examples</a>
     </li>
   </ul>
 </li>
@@ -87,7 +87,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Examples</h1>
+      <h1>Visualization examples</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/worldbank/povcalnetR/blob/master/vignettes/visualization_examples.Rmd"><code>vignettes/visualization_examples.Rmd</code></a></small>
@@ -210,24 +210,6 @@
 <a class="sourceLine" id="cb4-21" title="21">  )</a></code></pre></div>
 <p><img src="visualization_examples_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
-<div id="income-or-consumption-growth-for-argentina-ghana-and-thailand-by-decile" class="section level2">
-<h2 class="hasAnchor">
-<a href="#income-or-consumption-growth-for-argentina-ghana-and-thailand-by-decile" class="anchor"></a>Income or Consumption Growth for Argentina, Ghana and Thailand, by Decile</h2>
-<p>Group</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># deciles &lt;- sort(unique(df$decile))</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="co"># lkup_vector &lt;- c(10, 100, 20, 30, 40, 50, 60, 70, 80, 90)</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="co"># names(lkup_vector) &lt;- deciles</span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co"># df &lt;- povcalnet(country = c("ARG", "GHA", "THA"),</span></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="co">#                 coverage = "all") %&gt;%</span></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="co">#   filter(year &gt; 1989) %&gt;%</span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="co">#   select(countrycode:is_interpolated, decile1:decile10) %&gt;%</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="co">#   gather(key = "decile", value = "decile_value", decile1:decile10)</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="co"># df$decile &lt;- lkup_vector[df$decile]</span></a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="co"># </span></a>
-<a class="sourceLine" id="cb5-12" title="12"><span class="co"># ggplot(df, aes(x = decile, y = decile_value, color = country_name, group = country_name)) +</span></a>
-<a class="sourceLine" id="cb5-13" title="13"><span class="co">#   geom_line()</span></a></code></pre></div>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -239,7 +221,6 @@
       <li><a href="#number-of-poor-by-region">Number of poor by region</a></li>
       <li><a href="#income-distribution-in-latin-america-and-the-caribbean-by-country">Income Distribution in Latin America and the Caribbean, by Country</a></li>
       <li><a href="#gini-indices-for-argentina-ghana-and-thailand">Gini Indices for Argentina, Ghana and Thailand</a></li>
-      <li><a href="#income-or-consumption-growth-for-argentina-ghana-and-thailand-by-decile">Income or Consumption Growth for Argentina, Ghana and Thailand, by Decile</a></li>
       </ul>
 </div>
       </div>

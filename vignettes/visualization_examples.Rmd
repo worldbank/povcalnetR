@@ -131,21 +131,5 @@ ggplot(df, aes(x = year, y = gini, color = countryname)) +
 
 ```
 
-## Income or Consumption Growth for Argentina, Ghana and Thailand, by Decile
-Group
-```{r, message=FALSE, warning=FALSE}
-# deciles <- sort(unique(df$decile))
-# lkup_vector <- c(10, 100, 20, 30, 40, 50, 60, 70, 80, 90)
-# names(lkup_vector) <- deciles
-# 
-# df <- povcalnet(country = c("ARG", "GHA", "THA"),
-#                 coverage = "all") %>%
-#   filter(year > 1989) %>%
-#   select(countrycode:is_interpolated, decile1:decile10) %>%
-#   gather(key = "decile", value = "decile_value", decile1:decile10)
-# df$decile <- lkup_vector[df$decile]
-# 
-# ggplot(df, aes(x = decile, y = decile_value, color = country_name, group = country_name)) +
-#   geom_line()
-```
+
 
