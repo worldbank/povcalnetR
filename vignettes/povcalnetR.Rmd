@@ -28,8 +28,8 @@ Here are a few examples to get you started:
 By default, the `povcalnet` function return all available  
 
 - countries  
-- coverage (national, urban, rural)  
-- for all available survey year  
+- coverages (national, urban, rural)  
+- for all available survey years  
 - at the 1.9 USD poverty line  
 
 ```{r message=FALSE, warning=FALSE}

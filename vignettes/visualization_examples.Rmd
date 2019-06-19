@@ -71,7 +71,7 @@ df <- povcalnet_wb() %>%
 regions <- df %>%
   filter(regioncode != "WLD") %>%
   mutate(
-    region_title = fct_relevel(region_title,
+    regiontitle = fct_relevel(regiontitle,
                                c("Other high Income",
                                  "Europe and Central Asia",
                                  "Middle East and North Africa",
@@ -84,7 +84,7 @@ regions <- df %>%
 world <- df %>%
   filter(regioncode == "WLD")
 
-ggplot(regions, aes(y = poor_pop, x = year, fill = region_title)) +
+ggplot(regions, aes(y = poor_pop, x = year, fill = regiontitle)) +
   geom_area() +
   scale_y_continuous(
     limits = c(0, 2000),
@@ -110,11 +110,11 @@ ggplot(regions, aes(y = poor_pop, x = year, fill = region_title)) +
 df <- povcalnet(country = c("ARG", "GHA", "THA"),
                 coverage = "all") %>%
   filter(year > 1989) %>%
-  select(country_code:is_interpolated, gini)
+  select(countrycode:isinterpolated, gini)
 
-ggplot(df, aes(x = year, y = gini, color = country_name)) +
+ggplot(df, aes(x = year, y = gini, color = countryname)) +
   geom_line() +
-  geom_point(data = df[df$is_interpolated == 0, ]) +
+  geom_point(data = df[df$isinterpolated == 0, ]) +
   scale_y_continuous(
     limits = c(0.35, 0.55),
     breaks = c(0.35, 0.40, 0.45, 0.50, 0.55)
@@ -141,7 +141,7 @@ Group
 # df <- povcalnet(country = c("ARG", "GHA", "THA"),
 #                 coverage = "all") %>%
 #   filter(year > 1989) %>%
-#   select(country_code:is_interpolated, decile1:decile10) %>%
+#   select(countrycode:is_interpolated, decile1:decile10) %>%
 #   gather(key = "decile", value = "decile_value", decile1:decile10)
 # df$decile <- lkup_vector[df$decile]
 # 

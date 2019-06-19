@@ -31,12 +31,12 @@
     <loc>http://worldbank.github.io/povcalnetR/reference/sample_input.html</loc>
   </url>
   <url>
-    <loc>http://worldbank.github.io/povcalnetR/articles/advanced_usage.html</loc>
-  </url>
-  <url>
-    <loc>http://worldbank.github.io/povcalnetR/articles/examples.html</loc>
+    <loc>http://worldbank.github.io/povcalnetR/articles/advanced_examples.html</loc>
   </url>
   <url>
     <loc>http://worldbank.github.io/povcalnetR/articles/povcalnetR.html</loc>
+  </url>
+  <url>
+    <loc>http://worldbank.github.io/povcalnetR/articles/visualization_examples.html</loc>
   </url>
 </urlset>

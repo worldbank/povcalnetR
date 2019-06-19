@@ -94,10 +94,10 @@ Returns the official WB regional estimates" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/advanced_usage.html">Advanced usage</a>
+      <a href="../articles/advanced_examples.html">Helper functions and advanced examples</a>
     </li>
     <li>
-      <a href="../articles/examples.html">Examples</a>
+      <a href="../articles/visualization_examples.html">Examples</a>
     </li>
   </ul>
 </li>
@@ -167,18 +167,9 @@ changed for 99 percent of users.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>povcalnet_wb</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2015</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 8 x 9</span><span>
-#&gt;   region_title region_code  year poverty_line  mean headcount poverty_gap
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> East Asia a~ EAP          </span><span style='text-decoration: underline;'>2</span><span>015          1.9  308.   0.023</span><span style='text-decoration: underline;'>1</span><span>      0.004</span><span style='text-decoration: underline;'>55</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> Europe and ~ ECA          </span><span style='text-decoration: underline;'>2</span><span>015          1.9  514.   0.014</span><span style='text-decoration: underline;'>6</span><span>      0.004</span><span style='text-decoration: underline;'>02</span><span>
-#&gt; </span><span style='color: #555555;'>3</span><span> Latin Ameri~ LAC          </span><span style='text-decoration: underline;'>2</span><span>015          1.9  473.   0.038</span><span style='text-decoration: underline;'>8</span><span>      0.012</span><span style='text-decoration: underline;'>7</span><span> 
-#&gt; </span><span style='color: #555555;'>4</span><span> Middle East~ MNA          </span><span style='text-decoration: underline;'>2</span><span>015          1.9  281.   0.042</span><span style='text-decoration: underline;'>1</span><span>      0.009</span><span style='text-decoration: underline;'>96</span><span>
-#&gt; </span><span style='color: #555555;'>5</span><span> Other high ~ OHI          </span><span style='text-decoration: underline;'>2</span><span>015          1.9 </span><span style='text-decoration: underline;'>1</span><span>625.   0.006</span><span style='text-decoration: underline;'>79</span><span>     0.004</span><span style='text-decoration: underline;'>97</span><span>
-#&gt; </span><span style='color: #555555;'>6</span><span> South Asia   SAS          </span><span style='text-decoration: underline;'>2</span><span>015          1.9  131.   0.124       0.021</span><span style='text-decoration: underline;'>8</span><span> 
-#&gt; </span><span style='color: #555555;'>7</span><span> Sub-Saharan~ SSA          </span><span style='text-decoration: underline;'>2</span><span>015          1.9  113.   0.410       0.157  
-#&gt; </span><span style='color: #555555;'>8</span><span> World Total  WLD          </span><span style='text-decoration: underline;'>2</span><span>015          1.9  459.   0.099</span><span style='text-decoration: underline;'>4</span><span>      0.030</span><span style='text-decoration: underline;'>5</span><span> 
-#&gt; </span><span style='color: #555555;'># ... with 2 more variables: poverty_gap_sq </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, population </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div></span></pre>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>povcalnet_wb</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2015</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
