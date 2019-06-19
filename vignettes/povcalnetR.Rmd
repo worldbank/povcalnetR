@@ -3,7 +3,7 @@ title: "povcalnetR"
 output: 
   rmarkdown::html_vignette:
     toc: true
-    toc_depth: 2
+    toc_depth: 3
 vignette: >
   %\VignetteIndexEntry{Get started}
   %\VignetteEngine{knitr::rmarkdown}
@@ -24,94 +24,68 @@ The `povcalnetR` package allows to easily query the [PovcalNet API](http://irese
 
 Here are a few examples to get you started:
 
-# Retrieve ONE country with default parameters
+## Using default options
+By default, the `povcalnet` function return all available  
 
-```{r}
+- countries  
+- coverage (national, urban, rural)  
+- for all available survey year  
+- at the 1.9 USD poverty line  
+
+```{r message=FALSE, warning=FALSE}
+povcalnet()
+```
+
+## Basic options
+
+### Filter by country
+```{r, warning=FALSE, message=FALSE}
+# Specify ONE country
 povcalnet(country = "ALB")
-```
 
-# Retrieve MULTIPLE countries with default parameters
-```{r}
-povcalnet(country = "all")
-```
-
-```{r}
+# Specify MULTIPLE countries
 povcalnet(country = c("ALB", "CHN"))
 ```
 
-# Retrieve countries from a specific region or income group
-```{r}
-# Get countries from ECA region
-eca <- get_countries("ECA")
-povcalnet(country = eca)
+### Filter by year
+By default, `povcalnet` will only return data if a survey is available for the
+requested __country__ and the requested __year__
+```{r, warning=FALSE, message=FALSE}
+# Survey year NOT available
+povcalnet(country = "ALB", year = 2012)
 
-# Get countries from Lower Income group
-lic <- get_countries("LIC")
-povcalnet(country = lic)
+# Survey year NOT available - Empty response
+povcalnet(country = "ALB", year = 2018)
 ```
 
-# Change poverty line
-
-```{r}
-povcalnet(country = c("ALB", "CHN"),
-          povline = 10)
+### Modify the poverty line
+```{r, warning=FALSE, message=FALSE}
+povcalnet(country = "ALB", povline = 3.2)
 ```
 
-# Select specific years
+## Other features
 
-```{r}
-povcalnet(country = c("ALB"),
-          year = c(2002, 2012))
+### Get estimates when survey year is not available
+The `fill_gaps` argument will trigger the interpolation / extrapolation of 
+poverty estimates when survey year is not available
+
+```{r, warning=FALSE, message=FALSE}
+# fill_gaps = FALSE (default)
+povcalnet(country = "HTI")
+
+# fill_gaps = TRUE
+povcalnet(country = "HTI", fill_gaps = TRUE)
 ```
 
+### Compute custom aggregates
+The `povcalnet` function can also be used to compute aggregate welfare statistics
+of custom group of countries
 
-```{r}
-povcalnet(country = c("ALB"),
-          year = 2002)
+```{r, warning=FALSE, message=FALSE}
+# World aggregate
+povcalnet(country = "all", aggregate = TRUE)
+
+# Custom aggregate
+povcalnet(country = c("CHL", "ARG", "BOL"), aggregate = TRUE)
 ```
-
-
-# Change coverage
-
-```{r}
-povcalnet(country = "all",
-          coverage = "urban")
-```
-
-```{r}
-povcalnet(country = "all",
-          coverage = "rural")
-```
-
-
-# Aggregation
-
-```{r}
-povcalnet(country = c("ALB", "CHN"),
-          aggregate = TRUE)
-```
-
-
-# Fill gaps when surveys are missing for specific year
-
-```{r}
-povcalnet(country = c("ALB", "CHN"),
-          fill_gaps = TRUE)
-```
-
-# PPP
-```{r}
-povcalnet(country = c("ALB", "CHN"),
-          ppp = c(50, 100),
-          coverage = "national")
-```
-
-```{r}
-povcalnet(country = c("ALB", "CHN"),
-          ppp = c(10, 20),
-          povline = 4,
-          aggregate = TRUE,
-          coverage = "national")
-```
-
 

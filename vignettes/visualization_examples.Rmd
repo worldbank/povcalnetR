@@ -1,6 +1,9 @@
 ---
 title: "Examples"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 3
 vignette: >
   %\VignetteIndexEntry{examples}
   %\VignetteEngine{knitr::rmarkdown}
@@ -24,10 +27,11 @@ library(scales)
 library(dplyr)
 ```
 
-## Global poverty trends 1990-2015
+## Global poverty trends 1990-2015  
+
 ```{r, message=FALSE, warning=FALSE}
 df <- povcalnet_wb() %>%
-  filter(year > 1989, region_code == "WLD") %>%
+  filter(year > 1989, regioncode == "WLD") %>%
   mutate(
     poor_pop = round(headcount * population, 0),
     headcount = round(headcount, 3)
@@ -65,7 +69,7 @@ df <- povcalnet_wb() %>%
   )
 
 regions <- df %>%
-  filter(region_code != "WLD") %>%
+  filter(regioncode != "WLD") %>%
   mutate(
     region_title = fct_relevel(region_title,
                                c("Other high Income",
@@ -78,7 +82,7 @@ regions <- df %>%
                                  ))
   )
 world <- df %>%
-  filter(region_code == "WLD")
+  filter(regioncode == "WLD")
 
 ggplot(regions, aes(y = poor_pop, x = year, fill = region_title)) +
   geom_area() +

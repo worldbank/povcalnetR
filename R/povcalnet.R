@@ -51,11 +51,13 @@ povcalnet <- function(country = "all",
   # Special case handling WORLD level aggregate
   # This is necessary because of the behavior of the PovcalNet API
   # Should ideally be removed. Breaks the logic of the package
-  if (country == "all" & aggregate == TRUE) {
+  if (length(country) == 1 & "all" %in% country & aggregate == TRUE) {
     out <- povcalnet_wb(povline = povline,
                         year = year,
                         url = url,
                         format = format)
+    out <- out[out$regioncode == "WLD", ]
+
     return(out)
   }
 

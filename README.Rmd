@@ -28,6 +28,23 @@ The `povcalnetR` package allows R users to compute poverty and inequality indica
 
 PovcalNet is managed jointly by the Data and Research Group in the World Bank's Development Economics Division. It draws heavily upon a strong collaboration with the Poverty and Equity Global Practice, which is responsible for the gathering and harmonization of the underlying survey data.
 
+PovcalNet reports the following measures at the chosen poverty line:  
+- Headcount ratio  
+- Poverty Gap  
+- Squared Poverty Gap  
+- Watts index  
+  
+It also reports these inequality measures:  
+- Gini index  
+- mean log deviation  
+- decile shares  
+
+The underlying welfare aggregate is per capita household income or consumption expressed in 2011 PPP-adjusted USD. Poverty lines are expressed in daily amounts, while means and medians are monthly.  
+
+For more information on the definition of the indicators,  [click here](http://iresearch.worldbank.org/PovcalNet/Docs/dictionary.html)  
+For more information on the methodology, [click here](http://iresearch.worldbank.org/PovcalNet/methodology.aspx)
+
+
 ## Installation
 
 The development version can be installed from [GitHub](https://github.com/) with:
@@ -41,7 +58,7 @@ devtools::install_github("tonyfujs/povcalnetR")
 This is a basic example that shows how to retrieve some key poverty statistics
 from PovcalNet using this package
 
-```{r example}
+```{r example, warning=FALSE, message=FALSE}
 library(povcalnetR)
 library(dplyr)
 
