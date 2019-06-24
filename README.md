@@ -61,7 +61,7 @@ The development version can be installed from
 
 ``` r
 install.packages(c("devtools", "httr"))
-devtools::install_github("tonyfujs/povcalnetR")
+devtools::install_github("worldbank/povcalnetR")
 ```
 
 ## Example
