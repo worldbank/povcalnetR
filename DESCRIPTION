@@ -1,5 +1,5 @@
 Package: povcalnetR
-Title: R client to the PovcalNet API
+Title: R Client To The Povcalnet API
 Version: 0.1.0
 Authors@R:c( 
     person(given = "Tony",
