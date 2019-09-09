@@ -25,7 +25,7 @@ library(purrr)
 
 ## Specify parameters at the country level  
 This function can be very handy is you maintain a list of countries and
-paramaters in a table like the one below.
+parameters in a table like the one below.
 _Note_: This function only works with survey years. There is no `fill_gaps` 
 option available
 
