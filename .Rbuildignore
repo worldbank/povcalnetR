@@ -11,3 +11,4 @@
 ^\.travis\.yml$
 ^_pkgdown\.yaml$
 ^appveyor\.yml$
+^cran-comments\.md$
