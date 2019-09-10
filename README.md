@@ -56,6 +56,13 @@ here](http://iresearch.worldbank.org/PovcalNet/methodology.aspx)
 
 ## Installation
 
+You can install the released version of `povcalnetR` from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("povcalnetR")
+```
+
 The development version can be installed from
 [GitHub](https://github.com/) with:
 
