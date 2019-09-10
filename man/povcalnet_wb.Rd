@@ -20,6 +20,9 @@ changed for 99 percent of users.}
 \item{format}{character: Response format to be requested from the API:
 `csv` or `json`}
 }
+\value{
+data.frame
+}
 \description{
 povcalnet_wb
 Returns the official WB regional estimates

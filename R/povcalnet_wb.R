@@ -9,7 +9,7 @@
 #' @param format character: Response format to be requested from the API:
 #' `csv` or `json`
 #'
-#' @return
+#' @return data.frame
 #' @export
 #'
 #' @examples
