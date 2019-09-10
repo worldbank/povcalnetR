@@ -47,7 +47,7 @@ povcalnet_cl <- function(country,
 
   # STEP 3: retrieve data
   res <- httr::GET(url = url)
-  res <- httr::content(res,as = "text", encoding = "UTF-8" )
+  res <- httr::content(res, as = "text", encoding = "UTF-8" )
 
   # STEP 4: parse data
   if (format == "json") {
@@ -65,4 +65,3 @@ povcalnet_cl <- function(country,
   return(out)
 
 }
-

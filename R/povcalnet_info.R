@@ -51,7 +51,7 @@ povcal_info <- function(url = "http://iresearch.worldbank.org/povcalnet") {
              "year")]
 
 
-  x$year <- lapply(x$year, function(y) floor(as.numeric(strsplit(y, split =",", fixed = TRUE)[[1]])))
+  x$year <- lapply(x$year, function(y) floor(as.numeric(strsplit(y, split = ",", fixed = TRUE)[[1]])))
 
   return(x)
 
@@ -74,5 +74,3 @@ povcal_info <- function(url = "http://iresearch.worldbank.org/povcalnet") {
 #' povcalnet_info()
 #' }
 povcalnet_info <- memoise::memoise(povcal_info)
-
-

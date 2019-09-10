@@ -15,6 +15,3 @@ test_that("Basic data formatting works as expected", {
   expect_true(all(unique(out$data_type) %in% expected_data_types))
 }
 )
-
-
-

@@ -1,4 +1,4 @@
-df <- data.frame(stringsAsFactors=FALSE,
+df <- data.frame(stringsAsFactors = FALSE,
                  requestYear = c(2015, 2013, 2012, 2011, 2010, 2008, 2005, 2002, 1999, 1996,
                                  1993, 1990, 1987, 1984, 1981),
                  regionTitle = c("XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX",

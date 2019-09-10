@@ -1,8 +1,8 @@
-country = c("ALB", "CHN")
-povline = c(1.9, 2.0)
-year = c(2002, 2002)
-ppp = c(100, 50)
-coverage_type = c("national", "rural")
+country <- c("ALB", "CHN")
+povline <- c(1.9, 2.0)
+year <- c(2002, 2002)
+ppp <- c(100, 50)
+coverage_type <- c("national", "rural")
 
 test_that("Incorrect inputs trigger errors", {
 

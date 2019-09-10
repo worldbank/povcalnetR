@@ -1,7 +1,7 @@
 # Helpers
 api_handle <- function() "povcalnet/povcalnetapi.ashx"
 
-format_data <- function(x,coverage, aggregate) {
+format_data <- function(x, coverage, aggregate) {
 
   if (aggregate == FALSE){
     x <- format_data_cl(x = x,
@@ -91,17 +91,6 @@ format_data_aggregate <- function(x) {
 
   return(tibble::as_tibble(x))
 }
-
-
-# format_data_dist <- function(x) {
-#   # CHECK
-#   assertthat::assert_that(
-#     all.equal(names(x), c("i", "P", "L", "X4"))
-#   )
-#
-#   x <- x[, c("i", "P", "L")]
-#
-# }
 
 assign_country <- function(country) {
 

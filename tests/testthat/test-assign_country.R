@@ -5,6 +5,6 @@ test_that("country = 'all' returns the expected output", {
 })
 
 test_that("Arguments other than 'all' are returned as is", {
-  country = c("ALB", "CHN")
+  country <- c("ALB", "CHN")
   expect_equal(assign_country(country), country)
 })
