@@ -16,6 +16,8 @@
 #' changed for 99 percent of users.
 #' @param format character: Response format to be requested from the API:
 #' `csv` or `json`
+#' @param querytimes numeric: Optional -  Number of times the API is hit before defaulting to failure.
+#' Default is `5`. Advance option. Just use it if internet connection is poor
 #'
 #' @return data.frame
 #' @export
@@ -34,7 +36,8 @@ povcalnet <- function(country = "all",
                       coverage = "all",
                       ppp = NULL,
                       url = "http://iresearch.worldbank.org",
-                      format = "csv") {
+                      format = "csv",
+                      querytimes = 5) {
 
   # STEP 1: build query string
   query <- build_query_string(
@@ -47,6 +50,7 @@ povcalnet <- function(country = "all",
     ppp = ppp,
     format = format
   )
+
 
   # Special case handling WORLD level aggregate
   # This is necessary because of the behavior of the PovcalNet API
@@ -65,7 +69,22 @@ povcalnet <- function(country = "all",
   url <- httr::modify_url(url, path = api_handle(), query = query)
 
   # STEP 3: retrieve data
-  res <- httr::GET(url = url)
+  res <- NULL
+  attempt <- 0
+  while (is.null(res) && attempt <= querytimes) {
+    attempt <- attempt + 1
+    try(
+      res <- httr::GET(url = url),
+      silent = TRUE
+    )
+  }
+
+  if (is.null(res)) {
+    stop(paste0("After ", querytimes, " attempt, query could not resolve.\n",
+                "url: ", url, "\n",
+                "query: ", query, "\n"))
+  }
+
   res <- httr::content(res, as = "text", encoding = "UTF-8" )
 
   # STEP 4: parse response
