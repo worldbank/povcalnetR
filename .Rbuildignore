@@ -12,3 +12,4 @@
 ^_pkgdown\.yaml$
 ^appveyor\.yml$
 ^cran-comments\.md$
+^CRAN-RELEASE$
