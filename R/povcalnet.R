@@ -66,6 +66,7 @@ povcalnet <- function(country = "all",
   }
 
   # STEP 2: build URL
+  urlt <- url
   url <- httr::modify_url(url, path = api_handle(), query = query)
 
   # STEP 3: retrieve data
@@ -81,8 +82,8 @@ povcalnet <- function(country = "all",
 
   if (is.null(res)) {
     stop(paste0("After ", querytimes, " attempt, query could not resolve.\n",
-                "url: ", url, "\n",
-                "query: ", query, "\n"))
+                "handle: ", api_handle(), "\n",
+                "url: ", urlt, "\n"))
   }
 
   res <- httr::content(res, as = "text", encoding = "UTF-8" )
