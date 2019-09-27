@@ -7,7 +7,7 @@
 #' @return data.frame
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' povcalnet_info()
 #' }
 povcal_info <- function(url = "http://iresearch.worldbank.org/povcalnet") {
@@ -70,7 +70,7 @@ povcal_info <- function(url = "http://iresearch.worldbank.org/povcalnet") {
 #'
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' povcalnet_info()
 #' }
 povcalnet_info <- memoise::memoise(povcal_info)

@@ -16,7 +16,7 @@ data.frame
 Non-memoised version of povcalnet_info()
 }
 \examples{
-\dontrun{
+\donttest{
 povcalnet_info()
 }
 }

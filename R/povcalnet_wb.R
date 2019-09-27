@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' povcalnet_wb(year = 2015)
 #' }
 povcalnet_wb <- function(povline = 1.9,

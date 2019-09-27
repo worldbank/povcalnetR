@@ -22,7 +22,7 @@
 #'
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' povcalnet(country = "ALB")
 #' }
 #'

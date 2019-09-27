@@ -20,7 +20,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' povcalnet_cl(country = c("ALB", "USA"), povline = c(3.2, 5.5), year = c(2012, 2010))
 #' }
 

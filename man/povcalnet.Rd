@@ -42,7 +42,7 @@ povcalnet
 Facilitate interaction with the PovcalNet API
 }
 \examples{
-\dontrun{
+\donttest{
 povcalnet(country = "ALB")
 }
 

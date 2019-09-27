@@ -28,7 +28,7 @@ povcalnet_wb
 Returns the official WB regional estimates
 }
 \examples{
-\dontrun{
+\donttest{
 povcalnet_wb(year = 2015)
 }
 }

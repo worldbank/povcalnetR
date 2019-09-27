@@ -16,7 +16,7 @@ data frame
 Download updated information on available countries, regions, and surveys from the PovcalNet API
 }
 \examples{
-\dontrun{
+\donttest{
 povcalnet_info()
 }
 }

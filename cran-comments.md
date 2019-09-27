@@ -1,9 +1,11 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Only capitalize sentence beginnings and names in the description text.
+* Added the World Bank in the ‘Authors@R’ field with a ‘cph’ roles 
 
-* Meaningfully identified the copyright holders in the LICENSE file.
+* Fixed the description 
+
+* Replaced \dontrun{} with \donttest{}
 
 ## Test environments
 * local OS X install, R 3.6.1
