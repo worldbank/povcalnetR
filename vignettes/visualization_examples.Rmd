@@ -163,7 +163,7 @@ out <- df %>%
                              percentage_0 = "Poor IPL (<$1.9)",
                              percentage_1 = "Poor LMIC ($1.9-$3.2)",
                              percentage_2 = "Poor UMIC ($3.2-$5.5)",
-                             percentage_3 = "Non-poor ($5.5-$15)",
+                             percentage_3 = "$5.5-$15",
                              percentage_4 = "Middle class (>$15)"),
     income_category = as_factor(income_category),
     income_category = fct_relevel(income_category, rev)
