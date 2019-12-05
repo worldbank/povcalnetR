@@ -5,8 +5,14 @@
 \title{build_query_string_cl
 Create povcalnet query string for country level, survey year specification}
 \usage{
-build_query_string_cl(country, povline, year, ppp = NULL,
-  coverage_type = NULL, format = "json")
+build_query_string_cl(
+  country,
+  povline,
+  year,
+  ppp = NULL,
+  coverage_type = NULL,
+  format = "json"
+)
 }
 \arguments{
 \item{country}{character: Requested country. Use \href{https://www.iban.com/country-codes}{iso3 codes }}
