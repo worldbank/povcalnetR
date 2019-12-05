@@ -5,8 +5,16 @@
 \title{build_query_string
 Create simplified povcalnet query string}
 \usage{
-build_query_string(country, povline, year, aggregate = FALSE,
-  fill_gaps = FALSE, coverage = "all", ppp = NULL, format = "json")
+build_query_string(
+  country,
+  povline,
+  year,
+  aggregate = FALSE,
+  fill_gaps = FALSE,
+  coverage = "all",
+  ppp = NULL,
+  format = "json"
+)
 }
 \arguments{
 \item{country}{character: list of country iso3 code (accepts multiple) or `all`. Use \href{https://www.iban.com/country-codes}{iso3 codes }}

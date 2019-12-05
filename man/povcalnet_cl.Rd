@@ -8,8 +8,15 @@ at the country level (hence the _cl suffix), so if you send a request for two
 countries, you must also pass two values to the `year` argument, two values
 to the `povline` argument, etc.}
 \usage{
-povcalnet_cl(country, povline, year, coverage = NULL, ppp = NULL,
-  url = "http://iresearch.worldbank.org", format = "csv")
+povcalnet_cl(
+  country,
+  povline,
+  year,
+  coverage = NULL,
+  ppp = NULL,
+  url = "http://iresearch.worldbank.org",
+  format = "csv"
+)
 }
 \arguments{
 \item{country}{character: list of country iso3 code (accepts multiple).
