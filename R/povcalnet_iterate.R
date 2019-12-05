@@ -30,13 +30,13 @@ modul <- function(x, y) {
 
 povcalnet_iterate <- function(country = NULL,
                               region = NULL,
+                              goal = 0.5,
+                              year = 2015,
+                              coverage = "national",
                               pl =  1,
                               tolerance = 5,
                               ni = 40,
-                              goal = 0.5,
-                              year = 2015,
                               delta = 3,
-                              coverage = "national",
                               aggregate = FALSE,
                               fill_gaps = TRUE) {
   #----------------------------------------------------------
