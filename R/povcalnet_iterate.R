@@ -1,32 +1,29 @@
-# ==================================================
-# project:       Iterate to find moentary threshold of percentile
-# Author:        Andres Castaneda
-# Dependencies:  The World Bank
-# ----------------------------------------------------
-# Creation Date:    2011-11-25
-# Modification Date:
-# Script version:    01
-# References:
-#
-#
-# Output:          Data frame
-# ==================================================
-
-#----------------------------------------------------------
-#   Load libraries
-#----------------------------------------------------------
-
-library("tidyverse")
-library("povcalnetR")
+#' povcalnet_iterate
+#' iterate to get monetary value of percentile selected (goal)
+#' @param country character: ISO3 country code
+#' @param region character: WB region code
+#' @param goal  numeric: desired percentile
+#' @param year  numeric: year
+#' @param coverage character: aoiejw;
+#' @param pl      numeric: apoweij
+#' @param tolerance numeric: apoweij
+#' @param ni numeric: apoweij
+#' @param delta numeric: apoweij
+#' @param aggregate logical: apwoiejf
+#' @param fill_gaps logical: `TRUE` will interpolate / extrapolate values when surveys are not available for a specific year.
+#'
+#' @return dataframe
+#' @export
+#'
+#' @examples
+#' povcalnet_iterate(region= "WLD")
+#' povcalnet_iterate(region= "WLD", goal = .4)
 
 
 #----------------------------------------------------------
 #   subfunctions
 #----------------------------------------------------------
 
-modul <- function(x, y) {
-  x - y * floor(x / y)
-}
 
 povcalnet_iterate <- function(country = NULL,
                               region = NULL,
@@ -102,8 +99,8 @@ povcalnet_iterate <- function(country = NULL,
           povline = pl,
           year = year
         ) %>%
-          filter(regioncode == region) %>%
-          select(headcount) %>% pull
+          dplyr::filter(regioncode == region) %>%
+          dplyr::select(headcount) %>% pull
       } else {
         attempt <- povcalnet(
           country = country,
@@ -113,7 +110,7 @@ povcalnet_iterate <- function(country = NULL,
           aggregate = aggregate,
           fill_gaps = fill_gaps
         ) %>%
-          select(headcount) %>% pull
+          dplyr::select(headcount) %>% dplyr::pull
       }
 
 
@@ -158,8 +155,8 @@ povcalnet_iterate <- function(country = NULL,
             povline = pl,
             year = year
           ) %>%
-            filter(regioncode == region) %>%
-            select(headcount) %>% pull
+            dplyr::filter(regioncode == region) %>%
+            dplyr::select(headcount) %>% pull
         } else {
           attempt <- povcalnet(
             country = country,
@@ -169,7 +166,7 @@ povcalnet_iterate <- function(country = NULL,
             aggregate = aggregate,
             fill_gaps = fill_gaps
           ) %>%
-            select(headcount) %>% pull
+            dplyr::select(headcount) %>% dplyr::pull
         }
 
         # assess if the value of delta has to chanbe
@@ -196,7 +193,7 @@ povcalnet_iterate <- function(country = NULL,
       #---------------------------------------------------------
 
 
-      fdf  <- tibble(
+      fdf  <- tibble::tibble(
         countrycode = ccc,
         year = year,
         goal = goal*100,
@@ -209,7 +206,7 @@ povcalnet_iterate <- function(country = NULL,
 
     error = function(e) {
       # Do this if an error is caught...
-      fdf  <- tibble(
+      fdf  <- tibble::tibble(
         countrycode = ccc,
         year = year,
         goal = NA,
@@ -226,3 +223,8 @@ povcalnet_iterate <- function(country = NULL,
 
 
 }  # End of function povcalnet_iterate
+
+
+modul <- function(x, y) {
+  x - y * floor(x / y)
+}
