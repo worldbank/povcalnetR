@@ -1,16 +1,18 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Added the World Bank in the ‘Authors@R’ field with a ‘cph’ roles 
+Addressed the issues listed in [Check Results](https://cran.r-project.org/web/checks/check_results_povcalnetR.html)
 
-* Fixed the description 
-
-* Replaced \dontrun{} with \donttest{}
+* Fixed namespaces in import fields
+* Fixed issues due to API calls in the vignettes
 
 ## Test environments
-* local OS X install, R 3.6.1
-* ubuntu 16.04 (on rhub), R 3.6.1
-* Fedora Linux (on rhub), R 3.6.1
+* local OS X install, R 4.0.0
+* ubuntu 16.04 (on rhub), R 4.0.0
+* Fedora Linux (on rhub), R 4.0.0
+* Oracle Solaris 10 (on rhub), R 4.0.0
+* Mac OS 10.13.6 High Sierra (on rhub), R 4.0.0
+* Debian Linux, R-devel, GCC (on rhub)
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -21,4 +23,3 @@ This is a resubmission. In this version I have:
 checking CRAN incoming feasibility ... NOTE
 Maintainer: 'Tony Fujs <tonyfujs@gmail.com>'
 
-New submission
