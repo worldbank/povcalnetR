@@ -11,10 +11,13 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  purl = NOT_CRAN
 )
+
 ```
 
 ```{r setup, warning=FALSE, message=FALSE}
@@ -34,7 +37,7 @@ option available
 data("sample_input")
 sample_input
 ```
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=NOT_CRAN}
 # Use table values to send a request to the API
 # Only works for survey years
 povcalnet_cl(country = sample_input$country,
@@ -46,27 +49,27 @@ povcalnet_cl(country = sample_input$country,
 ## Helper functions  
 ### Information table  
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=NOT_CRAN}
 povcalnet_info() %>%
 glimpse()
 ```
 
 ### Get all available countries from a World Bank region  
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=NOT_CRAN}
 get_countries(c("ECA"))
 ```
 
 ### Get all available countries from a World Bank income classification  
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=NOT_CRAN}
 get_countries(c("LIC"))
 ```
 
 ## Combining functions
 ### Pass different poverty lines to countries from different income groups  
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=NOT_CRAN}
 income_groups <- c("LIC", "LMC", "UMC")
 poverty_lines <- c(1.9, 3.2, 5.5)
 map2_df(income_groups, poverty_lines, ~povcalnet(country = get_countries(.x),

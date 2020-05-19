@@ -10,12 +10,14 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r, include = FALSE, message=FALSE, warning=FALSE}
+NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.height=7, 
-  fig.width=9
+  fig.width=9,
+  purl = NOT_CRAN
 )
 ```
 
@@ -32,7 +34,7 @@ library(purrr)
 
 ## Global poverty trends 1990-2015  
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=NOT_CRAN}
 df <- povcalnet_wb() %>%
   filter(year > 1989, regioncode == "WLD") %>%
   mutate(
@@ -63,7 +65,7 @@ ggplot(df, aes(x = year)) +
 ```
 
 ## Number of poor by region
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=NOT_CRAN}
 df <- povcalnet_wb() %>%
   filter(year > 1989) %>%
   mutate(
@@ -107,7 +109,7 @@ ggplot(regions, aes(y = poor_pop, x = year, fill = regiontitle)) +
 
 
 ## Gini Indices for Argentina, Ghana and Thailand
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=NOT_CRAN}
 df <- povcalnet(country = c("ARG", "GHA", "THA"),
                 coverage = "all") %>%
   filter(year > 1989) %>%
@@ -133,7 +135,7 @@ ggplot(df, aes(x = year, y = gini, color = countryname)) +
 ```
 
 ## Distribution of Income in Sub-Saharan Africa and East Asia and Pacific over time
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=NOT_CRAN}
 poverty_lines <- c(1.9, 3.2, 5.5, 15)
 df <- map_dfr(poverty_lines, povcalnet_wb)
 out <- df %>%
@@ -238,3 +240,5 @@ ggplot(out[out$regioncode == "SSA",], aes(x = year, y = percentage, fill = incom
   )
 
 ```
+
+

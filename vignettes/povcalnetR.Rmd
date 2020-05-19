@@ -11,9 +11,11 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  purl = NOT_CRAN
 )
 ```
 
@@ -32,14 +34,14 @@ By default, the `povcalnet` function return all available
 - for all available survey years  
 - at the 1.9 USD poverty line  
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=NOT_CRAN}
 povcalnet()
 ```
 
 ## Basic options
 
 ### Filter by country
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, eval=NOT_CRAN}
 # Specify ONE country
 povcalnet(country = "ALB")
 
@@ -50,7 +52,7 @@ povcalnet(country = c("ALB", "CHN"))
 ### Filter by year
 By default, `povcalnet` will only return data if a survey is available for the
 requested __country__ and the requested __year__
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, eval=NOT_CRAN}
 # Survey year NOT available
 povcalnet(country = "ALB", year = 2012)
 
@@ -59,7 +61,7 @@ povcalnet(country = "ALB", year = 2018)
 ```
 
 ### Modify the poverty line
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, eval=NOT_CRAN}
 povcalnet(country = "ALB", povline = 3.2)
 ```
 
@@ -69,7 +71,7 @@ povcalnet(country = "ALB", povline = 3.2)
 The `fill_gaps` argument will trigger the interpolation / extrapolation of 
 poverty estimates when survey year is not available
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, eval=NOT_CRAN}
 # fill_gaps = FALSE (default)
 povcalnet(country = "HTI")
 
@@ -81,11 +83,10 @@ povcalnet(country = "HTI", fill_gaps = TRUE)
 The `povcalnet` function can also be used to compute aggregate welfare statistics
 of custom group of countries
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, eval=NOT_CRAN}
 # World aggregate
 povcalnet(country = "all", aggregate = TRUE)
 
 # Custom aggregate
 povcalnet(country = c("CHL", "ARG", "BOL"), aggregate = TRUE)
 ```
-
