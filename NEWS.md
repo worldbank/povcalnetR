@@ -1,4 +1,4 @@
-# povcalnetR (development version)
+# povcalnetR 0.1.1
 
 # povcalnetR 0.1.0
 

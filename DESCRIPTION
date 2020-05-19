@@ -1,6 +1,6 @@
 Package: povcalnetR
 Title: Client for the 'Povcalnet' API
-Version: 0.1.0.9000
+Version: 0.1.1
 Authors@R: c( 
     person(given = "Tony",
            family = "Fujs",
