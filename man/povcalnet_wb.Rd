@@ -5,8 +5,12 @@
 \title{povcalnet_wb
 Returns the official WB regional estimates}
 \usage{
-povcalnet_wb(povline = 1.9, year = "all",
-  url = "http://iresearch.worldbank.org", format = "csv")
+povcalnet_wb(
+  povline = 1.9,
+  year = "all",
+  url = "http://iresearch.worldbank.org",
+  format = "csv"
+)
 }
 \arguments{
 \item{povline}{numeric: poverty line (in 2011 PPP-adjusted USD) to
