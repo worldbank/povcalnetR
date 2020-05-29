@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -39,7 +43,6 @@
 
 <meta property="og:title" content="povcalnet_info() — povcalnet_info" />
 <meta property="og:description" content="Download updated information on available countries, regions, and surveys from the PovcalNet API" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -57,7 +60,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -71,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">povcalnetR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -110,7 +113,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/worldbank/povcalnetR">
+  <a href="https://github.com/worldbank/povcalnetR/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -288,50 +291,53 @@
 #&gt; 131          ROU                             Romania       ECA       EUE
 #&gt; 132          RUS                  Russian Federation       ECA       EUE
 #&gt; 133          RWA                              Rwanda       SSA       AFE
-#&gt; 134          WSM                               Samoa       EAP       OCP
-#&gt; 135          STP               Sao Tome and Principe       SSA       AFM
-#&gt; 136          SEN                             Senegal       SSA       AFW
-#&gt; 137          SRB                              Serbia       ECA       EUN
-#&gt; 138          SYC                          Seychelles       SSA       AFE
-#&gt; 139          SLE                        Sierra Leone       SSA       AFW
-#&gt; 140          SVK                     Slovak Republic       ECA       EUE
-#&gt; 141          SVN                            Slovenia       ECA       EUS
-#&gt; 142          SLB                     Solomon Islands       EAP       OCE
-#&gt; 143          ZAF                        South Africa       SSA       AFS
-#&gt; 144          SSD                         South Sudan       SSA       AFE
-#&gt; 145          ESP                               Spain       OHI       EUS
-#&gt; 146          LKA                           Sri Lanka       SAS       ASC
-#&gt; 147          LCA                           St. Lucia       LAC       LAB
-#&gt; 148          SDN                               Sudan       SSA       AFN
-#&gt; 149          SUR                            Suriname       LAC       LAS
-#&gt; 150          SWE                              Sweden       OHI       EUN
-#&gt; 151          CHE                         Switzerland       OHI       EUW
-#&gt; 152          SYR                Syrian Arab Republic       MNA       ASW
-#&gt; 153          TJK                          Tajikistan       ECA       ASC
-#&gt; 154          TZA                            Tanzania       SSA       AFE
-#&gt; 155          THA                            Thailand       EAP       ASS
-#&gt; 156          TLS                         Timor-Leste       EAP       ASS
-#&gt; 157          TGO                                Togo       SSA       AFW
-#&gt; 158          TON                               Tonga       EAP       OCP
-#&gt; 159          TTO                 Trinidad and Tobago       LAC       LAB
-#&gt; 160          TUN                             Tunisia       MNA       AFN
-#&gt; 161          TUR                              Turkey       ECA       ASW
-#&gt; 162          TKM                        Turkmenistan       ECA       ASC
-#&gt; 163          TUV                              Tuvalu       EAP       OCP
-#&gt; 164          UGA                              Uganda       SSA       AFE
-#&gt; 165          UKR                             Ukraine       ECA       EUE
-#&gt; 166          GBR                      United Kingdom       OHI       EUN
-#&gt; 167          USA                       United States       OHI       LAN
-#&gt; 168          URY                             Uruguay       LAC       LAS
-#&gt; 169          URY                             Uruguay       LAC       LAS
-#&gt; 170          UZB                          Uzbekistan       ECA       ASC
-#&gt; 171          VUT                             Vanuatu       EAP       OCE
-#&gt; 172          VEN Venezuela, Republica Bolivariana de       LAC       LAS
-#&gt; 173          VNM                             Vietnam       EAP       ASS
-#&gt; 174          PSE                  West Bank and Gaza       MNA       ASW
-#&gt; 175          YEM                  Yemen, Republic of       MNA       ASW
-#&gt; 176          ZMB                              Zambia       SSA       AFE
-#&gt; 177          ZWE                            Zimbabwe       SSA       AFE
+#&gt; 134          RWA                              Rwanda       SSA       AFE
+#&gt; 135          WSM                               Samoa       EAP       OCP
+#&gt; 136          STP               Sao Tome and Principe       SSA       AFM
+#&gt; 137          SEN                             Senegal       SSA       AFW
+#&gt; 138          SRB                              Serbia       ECA       EUN
+#&gt; 139          SYC                          Seychelles       SSA       AFE
+#&gt; 140          SLE                        Sierra Leone       SSA       AFW
+#&gt; 141          SVK                     Slovak Republic       ECA       EUE
+#&gt; 142          SVN                            Slovenia       ECA       EUS
+#&gt; 143          SLB                     Solomon Islands       EAP       OCE
+#&gt; 144          ZAF                        South Africa       SSA       AFS
+#&gt; 145          SSD                         South Sudan       SSA       AFE
+#&gt; 146          ESP                               Spain       OHI       EUS
+#&gt; 147          LKA                           Sri Lanka       SAS       ASC
+#&gt; 148          LCA                           St. Lucia       LAC       LAB
+#&gt; 149          SDN                               Sudan       SSA       AFN
+#&gt; 150          SUR                            Suriname       LAC       LAS
+#&gt; 151          SWE                              Sweden       OHI       EUN
+#&gt; 152          CHE                         Switzerland       OHI       EUW
+#&gt; 153          SYR                Syrian Arab Republic       MNA       ASW
+#&gt; 154          TWN                       Taiwan, China       OHI       ASE
+#&gt; 155          TJK                          Tajikistan       ECA       ASC
+#&gt; 156          TZA                            Tanzania       SSA       AFE
+#&gt; 157          THA                            Thailand       EAP       ASS
+#&gt; 158          TLS                         Timor-Leste       EAP       ASS
+#&gt; 159          TGO                                Togo       SSA       AFW
+#&gt; 160          TON                               Tonga       EAP       OCP
+#&gt; 161          TTO                 Trinidad and Tobago       LAC       LAB
+#&gt; 162          TUN                             Tunisia       MNA       AFN
+#&gt; 163          TUR                              Turkey       ECA       ASW
+#&gt; 164          TKM                        Turkmenistan       ECA       ASC
+#&gt; 165          TUV                              Tuvalu       EAP       OCP
+#&gt; 166          UGA                              Uganda       SSA       AFE
+#&gt; 167          UKR                             Ukraine       ECA       EUE
+#&gt; 168          ARE                United Arab Emirates       OHI       ASW
+#&gt; 169          GBR                      United Kingdom       OHI       EUN
+#&gt; 170          USA                       United States       OHI       LAN
+#&gt; 171          URY                             Uruguay       LAC       LAS
+#&gt; 172          URY                             Uruguay       LAC       LAS
+#&gt; 173          UZB                          Uzbekistan       ECA       ASC
+#&gt; 174          VUT                             Vanuatu       EAP       OCE
+#&gt; 175          VEN Venezuela, Republica Bolivariana de       LAC       LAS
+#&gt; 176          VNM                             Vietnam       EAP       ASS
+#&gt; 177          PSE                  West Bank and Gaza       MNA       ASW
+#&gt; 178          YEM                  Yemen, Republic of       MNA       ASW
+#&gt; 179          ZMB                              Zambia       SSA       AFE
+#&gt; 180          ZWE                            Zimbabwe       SSA       AFE
 #&gt;     income_region coverage_level      coverage_type coverage_code
 #&gt; 1             UMC       national           national             3
 #&gt; 2             UMC       national           national             3
@@ -466,238 +472,240 @@
 #&gt; 131           UMC       national           national             3
 #&gt; 132           UMC       national           national             3
 #&gt; 133           LIC       national           national             3
-#&gt; 134           UMC       national           national             3
-#&gt; 135           LMC       national           national             3
-#&gt; 136           LIC       national           national             3
-#&gt; 137           UMC       national           national             3
-#&gt; 138           HIC       national           national             3
-#&gt; 139           LIC       national           national             3
-#&gt; 140           HIC       national           national             3
+#&gt; 134           LIC          rural              rural             1
+#&gt; 135           UMC       national           national             3
+#&gt; 136           LMC       national           national             3
+#&gt; 137           LIC       national           national             3
+#&gt; 138           UMC       national           national             3
+#&gt; 139           HIC       national           national             3
+#&gt; 140           LIC       national           national             3
 #&gt; 141           HIC       national           national             3
-#&gt; 142           LMC       national           national             3
-#&gt; 143           UMC       national           national             3
-#&gt; 144           LIC       national           national             3
-#&gt; 145           HIC       national           national             3
-#&gt; 146           LMC       national           national             3
-#&gt; 147           UMC       national           national             3
-#&gt; 148           LMC       national           national             3
-#&gt; 149           UMC       national           national             3
-#&gt; 150           HIC       national           national             3
+#&gt; 142           HIC       national           national             3
+#&gt; 143           LMC       national           national             3
+#&gt; 144           UMC       national           national             3
+#&gt; 145           LIC       national           national             3
+#&gt; 146           HIC       national           national             3
+#&gt; 147           LMC       national           national             3
+#&gt; 148           UMC       national           national             3
+#&gt; 149           LMC       national           national             3
+#&gt; 150           UMC       national           national             3
 #&gt; 151           HIC       national           national             3
-#&gt; 152           LIC       national           national             3
+#&gt; 152           HIC       national           national             3
 #&gt; 153           LIC       national           national             3
-#&gt; 154           LIC       national           national             3
-#&gt; 155           UMC       national           national             3
-#&gt; 156           LMC       national           national             3
-#&gt; 157           LIC       national           national             3
-#&gt; 158           UMC       national           national             3
-#&gt; 159           HIC       national           national             3
-#&gt; 160           LMC       national           national             3
-#&gt; 161           UMC       national           national             3
-#&gt; 162           UMC       national           national             3
+#&gt; 154           HIC       national           national             3
+#&gt; 155           LIC       national           national             3
+#&gt; 156           LIC       national           national             3
+#&gt; 157           UMC       national           national             3
+#&gt; 158           LMC       national           national             3
+#&gt; 159           LIC       national           national             3
+#&gt; 160           UMC       national           national             3
+#&gt; 161           HIC       national           national             3
+#&gt; 162           LMC       national           national             3
 #&gt; 163           UMC       national           national             3
-#&gt; 164           LIC       national           national             3
-#&gt; 165           LMC       national           national             3
-#&gt; 166           HIC       national           national             3
-#&gt; 167           HIC       national           national             3
+#&gt; 164           UMC       national           national             3
+#&gt; 165           UMC       national           national             3
+#&gt; 166           LIC       national           national             3
+#&gt; 167           LMC       national           national             3
 #&gt; 168           HIC       national           national             3
-#&gt; 169           HIC          urban              urban             2
-#&gt; 170           LMC       national           national             3
-#&gt; 171           LMC       national           national             3
-#&gt; 172           UMC       national           national             3
+#&gt; 169           HIC       national           national             3
+#&gt; 170           HIC       national           national             3
+#&gt; 171           HIC       national           national             3
+#&gt; 172           HIC          urban              urban             2
 #&gt; 173           LMC       national           national             3
 #&gt; 174           LMC       national           national             3
-#&gt; 175           LIC       national           national             3
+#&gt; 175           UMC       national           national             3
 #&gt; 176           LMC       national           national             3
-#&gt; 177           LIC       national           national             3
-#&gt;                                                                                                                                                                                                                       year
-#&gt; 1                                                                                                                                                                                             1996, 2002, 2005, 2008, 2012
-#&gt; 2                                                                                                                                                                                                         1988, 1995, 2011
-#&gt; 3                                                                                                                                                                                                               2000, 2008
-#&gt; 4                                             1980, 1986, 1987, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016, 2017
-#&gt; 5                                                                                                         1996, 1999, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 6                                                                                                                                                               1981, 1985, 1989, 1995, 2001, 2003, 2004, 2008, 2010, 2014
-#&gt; 7                                                                                                                                             2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 8                                                                                                                                                                                       1995, 2001, 2002, 2003, 2004, 2005
-#&gt; 9                                                                                                                                                                     1983, 1985, 1988, 1991, 1995, 2000, 2005, 2010, 2016
-#&gt; 10                                                                                      1993, 1995, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 11                                                                                                                                            2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 12                                                                                                                                                                                1993, 1994, 1995, 1996, 1997, 1998, 1999
-#&gt; 13                                                                                                                                                                                                        2003, 2011, 2015
-#&gt; 14                                                                                                                                                                                                  2003, 2007, 2012, 2017
-#&gt; 15                                                                                                        1990, 1997, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 16                                                                                                                                                                                                                    1992
-#&gt; 17                                                                                                                                                                                                  2001, 2004, 2007, 2011
-#&gt; 18                                                                                                                                                                                            1985, 1993, 2002, 2009, 2015
-#&gt; 19                    1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1992, 1993, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 20                                                                                                                    1989, 1992, 1994, 1995, 1997, 2001, 2003, 2006, 2007, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014
-#&gt; 21                                                                                                                                                                                            1994, 1998, 2003, 2009, 2014
-#&gt; 22                                                                                                                                                                                                  1992, 1998, 2006, 2013
-#&gt; 23                                                                                                                                                                                                              2001, 2007
-#&gt; 24                                                                                                                                                                                                  1996, 2001, 2007, 2014
-#&gt; 25                                                                                                                                                        1981, 1987, 1991, 1994, 1997, 1998, 2000, 2004, 2007, 2010, 2013
-#&gt; 26                                                                                                                                                                                                        1992, 2003, 2008
-#&gt; 27                                                                                                                                                                                                              2003, 2011
-#&gt; 28                                                                                                                                      1987, 1990, 1992, 1994, 1996, 1998, 2000, 2003, 2006, 2009, 2011, 2013, 2015, 2017
-#&gt; 29                                                                                                                          1981, 1984, 1987, 1990, 1993, 1996, 1999, 2002, 2005, 2008, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 30                                                                                                                          1981, 1984, 1987, 1990, 1993, 1996, 1999, 2002, 2005, 2008, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 31                                                                                                                          1981, 1984, 1987, 1990, 1993, 1996, 1999, 2002, 2005, 2008, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 32                                                                                                        1992, 1996, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 33                                                                                                                                                                                                  1980, 1988, 1989, 1991
-#&gt; 34                                                                                                                                                                                                              2004, 2013
-#&gt; 35                                                                                                                                                                                                              2004, 2012
-#&gt; 36                                                                                                                                                                                                              2005, 2011
-#&gt; 37                                1981, 1986, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 38                                                                                                                                                              1985, 1986, 1987, 1988, 1992, 1995, 1998, 2002, 2008, 2015
-#&gt; 39                                                                                                                          1988, 1998, 1999, 2000, 2001, 2004, 2008, 2009, 2009, 2010, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 40                                                                                                                                                  2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 41                                                                                                                                      1993, 1996, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 42                                                                                                                                            2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 43                                                                                                                                                                                                  2002, 2012, 2013, 2017
-#&gt; 44                                                                                      1986, 1989, 1992, 1996, 1997, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016
-#&gt; 45                                                                                                  1987, 1994, 1998, 1999, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 46                                                                                                                                                                                                                    1995
-#&gt; 47                                                                                                                                                                          1990, 1995, 1999, 2004, 2008, 2010, 2012, 2015
-#&gt; 48                                                                          1989, 1991, 1995, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 49                                                                                            1993, 1995, 1998, 2000, 2001, 2002, 2003, 2003, 2004, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 50                                                                                                                                                                                                        1994, 2000, 2009
-#&gt; 51                                                                                                                                                                                            1995, 1999, 2004, 2010, 2015
-#&gt; 52                                                                                                                                                                                                                    1981
-#&gt; 53                                                                                                                                                                                                        2002, 2008, 2013
-#&gt; 54                                                                                                                                            2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 55                                                                                                                                            2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 56                                                                                                                                                                                                              2005, 2017
-#&gt; 57                                                                                                                                                                                                  1998, 2003, 2010, 2015
-#&gt; 58                                                                                      1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 59                                                                                                              1991, 1994, 1995, 1998, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013, 2015
-#&gt; 60                                                                                                                                                                                1987, 1988, 1991, 1998, 2005, 2012, 2016
-#&gt; 61                                                                                                                                            2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 62                                                                                                                                                                                      1986, 1989, 1998, 2000, 2006, 2014
-#&gt; 63                                                                                                                                                                                            1991, 1994, 2002, 2007, 2012
-#&gt; 64                                                                                                                                                                                                  1991, 1993, 2002, 2010
-#&gt; 65                                                                                                                                                                                                              1992, 1998
-#&gt; 66                                                                                                                                                                                                        2001, 2012, 2012
-#&gt; 67                                                  1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 68                                                                                                                                                                                                                    1986
-#&gt; 69                                                                    1987, 1989, 1993, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2004, 2005, 2005, 2006, 2006, 2007, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 70                                                                                                                                                  2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014
-#&gt; 71                                                                                                                                                                                1977, 1983, 1987, 1993, 2004, 2009, 2011
-#&gt; 72                                                                                                                                                                                1977, 1983, 1987, 1993, 2004, 2009, 2011
-#&gt; 73                                                                                                                                                                                1977, 1983, 1987, 1993, 2004, 2009, 2011
-#&gt; 74                                                                    1984, 1987, 1990, 1993, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 75                                                                    1984, 1987, 1990, 1993, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 76                                                                    1984, 1987, 1990, 1993, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 77                                                                                                                                                        1986, 1990, 1994, 1998, 2005, 2006, 2009, 2013, 2014, 2015, 2016
-#&gt; 78                                                                                                                                                                                                              2006, 2012
-#&gt; 79                                                                                                                                            2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 80                                                                                                                                                        1979, 1986, 1992, 1997, 2001, 2005, 2007, 2010, 2012, 2014, 2016
-#&gt; 81                                                                                                                                            2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 82                                                                                                                                                                                1988, 1990, 1993, 1996, 1999, 2002, 2004
-#&gt; 83                                                                                                                                                                                                                    2008
-#&gt; 84                                                                                                                                                                                1986, 1992, 1997, 2002, 2006, 2008, 2010
-#&gt; 85                                                                                                        1993, 1996, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 86                                                                                                                                                                                            1992, 1994, 1997, 2005, 2015
-#&gt; 87                                                                                                                                                                                                                    2006
-#&gt; 88                                                                                                                                                                                                  2006, 2008, 2010, 2012
-#&gt; 89                                                                                                                                                  2003, 2005, 2006, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 90                                                                                                        1998, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 91                                                                                                                                                                                            1992, 1997, 2002, 2007, 2012
-#&gt; 92                                                                                1993, 1995, 1996, 1997, 1998, 2002, 2003, 2004, 2004, 2005, 2006, 2007, 2007, 2008, 2008, 2009, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 93                                                                                                                                                                                                                    2011
-#&gt; 94                                                                                                                                                                                                  1986, 1994, 2002, 2010
-#&gt; 95                                                                                                                                                                                                        2007, 2014, 2016
-#&gt; 96                                                                                      1993, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2004, 2005, 2006, 2007, 2008, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 97                                                                                                                                            2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 98                                                                                                                                                                          1980, 1993, 1997, 1999, 2001, 2005, 2010, 2012
-#&gt; 99                                                                                                                                                                                                  1997, 2004, 2010, 2016
-#&gt; 100                                                                                                                                                 1984, 1987, 1989, 1992, 1995, 1997, 2004, 2007, 2008, 2011, 2013, 2015
-#&gt; 101                                                                                                                                                                                                             2002, 2009
-#&gt; 102                                                                                                                                                                                                 1994, 2001, 2006, 2009
-#&gt; 103                                                                                                                                                             2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 104                                                                                                                                                                               1987, 1993, 1995, 2000, 2004, 2008, 2014
-#&gt; 105                                                                                                                                                                                                             2006, 2012
-#&gt; 106                                     1984, 1989, 1992, 1992, 1994, 1994, 1996, 1996, 1998, 1998, 2000, 2000, 2002, 2002, 2004, 2004, 2005, 2005, 2006, 2006, 2008, 2008, 2010, 2010, 2012, 2012, 2014, 2014, 2016, 2016
-#&gt; 107                                                                                                                                                                                                             2005, 2013
-#&gt; 108                                                                                                                                                                                                                   2000
-#&gt; 109                                                                                           1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 110                                                                                                                                                                   1995, 1998, 2002, 2007, 2010, 2011, 2012, 2014, 2016
-#&gt; 111                                                                                                                                                             2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014
-#&gt; 112                                                                                                                                                                                     1984, 1990, 1998, 2000, 2006, 2013
-#&gt; 113                                                                                                                                                                                                 1996, 2002, 2008, 2014
-#&gt; 114                                                                                                                                                                                                                   2015
-#&gt; 115                                                                                                                                                                                                 1993, 2003, 2009, 2015
-#&gt; 116                                                                                                                                                                                                 1984, 1995, 2003, 2010
-#&gt; 117                                                                                                                                                 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 118                                                                                                                                                             1993, 1993, 1998, 1998, 2001, 2001, 2005, 2005, 2009, 2014
-#&gt; 119                                                                                                                                                                                     1992, 1994, 2005, 2007, 2011, 2014
-#&gt; 120                                                                                                                                                                                           1985, 1992, 1996, 2003, 2009
-#&gt; 121                                                                                                                               1998, 2000, 2002, 2003, 2004, 2005, 2006, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 122                                                                                                                                           2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 123                                                                                                                                                 1987, 1990, 1996, 1998, 2001, 2004, 2005, 2007, 2010, 2011, 2013, 2015
-#&gt; 124                                                                   1979, 1989, 1991, 1995, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 125                                                                                                                                                                                                             1996, 2009
-#&gt; 126                                                                                           1990, 1995, 1997, 1999, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 127                                                                               1985, 1994, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 128                                                                                                                   1985, 1988, 1991, 1994, 1997, 2000, 2000, 2003, 2003, 2006, 2006, 2009, 2009, 2012, 2012, 2015, 2015
-#&gt; 129 1985, 1987, 1989, 1993, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2004, 2005, 2005, 2006, 2006, 2007, 2007, 2008, 2008, 2009, 2009, 2010, 2010, 2011, 2011, 2012, 2012, 2013, 2013, 2014, 2014, 2015, 2015, 2016
-#&gt; 130                                                                                                                                           2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 131                                     1989, 1992, 1994, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2006, 2007, 2007, 2008, 2008, 2009, 2009, 2010, 2010, 2011, 2011, 2012, 2012, 2013, 2013, 2014, 2015, 2016
-#&gt; 132                                                                                           1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 133                                                                                                                                                                                     1984, 2000, 2005, 2010, 2013, 2016
-#&gt; 134                                                                                                                                                                                                       2002, 2008, 2013
-#&gt; 135                                                                                                                                                                                                             2000, 2010
-#&gt; 136                                                                                                                                                                                           1991, 1994, 2001, 2005, 2011
-#&gt; 137                                                                                                                               2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012, 2013, 2013, 2014, 2015, 2015
-#&gt; 138                                                                                                                                                                                                       1999, 2006, 2013
-#&gt; 139                                                                                                                                                                                                       1989, 2003, 2011
-#&gt; 140                                                                                                       1996, 2004, 2004, 2005, 2005, 2006, 2006, 2007, 2007, 2008, 2008, 2009, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 141                                                                                                                         1993, 1998, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 142                                                                                                                                                                                                             2005, 2013
-#&gt; 143                                                                                                                                                                               1993, 1996, 2000, 2005, 2008, 2010, 2014
-#&gt; 144                                                                                                                                                                                                                   2009
-#&gt; 145                                                                                                                                           2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 146                                                                                                                                                                         1985, 1990, 1995, 2002, 2006, 2009, 2012, 2016
-#&gt; 147                                                                                                                                                                                                             1995, 2016
-#&gt; 148                                                                                                                                                                                                                   2009
-#&gt; 149                                                                                                                                                                                                                   1999
-#&gt; 150                                                                                                                                           2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 151                                                                                                                                                             2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 152                                                                                                                                                                                                                   2004
-#&gt; 153                                                                                                                                                                                     1999, 2003, 2004, 2007, 2009, 2015
-#&gt; 154                                                                                                                                                                                                 1991, 2000, 2007, 2011
-#&gt; 155                                                                               1981, 1988, 1990, 1992, 1994, 1996, 1998, 1999, 2000, 2002, 2004, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 156                                                                                                                                                                                                       2001, 2007, 2014
-#&gt; 157                                                                                                                                                                                                       2006, 2011, 2015
-#&gt; 158                                                                                                                                                                                                       2001, 2009, 2015
-#&gt; 159                                                                                                                                                                                                             1988, 1992
-#&gt; 160                                                                                                                                                                               1985, 1990, 1995, 2000, 2005, 2010, 2015
-#&gt; 161                                                                                                                   1987, 1994, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016
-#&gt; 162                                                                                                                                                                                                                   1998
-#&gt; 163                                                                                                                                                                                                                   2010
-#&gt; 164                                                                                                                                                                   1989, 1992, 1996, 1999, 2002, 2005, 2009, 2012, 2016
-#&gt; 165                                                                                                 1992, 1993, 1995, 1996, 1999, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016
-#&gt; 166                                                                                                                                                 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-#&gt; 167                                                                                                                                                       1979, 1986, 1991, 1994, 1997, 2000, 2004, 2007, 2010, 2013, 2016
-#&gt; 168                                                                                                                                     1981, 1989, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-#&gt; 169                                                                                                                                                       1992, 1995, 1996, 1997, 1998, 2000, 2001, 2002, 2003, 2004, 2005
-#&gt; 170                                                                                                                                                                                                 1998, 2000, 2002, 2003
-#&gt; 171                                                                                                                                                                                                                   2010
-#&gt; 172                                                                                                                                           1981, 1987, 1989, 1992, 1995, 1998, 1999, 2001, 2002, 2003, 2004, 2005, 2006
-#&gt; 173                                                                                                                                                             1992, 1998, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016
-#&gt; 174                                                                                                                                                                         2004, 2005, 2006, 2007, 2009, 2010, 2011, 2016
-#&gt; 175                                                                                                                                                                                                       1998, 2005, 2014
-#&gt; 176                                                                                                                                                                   1991, 1993, 1996, 1998, 2002, 2004, 2006, 2010, 2015
-#&gt; 177                                                                                                                                                                                                                   2011</div><div class='input'># }
+#&gt; 177           LMC       national           national             3
+#&gt; 178           LIC       national           national             3
+#&gt; 179           LMC       national           national             3
+#&gt; 180           LIC       national           national             3
+#&gt;                                                                                                                                                                                                                                                           year
+#&gt; 1                                                                                                                                                                                                         1996, 2002, 2005, 2008, 2012, 2014, 2015, 2016, 2017
+#&gt; 2                                                                                                                                                                                                                                             1988, 1995, 2011
+#&gt; 3                                                                                                                                                                                                                                             2000, 2008, 2018
+#&gt; 4                                                                           1980, 1986, 1987, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016, 2017, 2018
+#&gt; 5                                                                                                                                       1996, 1999, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 6                                                                                                                                                                                                   1981, 1985, 1989, 1995, 2001, 2003, 2004, 2008, 2010, 2014
+#&gt; 7                                                                                                                                       1987, 1994, 1995, 1997, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 8                                                                                                                                                                                                                           1995, 2001, 2002, 2003, 2004, 2005
+#&gt; 9                                                                                                                                                                                                         1983, 1985, 1988, 1991, 1995, 2000, 2005, 2010, 2016
+#&gt; 10                                                                                                                    1993, 1995, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 11                                                                                                                                1985, 1988, 1992, 1995, 1997, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 12                                                                                                                                                                                                                    1993, 1994, 1995, 1996, 1997, 1998, 1999
+#&gt; 13                                                                                                                                                                                                                                            2003, 2011, 2015
+#&gt; 14                                                                                                                                                                                                                                      2003, 2007, 2012, 2017
+#&gt; 15                                                                                                                                      1992, 1997, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 16                                                                                                                                                                                                                                                        1990
+#&gt; 17                                                                                                                                                                                                                                      2001, 2004, 2007, 2011
+#&gt; 18                                                                                                                                                                                                                                1985, 1993, 2002, 2009, 2015
+#&gt; 19                                                  1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1992, 1993, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 20                                                                                                                                      1989, 1992, 1994, 1995, 1997, 2001, 2003, 2006, 2007, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 21                                                                                                                                                                                                                                1994, 1998, 2003, 2009, 2014
+#&gt; 22                                                                                                                                                                                                                                      1992, 1998, 2006, 2013
+#&gt; 23                                                                                                                                                                                                                                            2001, 2007, 2015
+#&gt; 24                                                                                                                                                                                                                                      1996, 2001, 2007, 2014
+#&gt; 25                                                                                                                                                                                1971, 1975, 1981, 1987, 1991, 1994, 1997, 1998, 2000, 2004, 2007, 2010, 2013
+#&gt; 26                                                                                                                                                                                                                                            1992, 2003, 2008
+#&gt; 27                                                                                                                                                                                                                                                  2003, 2011
+#&gt; 28                                                                                                                                                                          1987, 1990, 1992, 1994, 1996, 1998, 2000, 2003, 2006, 2009, 2011, 2013, 2015, 2017
+#&gt; 29                                                                                                                                                        1981, 1984, 1987, 1990, 1993, 1996, 1999, 2002, 2005, 2008, 2010, 2011, 2012, 2013, 2014, 2015, 2016
+#&gt; 30                                                                                                                                                        1981, 1984, 1987, 1990, 1993, 1996, 1999, 2002, 2005, 2008, 2010, 2011, 2012, 2013, 2014, 2015, 2016
+#&gt; 31                                                                                                                                                        1981, 1984, 1987, 1990, 1993, 1996, 1999, 2002, 2005, 2008, 2010, 2011, 2012, 2013, 2014, 2015, 2016
+#&gt; 32                                                                                                                                      1992, 1996, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 33                                                                                                                                                                                                                                      1980, 1988, 1989, 1991
+#&gt; 34                                                                                                                                                                                                                                                  2004, 2014
+#&gt; 35                                                                                                                                                                                                                                                  2004, 2012
+#&gt; 36                                                                                                                                                                                                                                                  2005, 2011
+#&gt; 37                                                              1981, 1986, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 38                                                                                                                                                                                                  1985, 1986, 1987, 1988, 1992, 1995, 1998, 2002, 2008, 2015
+#&gt; 39                                                                                                                                                  1988, 1998, 1999, 2000, 2001, 2004, 2008, 2009, 2009, 2010, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 40                                                                                                                                                                          2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 41                                                                                                                                                  1992, 1993, 1996, 2002, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 42                                                                                                                                            1987, 1992, 1995, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 43                                                                                                                                                                                                                                      2002, 2012, 2013, 2017
+#&gt; 44                                                                                                              1986, 1989, 1992, 1996, 1997, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 45                                                                                                                                            1994, 1999, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 46                                                                                                                                                                                                                                            1987, 1995, 1998
+#&gt; 47                                                                                                                                                                                                        1990, 1995, 1999, 2004, 2008, 2010, 2012, 2015, 2017
+#&gt; 48                                                                                                        1989, 1991, 1995, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 49                                                                                                                    1993, 1995, 1998, 2000, 2001, 2002, 2003, 2003, 2004, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 50                                                                                                                                                                                                                                      1994, 2000, 2009, 2016
+#&gt; 51                                                                                                                                                                                                                                1995, 1999, 2004, 2010, 2015
+#&gt; 52                                                                                                                                                                                                                                                        1981
+#&gt; 53                                                                                                                                                                                                                                            2002, 2008, 2013
+#&gt; 54                                                                                                                                            1987, 1991, 1995, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 55                                                                                                                                      1978, 1984, 1989, 1994, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 56                                                                                                                                                                                                                                                  2005, 2017
+#&gt; 57                                                                                                                                                                                                                                      1998, 2003, 2010, 2015
+#&gt; 58                                                                                                                    1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 59                                                                                                                                            1991, 1994, 1995, 1998, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016
+#&gt; 60                                                                                                                                                                                                                    1987, 1988, 1991, 1998, 2005, 2012, 2016
+#&gt; 61                                                                                                                                                        1995, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 62                                                                                                                                                                                                                          1986, 1989, 1998, 2000, 2006, 2014
+#&gt; 63                                                                                                                                                                                                                                1991, 1994, 2002, 2007, 2012
+#&gt; 64                                                                                                                                                                                                                                      1991, 1993, 2002, 2010
+#&gt; 65                                                                                                                                                                                                                                                  1992, 1998
+#&gt; 66                                                                                                                                                                                                                                            2001, 2012, 2012
+#&gt; 67                                                                                1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 68                                                                                                                                                                                                                                                        1986
+#&gt; 69                                                                          1987, 1989, 1991, 1993, 1994, 1998, 1999, 1999, 2000, 2001, 2002, 2003, 2004, 2004, 2005, 2005, 2006, 2006, 2007, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 70                                                                                                                                                                                2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
+#&gt; 71                                                                                                                                                                                                                    1977, 1983, 1987, 1993, 2004, 2009, 2011
+#&gt; 72                                                                                                                                                                                                                    1977, 1983, 1987, 1993, 2004, 2009, 2011
+#&gt; 73                                                                                                                                                                                                                    1977, 1983, 1987, 1993, 2004, 2009, 2011
+#&gt; 74                                                                                                  1984, 1987, 1990, 1993, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 75                                                                                                  1984, 1987, 1990, 1993, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 76                                                                                                  1984, 1987, 1990, 1993, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 77                                                                                                                                                                                      1986, 1990, 1994, 1998, 2005, 2006, 2009, 2013, 2014, 2015, 2016, 2017
+#&gt; 78                                                                                                                                                                                                                                                  2006, 2012
+#&gt; 79                                                                                                                                            1987, 1994, 1995, 1996, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016
+#&gt; 80                                                                                                                                                                                            1979, 1986, 1992, 1997, 2001, 2005, 2007, 2010, 2012, 2014, 2016
+#&gt; 81                                                                                                                    1986, 1987, 1989, 1991, 1993, 1995, 1998, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 82                                                                                                                                                                                                                    1988, 1990, 1993, 1996, 1999, 2002, 2004
+#&gt; 83                                                                                                                                                                                                                                            2008, 2010, 2013
+#&gt; 84                                                                                                                                                                                                                    1986, 1992, 1997, 2002, 2006, 2008, 2010
+#&gt; 85                                                                                                                                            1993, 1996, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 86                                                                                                                                                                                                                                1992, 1994, 1997, 2005, 2015
+#&gt; 87                                                                                                                                                                                                                                                        2006
+#&gt; 88                                                                                                                                                                                                                                      2006, 2008, 2010, 2012
+#&gt; 89                                                                                                                                                                                      2003, 2005, 2006, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 90                                                                                                                                      1998, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 91                                                                                                                                                                                                                                1992, 1997, 2002, 2007, 2012
+#&gt; 92                                                                                                        1993, 1995, 1996, 1997, 1998, 2002, 2003, 2004, 2004, 2005, 2006, 2007, 2007, 2008, 2008, 2009, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 93                                                                                                                                                                                                                                                        2011
+#&gt; 94                                                                                                                                                                                                                                      1986, 1994, 2002, 2017
+#&gt; 95                                                                                                                                                                                                                                            2007, 2014, 2016
+#&gt; 96                                                                                                              1993, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2004, 2005, 2006, 2007, 2008, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 97                                                                                                                                      1985, 1991, 1994, 1997, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 98                                                                                                                                                                                                              1980, 1993, 1997, 1999, 2001, 2005, 2010, 2012
+#&gt; 99                                                                                                                                                                                                                                      1997, 2004, 2010, 2016
+#&gt; 100                                                                                                                                                                                     1984, 1987, 1989, 1992, 1995, 1997, 2004, 2007, 2008, 2011, 2013, 2015
+#&gt; 101                                                                                                                                                                                                                                           2002, 2009, 2016
+#&gt; 102                                                                                                                                                                                                                                     1994, 2001, 2006, 2009
+#&gt; 103                                                                                                                                                                                     2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 104                                                                                                                                                                                                                   1987, 1993, 1995, 2000, 2004, 2008, 2014
+#&gt; 105                                                                                                                                                                                                                                           2006, 2012, 2017
+#&gt; 106                                                                   1984, 1989, 1992, 1992, 1994, 1994, 1996, 1996, 1998, 1998, 2000, 2000, 2002, 2002, 2004, 2004, 2005, 2005, 2006, 2006, 2008, 2008, 2010, 2010, 2012, 2012, 2014, 2014, 2016, 2016, 2018
+#&gt; 107                                                                                                                                                                                                                                                 2005, 2013
+#&gt; 108                                                                                                                                                                                                                                                       2000
+#&gt; 109                                                                                                                         1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 110                                                                                                                                                                                                 1995, 1998, 2002, 2007, 2010, 2011, 2012, 2014, 2016, 2018
+#&gt; 111                                                                                                                                                                         2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2012, 2013, 2013, 2014, 2014, 2015
+#&gt; 112                                                                                                                                                                                                                         1984, 1990, 1998, 2000, 2006, 2013
+#&gt; 113                                                                                                                                                                                                                                     1996, 2002, 2008, 2014
+#&gt; 114                                                                                                                                                                                                                                                 2015, 2017
+#&gt; 115                                                                                                                                                                                                                                     1993, 2003, 2009, 2015
+#&gt; 116                                                                                                                                                                                                                                     1984, 1995, 2003, 2010
+#&gt; 117                                                                                                                                           1983, 1987, 1990, 1993, 1999, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 118                                                                                                                                                                                                 1993, 1993, 1998, 1998, 2001, 2001, 2005, 2005, 2009, 2014
+#&gt; 119                                                                                                                                                                                                                         1992, 1994, 2005, 2007, 2011, 2014
+#&gt; 120                                                                                                                                                                                                                               1985, 1992, 1996, 2003, 2009
+#&gt; 121                                                                                                                                                       1998, 2000, 2002, 2003, 2004, 2005, 2006, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 122                                                                                                                                     1979, 1986, 1991, 1995, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 123                                                                                                                                                                                     1987, 1990, 1996, 1998, 2001, 2004, 2005, 2007, 2010, 2011, 2013, 2015
+#&gt; 124                                                                                                 1979, 1989, 1991, 1995, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 125                                                                                                                                                                                                                                                 1996, 2009
+#&gt; 126                                                                                                                         1990, 1995, 1997, 1999, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 127                                                                                                             1985, 1994, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 128                                                                                                                                                                               1985, 1988, 1991, 1994, 1997, 2000, 2000, 2003, 2006, 2009, 2012, 2015, 2015
+#&gt; 129 1985, 1986, 1987, 1989, 1992, 1993, 1995, 1996, 1998, 1999, 1999, 2000, 2001, 2002, 2003, 2004, 2004, 2005, 2005, 2006, 2006, 2007, 2007, 2008, 2008, 2009, 2009, 2010, 2010, 2011, 2011, 2012, 2012, 2013, 2013, 2014, 2014, 2015, 2015, 2016, 2016, 2017
+#&gt; 130                                                                                                                                                                   2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 131                                                 1989, 1992, 1994, 1995, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2006, 2007, 2007, 2008, 2008, 2009, 2009, 2010, 2010, 2011, 2011, 2012, 2012, 2013, 2013, 2014, 2015, 2016, 2016, 2017
+#&gt; 132                                                                                                             1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 133                                                                                                                                                                                                                               2000, 2005, 2010, 2013, 2016
+#&gt; 134                                                                                                                                                                                                                                                       1984
+#&gt; 135                                                                                                                                                                                                                                           2002, 2008, 2013
+#&gt; 136                                                                                                                                                                                                                                           2000, 2010, 2017
+#&gt; 137                                                                                                                                                                                                                               1991, 1994, 2001, 2005, 2011
+#&gt; 138                                                                                                                                                 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012, 2013, 2013, 2014, 2015, 2015, 2016, 2017, 2018
+#&gt; 139                                                                                                                                                                                                                                           1999, 2006, 2013
+#&gt; 140                                                                                                                                                                                                                                     1989, 2003, 2011, 2018
+#&gt; 141                                                                                                                               1992, 1996, 2004, 2004, 2005, 2005, 2006, 2006, 2007, 2007, 2008, 2008, 2009, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016
+#&gt; 142                                                                                                                               1987, 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 143                                                                                                                                                                                                                                                 2005, 2013
+#&gt; 144                                                                                                                                                                                                                   1993, 1996, 2000, 2005, 2008, 2010, 2014
+#&gt; 145                                                                                                                                                                                                                                                       2009
+#&gt; 146                                                                                                                                     1980, 1985, 1990, 1995, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 147                                                                                                                                                                                                             1985, 1990, 1995, 2002, 2006, 2009, 2012, 2016
+#&gt; 148                                                                                                                                                                                                                                                 1995, 2016
+#&gt; 149                                                                                                                                                                                                                                                 2009, 2014
+#&gt; 150                                                                                                                                                                                                                                                       1999
+#&gt; 151                                                                                                                         1967, 1975, 1981, 1987, 1992, 1995, 2000, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 152                                                                                                                                                             1982, 1992, 2000, 2002, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+#&gt; 153                                                                                                                                                                                                                                                       2004
+#&gt; 154                                                                                                                                                                                           1981, 1986, 1991, 1995, 1997, 2000, 2005, 2007, 2010, 2013, 2016
+#&gt; 155                                                                                                                                                                                                                         1999, 2003, 2004, 2007, 2009, 2015
+#&gt; 156                                                                                                                                                                                                                               1991, 2000, 2007, 2011, 2017
+#&gt; 157                                                                                                             1981, 1988, 1990, 1992, 1994, 1996, 1998, 1999, 2000, 2002, 2004, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 158                                                                                                                                                                                                                                           2001, 2007, 2014
+#&gt; 159                                                                                                                                                                                                                                           2006, 2011, 2015
+#&gt; 160                                                                                                                                                                                                                                           2001, 2009, 2015
+#&gt; 161                                                                                                                                                                                                                                                 1988, 1992
+#&gt; 162                                                                                                                                                                                                                   1985, 1990, 1995, 2000, 2005, 2010, 2015
+#&gt; 163                                                                                                                                           1987, 1994, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 164                                                                                                                                                                                                                                                       1998
+#&gt; 165                                                                                                                                                                                                                                                       2010
+#&gt; 166                                                                                                                                                                                                       1989, 1992, 1996, 1999, 2002, 2005, 2009, 2012, 2016
+#&gt; 167                                                                                                                         1992, 1993, 1995, 1996, 1999, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 168                                                                                                                                                                                                                                                       2014
+#&gt; 169                                                                                                                               1969, 1974, 1979, 1986, 1991, 1994, 1995, 1999, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016
+#&gt; 170                                                                                                                                                                                     1974, 1979, 1986, 1991, 1994, 1997, 2000, 2004, 2007, 2010, 2013, 2016
+#&gt; 171                                                                                                             1992, 1995, 1996, 1997, 1998, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+#&gt; 172                                                                                                                                                                                                                                                 1981, 1989
+#&gt; 173                                                                                                                                                                                                                                     1998, 2000, 2002, 2003
+#&gt; 174                                                                                                                                                                                                                                                       2010
+#&gt; 175                                                                                                                                                                               1981, 1987, 1989, 1992, 1995, 1998, 1999, 2001, 2002, 2003, 2004, 2005, 2006
+#&gt; 176                                                                                                                                                                                           1992, 1998, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018
+#&gt; 177                                                                                                                                                                                                             2004, 2005, 2006, 2007, 2009, 2010, 2011, 2016
+#&gt; 178                                                                                                                                                                                                                                           1998, 2005, 2014
+#&gt; 179                                                                                                                                                                                                       1991, 1993, 1996, 1998, 2002, 2004, 2006, 2010, 2015
+#&gt; 180                                                                                                                                                                                                                                                 2011, 2017</div><div class='input'># }
 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -708,7 +716,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

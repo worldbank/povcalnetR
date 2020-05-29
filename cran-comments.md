@@ -1,5 +1,5 @@
 ## Resubmission
-This is a resubmission. In this version I have:
+This is a patch submission. In this version I have:
 
 Addressed the issues listed in [Check Results](https://cran.r-project.org/web/checks/check_results_povcalnetR.html)
 
