@@ -42,14 +42,14 @@ povcalnet <- function(country   = "all",
 
   # STEP 1: build query string
   query <- build_query_string(
-    country = country,
-    povline = povline,
-    year = year,
+    country   = country,
+    povline   = povline,
+    year      = year,
     aggregate = aggregate,
     fill_gaps = fill_gaps,
-    coverage = coverage,
-    ppp = ppp,
-    format = format
+    coverage  = coverage,
+    ppp       = ppp,
+    format    = format
   )
 
   # Special case handling WORLD level aggregate
@@ -57,16 +57,17 @@ povcalnet <- function(country   = "all",
   # Should ideally be removed. Breaks the logic of the package
   if (length(country) == 1 & "all" %in% country & aggregate == TRUE) {
     out <- povcalnet_wb(povline = povline,
-                        year = year,
-                        url = url,
-                        format = format)
+                        year    = year,
+                        url     = url,
+                        format  = format)
+
     out <- out[out$regioncode == "WLD", ]
 
     return(out)
   }
 
   # STEP 2: build URL
-  url <- httr::modify_url(url, path = api_handle(), query = query)
+  url <- httr::modify_url(url, path = api_handle(server), query = query)
 
   # STEP 3: retrieve data
   res <- httr::GET(url = url)

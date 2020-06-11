@@ -18,14 +18,17 @@
 #' }
 povcalnet_wb <- function(povline = 1.9,
                          year = "all",
-                         url = "http://iresearch.worldbank.org",
+                         server    = NULL,
                          format = "csv") {
+
+  # Get URL
+  url <- pt_geturl(server = server)
 
   # STEP 1: Build query
   query <- paste0("GroupedBy=WB&YearSelected=", year, "&PovertyLine=", povline, "&Countries=all&format=", format)
 
   # STEP 2: build URL
-  url <- httr::modify_url(url, path = api_handle(), query = query)
+  url <- httr::modify_url(url, path = api_handle(server), query = query)
 
   # STEP 3: retrieve data
   res <- httr::GET(url = url)

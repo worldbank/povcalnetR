@@ -27,10 +27,12 @@
 povcalnet_cl <- function(country,
                          povline,
                          year,
-                         coverage = NULL,
-                         ppp = NULL,
-                         url = "http://iresearch.worldbank.org",
-                         format = "csv") {
+                         coverage  = NULL,
+                         ppp       = NULL,
+                         server    = NULL,
+                         format    = "csv") {
+  # Get URL
+  url <- pt_geturl(server = server)
 
   # STEP 1: build query string
   query <- build_query_string_cl(
@@ -43,7 +45,7 @@ povcalnet_cl <- function(country,
   )
 
   # STEP 2: build URL
-  url <- httr::modify_url(url, path = api_handle(), query = query)
+  url <- httr::modify_url(url, path = api_handle(server), query = query)
 
   # STEP 3: retrieve data
   res <- httr::GET(url = url)

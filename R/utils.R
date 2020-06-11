@@ -1,5 +1,60 @@
 # Helpers
-api_handle <- function() "povcalnet/povcalnetapi.ashx"
+#----------------------------------------------------------
+#   URL related functions
+#----------------------------------------------------------
+
+pt_geturl <- function(server = NULL) {
+  if (is.null(server)) {
+    url <-  "http://iresearch.worldbank.org"
+  } else{
+    server <- tolower(server)
+    if (length(server) > 1) {
+      sm <- paste("`server` should be length 1, not", length(server))
+      stop(sm)
+    }
+
+    if (server == "int") {
+
+      url <- Sys.getenv("pcn_svr_in")
+
+    } else if (server == "testing") {
+
+      url <- Sys.getenv("pcn_svr_ts")
+
+    } else if (server == "ar") {
+
+      url <- Sys.getenv("pcn_svr_ar")
+
+    } else {
+      stop("the server key specified does not have an API root URL associated")
+    }
+
+
+    if (url == "") {
+      warning("You don't have access to internal API roots. Default url will be used")
+      url <-  "http://iresearch.worldbank.org"
+    }
+  }
+
+  return(url)
+}
+
+api_handle <- function(server = NULL) {
+  if (is.null(server)) {
+    handle <- "povcalnet/povcalnetapi.ashx"
+  } else if (tolower(server)  %in%  c("int", "testing", "ar") ) {
+    handle <- "povcalnetapi.ashx"
+  } else {
+    warning("server not available. Default will be used")
+    handle <- "povcalnet/povcalnetapi.ashx"
+  }
+
+  return(handle)
+}
+
+#----------------------------------------------------------
+#   Data formating
+#----------------------------------------------------------
 
 format_data <- function(x, coverage, aggregate) {
 
@@ -131,45 +186,5 @@ handle_empty_response <- function(x, aggregate) {
     colnames(x) <- povcal_col_names_agg
   }
   return(x)
-}
-
-#----------------------------------------------------------
-#   Function to get url
-#----------------------------------------------------------
-
-pt_geturl <- function(server = NULL) {
-  if (is.null(server)) {
-    url <-  "http://iresearch.worldbank.org"
-  } else{
-    server <- tolower(server)
-    if (length(server) > 1) {
-      sm <- paste("`server` should be length 1, not", length(server))
-      stop(sm)
-    }
-
-    if (server == "int") {
-
-      url <- Sys.getenv("pcn_svr_in")
-
-    } else if (server == "testing") {
-
-      url <- Sys.getenv("pcn_svr_ts")
-
-    } else if (server == "ar") {
-
-      url <- Sys.getenv("pcn_svr_ar")
-
-    } else {
-      stop("the server key specified does not have an API root URL associated")
-    }
-
-
-    if (url == "") {
-      warning("You don't have access to internal API roots. Default url will be used")
-      url <-  "http://iresearch.worldbank.org"
-    }
-  }
-
-  return(NULL)
 }
 
