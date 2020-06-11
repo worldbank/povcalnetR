@@ -2,7 +2,8 @@
 #'
 #' Non-memoised version of povcalnet_info()
 #'
-#' @param url character: Path to file: This parameter should not be modified.
+#' @param server character: Key for API root URL. For testing purposes only.
+#' Should not be modified for 99% of users.
 #'
 #' @return data.frame
 #'
@@ -10,10 +11,15 @@
 #' \donttest{
 #' povcalnet_info()
 #' }
-povcal_info <- function(url = "http://iresearch.worldbank.org/povcalnet") {
+povcal_info <- function(server = NULL) {
+  # Adjust URL according to the selected server
+  handle <- api_handle(server)
+  handle <- stringr::str_extract(handle, "[^/]*")
 
-  url <- paste0(url, "/js/initCItem2014.js")
+  url <- pt_geturl(server)
+  url <- paste0(url, "/", handle, "/js/initCItem2014.js")
 
+  # Read and parse information
   x <- readLines(con = url)
   x <- js::esprima_parse(x)
   x <- jsonlite::fromJSON(x, simplifyVector = TRUE)

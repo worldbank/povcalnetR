@@ -5,12 +5,7 @@
 \title{povcalnet_wb
 Returns the official WB regional estimates}
 \usage{
-povcalnet_wb(
-  povline = 1.9,
-  year = "all",
-  url = "http://iresearch.worldbank.org",
-  format = "csv"
-)
+povcalnet_wb(povline = 1.9, year = "all", server = NULL, format = "csv")
 }
 \arguments{
 \item{povline}{numeric: poverty line (in 2011 PPP-adjusted USD) to
@@ -18,7 +13,7 @@ calculate poverty measures}
 
 \item{year}{numeric:  list of years, or `all`.}
 
-\item{url}{character: API root URL. For testing purposes only, should not be
+\item{server}{character: Key for API root URL. For testing purposes only, should not be
 changed for 99 percent of users.}
 
 \item{format}{character: Response format to be requested from the API:

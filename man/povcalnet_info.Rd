@@ -4,7 +4,7 @@
 \alias{povcalnet_info}
 \title{povcalnet_info()}
 \usage{
-povcalnet_info(url = "http://iresearch.worldbank.org/povcalnet")
+povcalnet_info(server = NULL)
 }
 \arguments{
 \item{url}{character: Path to file: This parameter should not be modified.}

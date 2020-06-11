@@ -13,7 +13,7 @@ povcalnet(
   fill_gaps = FALSE,
   coverage = "all",
   ppp = NULL,
-  url = "http://iresearch.worldbank.org",
+  server = NULL,
   format = "csv"
 )
 }
@@ -36,7 +36,7 @@ surveys are not available for a specific year.}
 
 \item{ppp}{numeric: Optional - Allows the selection of custom PPP (Purchasing Power Parity) exchange rates}
 
-\item{url}{character: API root URL. For testing purposes only, should not be
+\item{server}{character: Key for API root URL. For testing purposes only, should not be
 changed for 99 percent of users.}
 
 \item{format}{character: Response format to be requested from the API:
