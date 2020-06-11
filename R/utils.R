@@ -53,7 +53,7 @@ api_handle <- function(server = NULL) {
 }
 
 #----------------------------------------------------------
-#   Data formating
+#   Data formatting
 #----------------------------------------------------------
 
 format_data <- function(x, coverage, aggregate) {

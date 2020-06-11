@@ -11,7 +11,7 @@
 #' @param year numeric:  list of years, or `all`, or `last`.
 #' @param coverage character: Can take one of three values: `national`, `urban`, `rural`
 #' @param ppp numeric: Optional - Allows the selection of custom PPP (Purchasing Power Parity) exchange rates
-#' @param url character: API root URL. For testing purposes only, should not be
+#' @param server character: Key for API root URL. For testing purposes only, should not be
 #' changed for 99 percent of users.
 #' @param format character: Response format to be requested from the API:
 #' `csv` or `json`

@@ -4,7 +4,7 @@
 #' @param povline numeric: poverty line (in 2011 PPP-adjusted USD) to
 #' calculate poverty measures
 #' @param year numeric:  list of years, or `all`.
-#' @param url character: API root URL. For testing purposes only, should not be
+#' @param server character: Key for API root URL. For testing purposes only, should not be
 #' changed for 99 percent of users.
 #' @param format character: Response format to be requested from the API:
 #' `csv` or `json`
@@ -16,10 +16,10 @@
 #' \donttest{
 #' povcalnet_wb(year = 2015)
 #' }
-povcalnet_wb <- function(povline = 1.9,
-                         year = "all",
+povcalnet_wb <- function(povline   = 1.9,
+                         year      = "all",
                          server    = NULL,
-                         format = "csv") {
+                         format    = "csv") {
 
   # Get URL
   url <- pt_geturl(server = server)
