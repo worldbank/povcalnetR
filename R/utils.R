@@ -6,6 +6,19 @@
 pt_geturl <- function(server = NULL) {
   if (is.null(server)) {
     url <-  "http://iresearch.worldbank.org"
+  } else if (tolower(server)  %in%  c("int", "testing", "ar") ) {
+    url <- Sys.getenv("pcn_svr")
+  } else {
+    warning("server not available. Default will be used")
+    url <-  "http://iresearch.worldbank.org"
+  }
+
+  return(url)
+}
+
+api_handle <- function(server = NULL) {
+  if (is.null(server)) {
+    handle <- "povcalnet/povcalnetapi.ashx"
   } else{
     server <- tolower(server)
     if (length(server) > 1) {
@@ -15,38 +28,24 @@ pt_geturl <- function(server = NULL) {
 
     if (server == "int") {
 
-      url <- Sys.getenv("pcn_svr_in")
+      handle <- Sys.getenv("pcn_svr_in")
 
     } else if (server == "testing") {
 
-      url <- Sys.getenv("pcn_svr_ts")
+      handle <- Sys.getenv("pcn_svr_ts")
 
     } else if (server == "ar") {
 
-      url <- Sys.getenv("pcn_svr_ar")
+      handle <- Sys.getenv("pcn_svr_ar")
 
     } else {
       stop("the server key specified does not have an API root URL associated")
     }
 
-
-    if (url == "") {
+    if (handle == "") {
       warning("You don't have access to internal API roots. Default url will be used")
-      url <-  "http://iresearch.worldbank.org"
+      handle <- "povcalnet/povcalnetapi.ashx"
     }
-  }
-
-  return(url)
-}
-
-api_handle <- function(server = NULL) {
-  if (is.null(server)) {
-    handle <- "povcalnet/povcalnetapi.ashx"
-  } else if (tolower(server)  %in%  c("int", "testing", "ar") ) {
-    handle <- "povcalnetapi.ashx"
-  } else {
-    warning("server not available. Default will be used")
-    handle <- "povcalnet/povcalnetapi.ashx"
   }
 
   return(handle)
