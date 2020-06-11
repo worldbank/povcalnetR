@@ -12,7 +12,7 @@
 #' surveys are not available for a specific year.
 #' @param coverage character: Can take one of three values: `national`, `urban`, `rural`
 #' @param ppp numeric: Optional - Allows the selection of custom PPP (Purchasing Power Parity) exchange rates
-#' @param url character: API root URL. For testing purposes only, should not be
+#' @param server character: Key for API root URL. For testing purposes only, should not be
 #' changed for 99 percent of users.
 #' @param format character: Response format to be requested from the API:
 #' `csv` or `json`
@@ -26,15 +26,19 @@
 #' povcalnet(country = "ALB")
 #' }
 #'
-povcalnet <- function(country = "all",
-                      povline = 1.9,
-                      year = "all",
+povcalnet <- function(country   = "all",
+                      povline   = 1.9,
+                      year      = "all",
                       aggregate = FALSE,
                       fill_gaps = FALSE,
-                      coverage = "all",
-                      ppp = NULL,
-                      url = "http://iresearch.worldbank.org",
-                      format = "csv") {
+                      coverage  = "all",
+                      ppp       = NULL,
+                      server    = NULL,
+                      format    = "csv") {
+
+
+  # Get URL
+  url <- pt_geturl(server = server)
 
   # STEP 1: build query string
   query <- build_query_string(
