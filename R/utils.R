@@ -55,11 +55,11 @@ api_handle <- function(server = NULL) {
 #   Data formatting
 #----------------------------------------------------------
 
-format_data <- function(x, coverage, aggregate) {
+format_data <- function(x, aggregate, format) {
 
   if (aggregate == FALSE){
     x <- format_data_cl(x = x,
-                        coverage = coverage)
+                        format = format)
   } else {
     x <- format_data_aggregate(x = x)
   }
@@ -68,7 +68,31 @@ format_data <- function(x, coverage, aggregate) {
 
 
 
-format_data_cl <- function(x, coverage) {
+format_data_cl <- function(x, format) {
+
+  if (format == "csv") {
+    x <- format_data_cl_csv(x)
+  } else {
+    x <- format_data_cl_json(x)
+  }
+
+  # rename data_type to be more explicit
+  x$datatype <- datatype_lkup[x$datatype]
+
+  if (nrow(x) > 0) {
+    # replace invalid values to missing
+    rvars <- c("median", "polarization", "gini", "mld",
+               stringr::str_subset(names(x), "^decile"))
+
+    x <- naniar::replace_with_na_at(data = x,
+                                    .vars = rvars,
+                                    condition = ~.x  %in% c(-1, 0))
+  }
+
+  return(tibble::as_tibble(x))
+}
+
+format_data_cl_csv <- function(x) {
   # CHECK
   assertthat::assert_that(
     all.equal(names(x), povcal_col_names)
@@ -108,21 +132,73 @@ format_data_cl <- function(x, coverage) {
                      "decile10"       = "Decile10"
   )
 
-  # rename data_type to be more explicit
-  x$datatype <- datatype_lkup[x$datatype]
-
-  if (nrow(x) > 0) {
-    # replace invalid values to missing
-    rvars <- c("median", "polarization", "gini", "mld",
-               stringr::str_subset(names(x), "^decile"))
-
-    x <- naniar::replace_with_na_at(data = x,
-                                    .vars = rvars,
-                                    condition = ~.x  %in% c(-1, 0))
-  }
-
-  return(tibble::as_tibble(x))
+  return(x)
 }
+
+#' format_data_cl_json
+#'
+#' @param x data.frame: API response
+#'
+#' @return data.frame
+#'
+format_data_cl_json <- function(x) {
+  # CHECK
+  assertthat::assert_that(
+    all.equal(names(x), povcal_col_names_json)
+  )
+
+  x <- x %>%
+    dplyr::mutate(
+      decile1 = purrr::map(Decile, ~ .x[1]),
+      decile2 = purrr::map(Decile, ~ .x[2]),
+      decile3 = purrr::map(Decile, ~ .x[3]),
+      decile4 = purrr::map(Decile, ~ .x[4]),
+      decile5 = purrr::map(Decile, ~ .x[5]),
+      decile6 = purrr::map(Decile, ~ .x[6]),
+      decile7 = purrr::map(Decile, ~ .x[7]),
+      decile8 = purrr::map(Decile, ~ .x[8]),
+      decile9 = purrr::map(Decile, ~ .x[9]),
+      decile10 = purrr::map(Decile, ~ .x[10])
+    ) %>%
+    dplyr::select(-Decile)
+
+  x <- dplyr::select(x,
+                     "countrycode"    = "CountryCode",
+                     "countryname"    = "CountryName",
+                     "regioncode"     = "RegionCode",
+                     "coveragetype"   = "CoverageType",
+                     "year"           = "RequestYear",
+                     "datayear"       = "DataYear",
+                     "datatype"       = "DataType",
+                     "isinterpolated" = "interpolated",
+                     "usemicrodata"   = "useMicroData",
+                     "ppp"            = "PPP",
+                     "povertyline"    = "PovertyLine",
+                     "mean"           = "Mean",
+                     "headcount"      = "HC",
+                     "povertygap"     = "pg",
+                     "povertygapsq"   = "PovGapSqr",
+                     "watts"          = "Watts",
+                     "gini"           = "Gini",
+                     "median"         = "Median",
+                     "mld"            = "pr.mld",
+                     "polarization"   = "Polarization",
+                     "population"     = "ReqYearPopulation",
+                     "decile1"        = "decile1",
+                     "decile2"        = "decile2",
+                     "decile3"        = "decile3",
+                     "decile4"        = "decile4",
+                     "decile5"        = "decile5",
+                     "decile6"        = "decile6",
+                     "decile7"        = "decile7",
+                     "decile8"        = "decile8",
+                     "decile9"        = "decile9",
+                     "decile10"       = "decile10"
+  )
+
+  return(x)
+}
+
 
 
 format_data_aggregate <- function(x) {

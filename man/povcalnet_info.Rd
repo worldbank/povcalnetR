@@ -7,7 +7,8 @@
 povcalnet_info(server = NULL)
 }
 \arguments{
-\item{url}{character: Path to file: This parameter should not be modified.}
+\item{server}{character: Key for API root URL. For testing purposes only.
+Should not be modified for 99% of users.}
 }
 \value{
 data frame
