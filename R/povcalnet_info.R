@@ -69,7 +69,8 @@ povcal_info <- function(server = NULL) {
 #'
 #' Download updated information on available countries, regions, and surveys from the PovcalNet API
 #'
-#' @param url character: Path to file: This parameter should not be modified.
+#' @param server character: Key for API root URL. For testing purposes only.
+#' Should not be modified for 99% of users.
 #'
 #' @return data frame
 #' @export

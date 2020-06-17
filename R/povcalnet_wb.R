@@ -49,8 +49,8 @@ povcalnet_wb <- function(povline   = 1.9,
 
   # STEP 5: format output
   out <- format_data(out,
-                     coverage = "all",
-                     aggregate = TRUE)
+                     aggregate = TRUE,
+                     format = format)
 
   return(out)
 }

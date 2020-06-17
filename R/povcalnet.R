@@ -36,10 +36,6 @@ povcalnet <- function(country   = "all",
                       server    = NULL,
                       format    = "csv") {
 
-
-  # Get URL
-  url <- pt_geturl(server = server)
-
   # STEP 1: build query string
   query <- build_query_string(
     country   = country,
@@ -58,7 +54,7 @@ povcalnet <- function(country   = "all",
   if (length(country) == 1 & "all" %in% country & aggregate == TRUE) {
     out <- povcalnet_wb(povline = povline,
                         year    = year,
-                        url     = url,
+                        server  = server,
                         format  = format)
 
     out <- out[out$regioncode == "WLD", ]
@@ -67,6 +63,7 @@ povcalnet <- function(country   = "all",
   }
 
   # STEP 2: build URL
+  url <- pt_geturl(server = server)
   url <- httr::modify_url(url, path = api_handle(server), query = query)
 
   # STEP 3: retrieve data
@@ -88,8 +85,8 @@ povcalnet <- function(country   = "all",
 
   # STEP 5: format output
   out <- format_data(out,
-                     coverage = coverage,
-                     aggregate = aggregate)
+                     aggregate = aggregate,
+                     format = format)
 
   return(out)
 }
