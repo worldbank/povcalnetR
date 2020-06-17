@@ -1,7 +1,7 @@
 test_that("Basic data formatting works as expected", {
   df <- read.csv("../testdata/country_level_national.csv",
                  stringsAsFactors = FALSE)
-  out <- format_data_cl(df, coverage = "national")
+  out <- format_data_cl(df, format = "csv")
   out <- as.data.frame(out)
   expected_names <- c("countrycode", "countryname", "regioncode", "coveragetype", "year",
                       "datayear", "datatype", "isinterpolated", "usemicrodata", "ppp",

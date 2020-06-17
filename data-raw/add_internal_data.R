@@ -53,6 +53,12 @@ povcal_col_names <- c("isInterpolated", "useMicroData", "CountryCode", "CountryN
                       "Decile2", "Decile3", "Decile4", "Decile5", "Decile6",
                       "Decile7", "Decile8", "Decile9", "Decile10")
 
+povcal_col_names_json <- c("interpolated", "useMicroData", "CountryCode", "CountryName",
+                           "RegionCode", "CoverageType", "RequestYear", "DataYear",
+                           "DataType", "PPP", "PovertyLine", "Mean", "HC", "pg",
+                           "PovGapSqr", "Watts", "Gini", "Median", "pr.mld",
+                           "Polarization", "ReqYearPopulation", "SvyInfoID", "Decile" )
+
 povcal_col_names_agg <- c("requestYear", "regionTitle", "regionCID", "povertyLine",
                           "mean", "hc", "pg", "p2", "population")
 
@@ -66,6 +72,7 @@ sample_input <- readr::read_csv('./data-raw/input.csv')
 usethis::use_data(
   coverage_lkup,
   povcal_col_names,
+  povcal_col_names_json,
   povcal_col_names_agg,
   datatype_lkup,
   coverage_type_lkup,
