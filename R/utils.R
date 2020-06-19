@@ -72,12 +72,13 @@ format_data_cl <- function(x, format) {
 
   if (format == "csv") {
     x <- format_data_cl_csv(x)
+    # rename data_type to be more explicit
+    x$datatype <- datatype_lkup[x$datatype]
   } else {
     x <- format_data_cl_json(x)
   }
 
-  # rename data_type to be more explicit
-  x$datatype <- datatype_lkup[x$datatype]
+
 
   if (nrow(x) > 0) {
     # replace invalid values to missing
@@ -195,6 +196,8 @@ format_data_cl_json <- function(x) {
                      "decile9"        = "decile9",
                      "decile10"       = "decile10"
   )
+
+  x$datatype <- tolower(x$datatype)
 
   return(x)
 }
