@@ -52,14 +52,14 @@ povcalnet_qp <- function(country   = "all",
   # Should ideally be removed. Breaks the logic of the package
   if (length(country) == 1 & "all" %in% country & aggregate == TRUE) {
     stop("This feature is not yet supported")
-    # out <- povcalnet_wb(quantile_poor = quantile_poor,
-    #                     year    = year,
-    #                     server  = server,
-    #                     format  = format)
-    #
-    # out <- out[out$regioncode == "WLD", ]
-    #
-    # return(out)
+    out <- povcalnet_wb_qp(quantile_poor = quantile_poor,
+                           year    = year,
+                           server  = server,
+                           format  = format)
+
+    out <- out[out$regioncode == "WLD", ]
+
+    return(out)
   }
 
   # STEP 2: build URL
