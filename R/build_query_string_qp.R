@@ -19,7 +19,7 @@
 #' @examples
 #'
 #' build_query_string_qp(country = c("ALB", "CHN"),
-#' popshare = 1.9,
+#' popshare = .5,
 #' year = c(2002, 2012))
 
 build_query_string_qp <- function(country,

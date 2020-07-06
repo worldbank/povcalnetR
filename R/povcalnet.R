@@ -5,6 +5,7 @@
 #' `all`. Use \code{\link{povcalnet_info}} for full list of countries.
 #' @param povline numeric: poverty line (in 2011 PPP-adjusted USD) to
 #' calculate poverty measures
+#' @param popshare numeric: Share of population to calculate poverty line
 #' @param year numeric:  list of years, or `all`.
 #' @param aggregate logical: `TRUE` will return aggregate results,
 #' `FALSE` country-level results.
@@ -41,6 +42,7 @@ povcalnet <- function(country   = "all",
   # condition if povline and pop share are null
   if(is.null(povline) & is.null(popshare)) {
     povline <- 1.9
+    message(paste("default poverty line is", povline))
   }
 
 
@@ -49,7 +51,11 @@ povcalnet <- function(country   = "all",
     stop("You must select either `povline` or `popshare` but no both")
   }
 
+
+  #----------------------------------------------------------
   # if popshare selected.
+  #----------------------------------------------------------
+
   if(!is.null(popshare)) {
     df <- povcalnet_qp(country   = country,
                        popshare  = popshare,
@@ -62,6 +68,11 @@ povcalnet <- function(country   = "all",
                        format    = format)
     return(df)
   }
+
+
+  #----------------------------------------------------------
+  #   if povline is selected
+  #----------------------------------------------------------
 
   # STEP 1: build query string
   query <- build_query_string(

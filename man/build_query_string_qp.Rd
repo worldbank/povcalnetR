@@ -46,6 +46,6 @@ Create simplified povcalnet_qp query string
 \examples{
 
 build_query_string_qp(country = c("ALB", "CHN"),
-popshare = 1.9,
+popshare = .5,
 year = c(2002, 2012))
 }

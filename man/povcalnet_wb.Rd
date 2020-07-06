@@ -5,11 +5,19 @@
 \title{povcalnet_wb
 Returns the official WB regional estimates}
 \usage{
-povcalnet_wb(povline = 1.9, year = "all", server = NULL, format = "csv")
+povcalnet_wb(
+  povline = NULL,
+  popshare = NULL,
+  year = "all",
+  server = NULL,
+  format = "csv"
+)
 }
 \arguments{
 \item{povline}{numeric: poverty line (in 2011 PPP-adjusted USD) to
 calculate poverty measures}
+
+\item{popshare}{numeric: Share of population to calculate poverty line}
 
 \item{year}{numeric:  list of years, or `all`.}
 
