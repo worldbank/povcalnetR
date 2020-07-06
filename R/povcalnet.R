@@ -49,7 +49,19 @@ povcalnet <- function(country   = "all",
     stop("You must select either `povline` or `popshare` but no both")
   }
 
-
+  # if popshare selected.
+  if(!is.null(popshare)) {
+    df <- povcalnet_qp(country   = country,
+                       popshare  = popshare,
+                       year      = year,
+                       aggregate = aggregate,
+                       fill_gaps = fill_gaps,
+                       coverage  = coverage,
+                       ppp       = ppp,
+                       server    = server,
+                       format    = format)
+    return(df)
+  }
 
   # STEP 1: build query string
   query <- build_query_string(
