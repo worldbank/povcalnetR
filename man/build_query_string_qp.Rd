@@ -7,7 +7,7 @@ Create simplified povcalnet_qp query string}
 \usage{
 build_query_string_qp(
   country,
-  quantile_poor,
+  popshare,
   year,
   aggregate = FALSE,
   fill_gaps = FALSE,
@@ -19,7 +19,7 @@ build_query_string_qp(
 \arguments{
 \item{country}{character: list of country iso3 code (accepts multiple) or `all`. Use \href{https://www.iban.com/country-codes}{iso3 codes }}
 
-\item{quantile_poor}{numeric: Percentage of the population who live below the poverty line}
+\item{popshare}{numeric: Percentage of the population who live below the poverty line}
 
 \item{year}{numeric:  list of years, or `all`, or `last`.}
 
@@ -46,6 +46,6 @@ Create simplified povcalnet_qp query string
 \examples{
 
 build_query_string_qp(country = c("ALB", "CHN"),
-quantile_poor = 1.9,
+popshare = 1.9,
 year = c(2002, 2012))
 }

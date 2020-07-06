@@ -6,14 +6,14 @@
 Returns the official WB regional estimates}
 \usage{
 povcalnet_wb_qp(
-  quantile_poor = 0.2,
+  popshare = 0.2,
   year = "all",
   server = NULL,
   format = "csv"
 )
 }
 \arguments{
-\item{quantile_poor}{numeric: Percentage of the population who live below the poverty line}
+\item{popshare}{numeric: Percentage of the population who live below the poverty line}
 
 \item{year}{numeric:  list of years, or `all`.}
 

@@ -7,7 +7,7 @@ Facilitate querying of a specific quantile of the population who live in poverty
 \usage{
 povcalnet_qp(
   country = "all",
-  quantile_poor = 0.2,
+  popshare = 0.2,
   year = "all",
   aggregate = FALSE,
   fill_gaps = FALSE,
@@ -21,7 +21,7 @@ povcalnet_qp(
 \item{country}{character: list of country iso3 code (accepts multiple) or
 `all`. Use \code{\link{povcalnet_info}} for full list of countries.}
 
-\item{quantile_poor}{numeric: Percentage of the population who live below the poverty line}
+\item{popshare}{numeric: Percentage of the population who live below the poverty line}
 
 \item{year}{numeric:  list of years, or `all`.}
 
