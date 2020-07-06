@@ -27,7 +27,8 @@
 #' }
 #'
 povcalnet <- function(country   = "all",
-                      povline   = 1.9,
+                      povline   = NULL,
+                      popshare  = NULL,
                       year      = "all",
                       aggregate = FALSE,
                       fill_gaps = FALSE,
@@ -35,6 +36,20 @@ povcalnet <- function(country   = "all",
                       ppp       = NULL,
                       server    = NULL,
                       format    = "csv") {
+
+
+  # condition if povline and pop share are null
+  if(is.null(povline) & is.null(popshare)) {
+    povline <- 1.9
+  }
+
+
+  # If povline and popshare are determined
+  if(!is.null(povline) & !is.null(popshare)) {
+    stop("You must select either `povline` or `popshare` but no both")
+  }
+
+
 
   # STEP 1: build query string
   query <- build_query_string(

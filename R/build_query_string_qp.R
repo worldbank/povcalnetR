@@ -2,7 +2,7 @@
 #' Create simplified povcalnet_qp query string
 #'
 #' @param country character: list of country iso3 code (accepts multiple) or `all`. Use \href{https://www.iban.com/country-codes}{iso3 codes }
-#' @param quantile_poor numeric: Percentage of the population who live below the poverty line
+#' @param popshare numeric: Percentage of the population who live below the poverty line
 #' @param year numeric:  list of years, or `all`, or `last`.
 #' @param aggregate logical: `TRUE` will return aggregate results,
 #' `FALSE` country-level results.
@@ -19,11 +19,11 @@
 #' @examples
 #'
 #' build_query_string_qp(country = c("ALB", "CHN"),
-#' quantile_poor = 1.9,
+#' popshare = 1.9,
 #' year = c(2002, 2012))
 
 build_query_string_qp <- function(country,
-                                  quantile_poor,
+                                  popshare,
                                   year,
                                   aggregate = FALSE,
                                   fill_gaps = FALSE,
@@ -32,7 +32,7 @@ build_query_string_qp <- function(country,
                                   format = "json") {
   # CHECK inputs
   check_build_query_string_qp_inputs(country,
-                                     quantile_poor,
+                                     popshare,
                                      year,
                                      aggregate,
                                      fill_gaps,
@@ -64,7 +64,7 @@ build_query_string_qp <- function(country,
   year <- paste0(year_str, paste(year, collapse = ","))
 
   # Build poverty line section
-  quantile_poor <- paste0("QP=", quantile_poor)
+  popshare <- paste0("QP=", popshare)
 
   # Build country section
   country <- paste0("Countries=", paste(country, collapse = ","))
@@ -84,10 +84,10 @@ build_query_string_qp <- function(country,
   if (!is.null(ppp)) {
     ppp <- purrr::map2_chr(i, ppp, function(x, y) {paste0("PPP", x, "=", y)})
     ppp <- paste(ppp, collapse = "&")
-    out <- paste(year, country, quantile_poor, ppp, display, format, collapse = "&")
+    out <- paste(year, country, popshare, ppp, display, format, collapse = "&")
     out <- stringr::str_replace_all(out, pattern = " ", replacement = "&")
   } else {
-    out <- paste(year, country, quantile_poor, display, format, collapse = "&")
+    out <- paste(year, country, popshare, display, format, collapse = "&")
     out <- stringr::str_replace_all(out, pattern = " ", replacement = "&")
   }
 
@@ -96,7 +96,7 @@ build_query_string_qp <- function(country,
 
 
 check_build_query_string_qp_inputs <- function(country,
-                                               quantile_poor,
+                                               popshare,
                                                year,
                                                aggregate,
                                                fill_gaps,
@@ -110,17 +110,17 @@ check_build_query_string_qp_inputs <- function(country,
                           msg = "Please submit at least ONE country")
   assertthat::assert_that(length(year) > 0,
                           msg = "Please submit at least ONE year")
-  assertthat::assert_that(length(quantile_poor) > 0,
+  assertthat::assert_that(length(popshare) > 0,
                           msg = "Please submit ONE quantile")
-  assertthat::assert_that(length(quantile_poor) == 1,
-                          msg = "Please submit only one quantile_poor,
-                          for instance: quantile_poor = 0.5")
-  assertthat::assert_that(quantile_poor > 0,
-                          msg = "quantile_poor must be superior to 0,
-                          for instance: quantile_poor = 0.5")
-  assertthat::assert_that(quantile_poor <= 1,
-                          msg = "quantile_poor must less or equal to 1,
-                          for instance: quantile_poor = 0.9")
+  assertthat::assert_that(length(popshare) == 1,
+                          msg = "Please submit only one popshare,
+                          for instance: popshare = 0.5")
+  assertthat::assert_that(popshare > 0,
+                          msg = "popshare must be superior to 0,
+                          for instance: popshare = 0.5")
+  assertthat::assert_that(popshare <= 1,
+                          msg = "popshare must less or equal to 1,
+                          for instance: popshare = 0.9")
   assertthat::assert_that(coverage %in% accepted_coverage,
                           msg = paste0("The 'coverage' argument only accepts one of the following values:\n",
                                        accepted_coverage))

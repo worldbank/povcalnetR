@@ -1,7 +1,7 @@
 #' povcalnet_wb_qp
 #' Returns the official WB regional estimates
 #'
-#' @param quantile_poor numeric: Percentage of the population who live below the poverty line
+#' @param popshare numeric: Percentage of the population who live below the poverty line
 #' @param year numeric:  list of years, or `all`.
 #' @param server character: Key for API root URL. For testing purposes only, should not be
 #' changed for 99 percent of users.
@@ -15,7 +15,7 @@
 #' \donttest{
 #' povcalnet_wb_qp(year = 2015)
 #' }
-povcalnet_wb_qp <- function(quantile_poor   = 0.2,
+povcalnet_wb_qp <- function(popshare   = 0.2,
                             year      = "all",
                             server    = NULL,
                             format    = "csv") {
@@ -24,7 +24,7 @@ povcalnet_wb_qp <- function(quantile_poor   = 0.2,
   url <- pt_geturl(server = server)
 
   # STEP 1: Build query
-  query <- paste0("GroupedBy=WB&YearSelected=", year, "&QP=", quantile_poor, "&Countries=all&format=", format)
+  query <- paste0("GroupedBy=WB&YearSelected=", year, "&QP=", popshare, "&Countries=all&format=", format)
 
   # STEP 2: build URL
   url <- httr::modify_url(url, path = api_handle(server), query = query)

@@ -3,7 +3,7 @@
 #'
 #' @param country character: list of country iso3 code (accepts multiple) or
 #' `all`. Use \code{\link{povcalnet_info}} for full list of countries.
-#' @param quantile_poor numeric: Percentage of the population who live below the poverty line
+#' @param popshare numeric: Percentage of the population who live below the poverty line
 #' @param year numeric:  list of years, or `all`.
 #' @param aggregate logical: `TRUE` will return aggregate results,
 #' `FALSE` country-level results.
@@ -26,7 +26,7 @@
 #' }
 #'
 povcalnet_qp <- function(country   = "all",
-                         quantile_poor   = 0.2,
+                         popshare   = 0.2,
                          year      = "all",
                          aggregate = FALSE,
                          fill_gaps = FALSE,
@@ -38,7 +38,7 @@ povcalnet_qp <- function(country   = "all",
   # STEP 1: build query string
   query <- build_query_string_qp(
     country   = country,
-    quantile_poor   = quantile_poor,
+    popshare   = popshare,
     year      = year,
     aggregate = aggregate,
     fill_gaps = fill_gaps,
@@ -52,7 +52,7 @@ povcalnet_qp <- function(country   = "all",
   # Should ideally be removed. Breaks the logic of the package
   if (length(country) == 1 & "all" %in% country & aggregate == TRUE) {
     stop("This feature is not yet supported")
-    out <- povcalnet_wb_qp(quantile_poor = quantile_poor,
+    out <- povcalnet_wb_qp(popshare = popshare,
                            year    = year,
                            server  = server,
                            format  = format)
