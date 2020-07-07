@@ -51,49 +51,43 @@ povcalnet <- function(country   = "all",
     stop("You must select either `povline` or `popshare` but no both")
   }
 
+  # STEP 1: build query string
 
-  #----------------------------------------------------------
-  # if popshare selected.
-  #----------------------------------------------------------
+  if (!is.null(popshare)) {
+    query <- build_query_string_qp(
+      country   = country,
+      popshare  = popshare,
+      year      = year,
+      aggregate = aggregate,
+      fill_gaps = fill_gaps,
+      coverage  = coverage,
+      ppp       = ppp,
+      format    = format
+    )
 
-  if(!is.null(popshare)) {
-    df <- povcalnet_qp(country   = country,
-                       popshare  = popshare,
-                       year      = year,
-                       aggregate = aggregate,
-                       fill_gaps = fill_gaps,
-                       coverage  = coverage,
-                       ppp       = ppp,
-                       server    = server,
-                       format    = format)
-    return(df)
+  } else {
+    query <- build_query_string(
+      country   = country,
+      povline   = povline,
+      year      = year,
+      aggregate = aggregate,
+      fill_gaps = fill_gaps,
+      coverage  = coverage,
+      ppp       = ppp,
+      format    = format
+    )
   }
 
-
-  #----------------------------------------------------------
-  #   if povline is selected
-  #----------------------------------------------------------
-
-  # STEP 1: build query string
-  query <- build_query_string(
-    country   = country,
-    povline   = povline,
-    year      = year,
-    aggregate = aggregate,
-    fill_gaps = fill_gaps,
-    coverage  = coverage,
-    ppp       = ppp,
-    format    = format
-  )
 
   # Special case handling WORLD level aggregate
   # This is necessary because of the behavior of the PovcalNet API
   # Should ideally be removed. Breaks the logic of the package
   if (length(country) == 1 & "all" %in% country & aggregate == TRUE) {
-    out <- povcalnet_wb(povline = povline,
-                        year    = year,
-                        server  = server,
-                        format  = format)
+    out <- povcalnet_wb(povline  = povline,
+                        popshare = popshare,
+                        year     = year,
+                        server   = server,
+                        format   = format)
 
     out <- out[out$regioncode == "WLD", ]
 

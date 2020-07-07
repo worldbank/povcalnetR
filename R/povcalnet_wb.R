@@ -34,31 +34,17 @@ povcalnet_wb <- function(povline   = NULL,
     stop("You must select either `povline` or `popshare` but no both")
   }
 
-
-  #----------------------------------------------------------
-  # if popshare selected.
-  #----------------------------------------------------------
-
-  if(!is.null(popshare)) {
-    df <- povcalnet_wb_qp(popshare  = popshare,
-                          year      = year,
-                          server    = server,
-                          format    = format)
-    return(df)
-  }
-
-
-  #----------------------------------------------------------
-  #   if povline is selected
-  #----------------------------------------------------------
-
-
-
   # Get URL
   url <- pt_geturl(server = server)
 
   # STEP 1: Build query
-  query <- paste0("GroupedBy=WB&YearSelected=", year, "&PovertyLine=", povline, "&Countries=all&format=", format)
+  if(!is.null(popshare)) {
+    # popshare selected
+    query <- paste0("GroupedBy=WB&YearSelected=", year, "&QP=", popshare, "&Countries=all&format=", format)
+  } else {
+    # povline selected
+    query <- paste0("GroupedBy=WB&YearSelected=", year, "&PovertyLine=", povline, "&Countries=all&format=", format)
+  }
 
   # STEP 2: build URL
   url <- httr::modify_url(url, path = api_handle(server), query = query)

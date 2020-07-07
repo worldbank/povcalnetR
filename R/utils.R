@@ -148,8 +148,7 @@ format_data_cl_json <- function(x) {
     all.equal(names(x), povcal_col_names_json)
   )
 
-  x <- x %>%
-    dplyr::mutate(
+  x <- dplyr::mutate(x,
       decile1 = purrr::map(Decile, ~ .x[1]),
       decile2 = purrr::map(Decile, ~ .x[2]),
       decile3 = purrr::map(Decile, ~ .x[3]),
@@ -160,8 +159,8 @@ format_data_cl_json <- function(x) {
       decile8 = purrr::map(Decile, ~ .x[8]),
       decile9 = purrr::map(Decile, ~ .x[9]),
       decile10 = purrr::map(Decile, ~ .x[10])
-    ) %>%
-    dplyr::select(-Decile)
+    )
+  x[["Decile"]] <- NULL
 
   x <- dplyr::select(x,
                      "countrycode"    = "CountryCode",
