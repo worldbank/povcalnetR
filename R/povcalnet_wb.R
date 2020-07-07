@@ -3,6 +3,7 @@
 #'
 #' @param povline numeric: poverty line (in 2011 PPP-adjusted USD) to
 #' calculate poverty measures
+#' @param popshare numeric: Share of population to calculate poverty line
 #' @param year numeric:  list of years, or `all`.
 #' @param server character: Key for API root URL. For testing purposes only, should not be
 #' changed for 99 percent of users.
@@ -16,16 +17,34 @@
 #' \donttest{
 #' povcalnet_wb(year = 2015)
 #' }
-povcalnet_wb <- function(povline   = 1.9,
+povcalnet_wb <- function(povline   = NULL,
+                         popshare  = NULL,
                          year      = "all",
                          server    = NULL,
                          format    = "csv") {
+  # condition if povline and pop share are null
+  if(is.null(povline) & is.null(popshare)) {
+    povline <- 1.9
+    message(paste("default poverty line is", povline))
+  }
+
+
+  # If povline and popshare are determined
+  if(!is.null(povline) & !is.null(popshare)) {
+    stop("You must select either `povline` or `popshare` but no both")
+  }
 
   # Get URL
   url <- pt_geturl(server = server)
 
   # STEP 1: Build query
-  query <- paste0("GroupedBy=WB&YearSelected=", year, "&PovertyLine=", povline, "&Countries=all&format=", format)
+  if(!is.null(popshare)) {
+    # popshare selected
+    query <- paste0("GroupedBy=WB&YearSelected=", year, "&QP=", popshare, "&Countries=all&format=", format)
+  } else {
+    # povline selected
+    query <- paste0("GroupedBy=WB&YearSelected=", year, "&PovertyLine=", povline, "&Countries=all&format=", format)
+  }
 
   # STEP 2: build URL
   url <- httr::modify_url(url, path = api_handle(server), query = query)

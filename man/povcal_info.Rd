@@ -2,18 +2,20 @@
 % Please edit documentation in R/povcalnet_info.R
 \name{povcal_info}
 \alias{povcal_info}
-\title{povcal_info}
+\title{povcal_info
+Non-memoised version of povcalnet_info()}
 \usage{
 povcal_info(server = NULL)
 }
 \arguments{
 \item{server}{character: Key for API root URL. For testing purposes only.
-Should not be modified for 99% of users.}
+Should not be modified for 99 percent of users.}
 }
 \value{
 data.frame
 }
 \description{
+povcal_info
 Non-memoised version of povcalnet_info()
 }
 \examples{

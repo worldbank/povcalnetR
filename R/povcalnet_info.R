@@ -1,9 +1,8 @@
 #' povcal_info
-#'
 #' Non-memoised version of povcalnet_info()
 #'
 #' @param server character: Key for API root URL. For testing purposes only.
-#' Should not be modified for 99% of users.
+#' Should not be modified for 99 percent of users.
 #'
 #' @return data.frame
 #'
@@ -11,6 +10,7 @@
 #' \donttest{
 #' povcalnet_info()
 #' }
+
 povcal_info <- function(server = NULL) {
   # Adjust URL according to the selected server
   handle <- api_handle(server)
@@ -66,15 +66,13 @@ povcal_info <- function(server = NULL) {
 
 
 #' povcalnet_info()
-#'
 #' Download updated information on available countries, regions, and surveys from the PovcalNet API
 #'
 #' @param server character: Key for API root URL. For testing purposes only.
-#' Should not be modified for 99% of users.
+#' Should not be modified for 99 percent of users.
 #'
 #' @return data frame
 #' @export
-#'
 #'
 #' @examples
 #' \donttest{

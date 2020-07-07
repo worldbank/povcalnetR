@@ -5,6 +5,7 @@
 #' `all`. Use \code{\link{povcalnet_info}} for full list of countries.
 #' @param povline numeric: poverty line (in 2011 PPP-adjusted USD) to
 #' calculate poverty measures
+#' @param popshare numeric: Share of population to calculate poverty line
 #' @param year numeric:  list of years, or `all`.
 #' @param aggregate logical: `TRUE` will return aggregate results,
 #' `FALSE` country-level results.
@@ -27,7 +28,8 @@
 #' }
 #'
 povcalnet <- function(country   = "all",
-                      povline   = 1.9,
+                      povline   = NULL,
+                      popshare  = NULL,
                       year      = "all",
                       aggregate = FALSE,
                       fill_gaps = FALSE,
@@ -36,26 +38,56 @@ povcalnet <- function(country   = "all",
                       server    = NULL,
                       format    = "csv") {
 
+
+  # condition if povline and pop share are null
+  if(is.null(povline) & is.null(popshare)) {
+    povline <- 1.9
+    message(paste("default poverty line is", povline))
+  }
+
+
+  # If povline and popshare are determined
+  if(!is.null(povline) & !is.null(popshare)) {
+    stop("You must select either `povline` or `popshare` but no both")
+  }
+
   # STEP 1: build query string
-  query <- build_query_string(
-    country   = country,
-    povline   = povline,
-    year      = year,
-    aggregate = aggregate,
-    fill_gaps = fill_gaps,
-    coverage  = coverage,
-    ppp       = ppp,
-    format    = format
-  )
+
+  if (!is.null(popshare)) {
+    query <- build_query_string_qp(
+      country   = country,
+      popshare  = popshare,
+      year      = year,
+      aggregate = aggregate,
+      fill_gaps = fill_gaps,
+      coverage  = coverage,
+      ppp       = ppp,
+      format    = format
+    )
+
+  } else {
+    query <- build_query_string(
+      country   = country,
+      povline   = povline,
+      year      = year,
+      aggregate = aggregate,
+      fill_gaps = fill_gaps,
+      coverage  = coverage,
+      ppp       = ppp,
+      format    = format
+    )
+  }
+
 
   # Special case handling WORLD level aggregate
   # This is necessary because of the behavior of the PovcalNet API
   # Should ideally be removed. Breaks the logic of the package
   if (length(country) == 1 & "all" %in% country & aggregate == TRUE) {
-    out <- povcalnet_wb(povline = povline,
-                        year    = year,
-                        server  = server,
-                        format  = format)
+    out <- povcalnet_wb(povline  = povline,
+                        popshare = popshare,
+                        year     = year,
+                        server   = server,
+                        format   = format)
 
     out <- out[out$regioncode == "WLD", ]
 

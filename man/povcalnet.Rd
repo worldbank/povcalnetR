@@ -7,7 +7,8 @@ Facilitate interaction with the PovcalNet API}
 \usage{
 povcalnet(
   country = "all",
-  povline = 1.9,
+  povline = NULL,
+  popshare = NULL,
   year = "all",
   aggregate = FALSE,
   fill_gaps = FALSE,
@@ -23,6 +24,8 @@ povcalnet(
 
 \item{povline}{numeric: poverty line (in 2011 PPP-adjusted USD) to
 calculate poverty measures}
+
+\item{popshare}{numeric: Share of population to calculate poverty line}
 
 \item{year}{numeric:  list of years, or `all`.}
 

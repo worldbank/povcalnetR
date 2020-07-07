@@ -2,6 +2,7 @@
 
 export(build_query_string)
 export(build_query_string_cl)
+export(build_query_string_qp)
 export(get_countries)
 export(povcalnet)
 export(povcalnet_cl)
