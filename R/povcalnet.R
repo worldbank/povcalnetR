@@ -60,7 +60,7 @@ povcalnet <- function(country   = "all",
                   msg,
                   x = problem
                   ),
-                  class = "error_class"
+                  class = "povcalnet_error"
                   )
   }
 
