@@ -38,6 +38,9 @@ povcalnet <- function(country   = "all",
                       server    = NULL,
                       format    = "csv") {
 
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #---------   Conditions   ---------
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   # condition if povline and pop share are null
   if(is.null(povline) & is.null(popshare)) {
@@ -45,11 +48,26 @@ povcalnet <- function(country   = "all",
     message(paste("default poverty line is", povline))
   }
 
-
   # If povline and popshare are determined
   if(!is.null(povline) & !is.null(popshare)) {
     stop("You must select either `povline` or `popshare` but no both")
   }
+
+  if(aggregate == TRUE & !is.null(popshare)) {
+    msg     <- "`aggegate` can't be TRUE at the same time that `popshare` is defined"
+    problem <- paste("you specified `aggregate` as TRUE and `popshare` as", popshare)
+    rlang::abort(c(
+                  msg,
+                  x = problem
+                  ),
+                  class = "error_class"
+                  )
+  }
+
+
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #---------   Steps   ---------
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   # STEP 1: build query string
 
@@ -84,7 +102,6 @@ povcalnet <- function(country   = "all",
   # Should ideally be removed. Breaks the logic of the package
   if (length(country) == 1 & "all" %in% country & aggregate == TRUE) {
     out <- povcalnet_wb(povline  = povline,
-                        popshare = popshare,
                         year     = year,
                         server   = server,
                         format   = format)
