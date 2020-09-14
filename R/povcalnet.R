@@ -54,11 +54,14 @@ povcalnet <- function(country   = "all",
   }
 
   if(aggregate == TRUE & !is.null(popshare)) {
-    msg     <- "`aggegate` can't be TRUE at the same time that `popshare` is defined"
+    msg     <- "`aggregate` can't be TRUE at the same time that `popshare` is defined"
     problem <- paste("you specified `aggregate` as TRUE and `popshare` as", popshare)
+    hint <- paste("Please use the `povline` argument instead of `popshare`, or
+                  use `aggregate = FALSE`")
     rlang::abort(c(
                   msg,
-                  x = problem
+                  x = problem,
+                  i = hint
                   ),
                   class = "povcalnet_error"
                   )
