@@ -39,7 +39,8 @@ Imports:
     js,
     tidyr,
     naniar,
-    memoise
+    memoise,
+    rlang
 Suggests: 
     testthat (>= 2.1.0),
     assertthat,
