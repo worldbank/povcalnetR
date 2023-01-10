@@ -1,7 +1,9 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+# !! ARCHIVED PACKAGE !! Please read below
 
-# povcalnetR
+The PovcalNet website and API have now been retired, and replaced by the [Poverty and Inequality Platform (PIP)](https://pip.worldbank.org/home). As a result, the `PovcanetR` API client is now longer relevant. Please use the [pipR package](https://github.com/worldbank/pipr) instead to interact with the PIP API. Thanks!
+
+## povcalnetR
 
 <!-- badges: start -->
 
